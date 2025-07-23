@@ -1,13 +1,138 @@
-[gd_scene load_steps=2 format=3 uid="uid://dqghyyo32sn2y"]
+[gd_scene load_steps=13 format=3 uid="uid://dqghyyo32sn2y"]
 
 [ext_resource type="Texture2D" uid="uid://cwm7n0ajguj2x" path="res://Sprites/firework_bg.png" id="1_jjgbg"]
+[ext_resource type="Script" uid="uid://dsn6mefgy5ijk" path="res://Scripts/game_manager.gd" id="2_8gbba"]
+[ext_resource type="Script" uid="uid://bbmuup40yufp3" path="res://Scripts/player_manager.gd" id="2_kry3j"]
+[ext_resource type="PackedScene" uid="uid://djxsfkro6ge2v" path="res://Scenes/player.tscn" id="3_jjvhh"]
+[ext_resource type="Script" uid="uid://dtrgdva2l6xwf" path="res://Scripts/player.gd" id="4_21xkr"]
+[ext_resource type="Texture2D" uid="uid://cqf0b67vpg8g6" path="res://Sprites/cloud.png" id="5_6bp64"]
+[ext_resource type="Script" uid="uid://cxc85ab32ix3i" path="res://Scenes/movement_component.gd" id="6_21xkr"]
+[ext_resource type="PackedScene" uid="uid://du4xkv4rwaw7d" path="res://Scenes/cash.tscn" id="8_ynf5e"]
+[ext_resource type="Texture2D" uid="uid://b6d0epgmhmh6s" path="res://Sprites/cash.png" id="9_ynf5e"]
+[ext_resource type="FontFile" uid="uid://c6dnwjcvpku5y" path="res://Fonts/Analog Whispers.ttf" id="10_hptm8"]
+[ext_resource type="Script" uid="uid://s1rr3mqw6mx2" path="res://Scenes/cash_counter.gd" id="11_d1ilt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_d1ilt"]
+line_spacing = 0.0
+font = ExtResource("10_hptm8")
+font_size = 100
+font_color = Color(0.834795, 0.874471, 0.961176, 1)
 
 [node name="Main Scene" type="Node2D"]
+
+[node name="Managers" type="Node2D" parent="."]
+
+[node name="Game Manager" type="Node2D" parent="Managers"]
+script = ExtResource("2_8gbba")
+
+[node name="Player Manager" type="Node2D" parent="Managers" node_paths=PackedStringArray("player")]
+script = ExtResource("2_kry3j")
+player = NodePath("../../Player")
+
+[node name="Spawn Manager" type="Node2D" parent="Managers"]
+
+[node name="Audio Manager" type="Node2D" parent="Managers"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(960, 540)
+
+[node name="Player" parent="." instance=ExtResource("3_jjvhh")]
+z_index = 10
+position = Vector2(960, 540)
+script = ExtResource("4_21xkr")
+speed = 1000
+
+[node name="Clouds2" type="Node2D" parent="."]
+modulate = Color(0.897915, 0.920017, 0.986546, 1)
+position = Vector2(551, 596)
+scale = Vector2(3, 3)
+
+[node name="MovementComponent" type="Node2D" parent="Clouds2"]
+script = ExtResource("6_21xkr")
+scroll_magnitude = 0.5
+metadata/_custom_type_script = "uid://cxc85ab32ix3i"
+
+[node name="Cloud2" type="Sprite2D" parent="Clouds2"]
+z_index = 1
+position = Vector2(236.75, -46.25)
+rotation = 3.14159
+scale = Vector2(1.5, -1.5)
+texture = ExtResource("5_6bp64")
+
+[node name="Cloud" type="Sprite2D" parent="Clouds2"]
+z_index = 1
+texture = ExtResource("5_6bp64")
+
+[node name="Clouds" type="Node2D" parent="."]
+position = Vector2(381, 398)
+scale = Vector2(4, 4)
+
+[node name="MovementComponent" type="Node2D" parent="Clouds"]
+script = ExtResource("6_21xkr")
+metadata/_custom_type_script = "uid://cxc85ab32ix3i"
+
+[node name="Cloud2" type="Sprite2D" parent="Clouds"]
+z_index = 1
+position = Vector2(236.75, -46.25)
+rotation = 3.14159
+scale = Vector2(1.5, -1.5)
+texture = ExtResource("5_6bp64")
+
+[node name="Cloud" type="Sprite2D" parent="Clouds"]
+z_index = 1
+texture = ExtResource("5_6bp64")
 
 [node name="Background Sprite" type="Sprite2D" parent="."]
 position = Vector2(960, 362)
 scale = Vector2(4, 4)
 texture = ExtResource("1_jjgbg")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(960, 540)
+[node name="MovementComponent" type="Node2D" parent="Background Sprite"]
+script = ExtResource("6_21xkr")
+scroll_magnitude = 0.1
+metadata/_custom_type_script = "uid://cxc85ab32ix3i"
+
+[node name="Cashes" type="Node2D" parent="."]
+position = Vector2(702, 404)
+scale = Vector2(2, 2)
+
+[node name="MovementComponent" type="Node2D" parent="Cashes"]
+script = ExtResource("6_21xkr")
+scroll_magnitude = 0.7
+metadata/_custom_type_script = "uid://cxc85ab32ix3i"
+
+[node name="Cash" parent="Cashes" instance=ExtResource("8_ynf5e")]
+
+[node name="Cash2" parent="Cashes" instance=ExtResource("8_ynf5e")]
+position = Vector2(-66, -128.5)
+
+[node name="Cash3" parent="Cashes" instance=ExtResource("8_ynf5e")]
+position = Vector2(-64.5, -251.5)
+
+[node name="Cash4" parent="Cashes" instance=ExtResource("8_ynf5e")]
+position = Vector2(29, -359)
+
+[node name="Cash5" parent="Cashes" instance=ExtResource("8_ynf5e")]
+position = Vector2(117, -440.5)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="Cash" type="Sprite2D" parent="Control"]
+position = Vector2(1585, 86)
+scale = Vector2(2, 2)
+texture = ExtResource("9_ynf5e")
+
+[node name="Cash Counter" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 1714.0
+offset_top = 53.0
+offset_right = 2002.0
+offset_bottom = 147.0
+text = "000"
+label_settings = SubResource("LabelSettings_d1ilt")
+vertical_alignment = 1
+script = ExtResource("11_d1ilt")
