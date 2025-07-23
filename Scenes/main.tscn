@@ -1,3 +1,13 @@
-[gd_scene format=3 uid="uid://dqghyyo32sn2y"]
+[gd_scene load_steps=2 format=3 uid="uid://dqghyyo32sn2y"]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource type="Texture2D" uid="uid://cwm7n0ajguj2x" path="res://Sprites/firework_bg.png" id="1_jjgbg"]
+
+[node name="Main Scene" type="Node2D"]
+
+[node name="Background Sprite" type="Sprite2D" parent="."]
+position = Vector2(960, 362)
+scale = Vector2(4, 4)
+texture = ExtResource("1_jjgbg")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(960, 540)
