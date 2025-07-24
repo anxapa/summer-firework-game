@@ -1,13 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://djxsfkro6ge2v"]
+[gd_scene load_steps=5 format=3 uid="uid://djxsfkro6ge2v"]
 
 [ext_resource type="Script" uid="uid://dtrgdva2l6xwf" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://dyqsc2w2x5jdo" path="res://Sprites/firework.png" id="1_v0iea"]
+[ext_resource type="Texture2D" uid="uid://d25ksndy32pjk" path="res://Sprites/firework_cloud.png" id="2_6t5aa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f60y1"]
 size = Vector2(64, 120)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_cvnsp")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(0, 56)
+emitting = false
+amount = 100
+texture = ExtResource("2_6t5aa")
+lifetime = 3.0
+direction = Vector2(0, 1)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 500.0
+initial_velocity_max = 500.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+color = Color(0.767888, 0.999273, 1, 0.47451)
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(-2.26498e-06, 0.125003)

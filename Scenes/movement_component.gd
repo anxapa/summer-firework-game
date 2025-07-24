@@ -14,7 +14,13 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	scroll_movement(delta)
+	movement(delta)
 
 func scroll_movement(delta: float) -> void:
 	var scroll_speed = player_manager.get_scroll_speed() * scroll_magnitude
 	parent.global_position.y -= scroll_speed * delta
+
+func movement(delta: float) -> void:
+	# Must be overridden through inheritance to add movement 
+	return
+	

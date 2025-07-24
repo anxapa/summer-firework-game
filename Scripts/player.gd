@@ -1,19 +1,22 @@
 extends CharacterBody2D
 class_name Player
 
+# Physics values
 @export var propulsion_velocity := 300.0
-var acceleration := Vector2.ZERO
 @export var speed := 400
+var acceleration := Vector2.ZERO
 const GRAVITY := 10
-
 var scroll_speed : float
 
+@onready var particle_system := $CPUParticles2D
+
 func _ready() -> void:
-	return
+	particle_system.emitting = true
 
 func _physics_process(delta: float) -> void:
 	apply_gravity(delta)
 	movement(delta)
+	update_particles()
 	
 func movement(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
@@ -36,7 +39,20 @@ func movement(delta: float) -> void:
 	move_and_slide()
 
 func apply_gravity(delta: float) -> void:
-	propulsion_velocity = move_toward(propulsion_velocity, 0, GRAVITY * delta)
+	propulsion_velocity = move_toward(propulsion_velocity, 1, GRAVITY * delta)
 
 func apply_propulsion_velocity(velocity: float) -> void:
 	propulsion_velocity += velocity
+
+# Sets the parameters of the particle system depending on propulsion velocity
+func update_particles() -> void:
+	# Sets the speed of the particle system
+	particle_system.initial_velocity_min = propulsion_velocity * 2
+	particle_system.initial_velocity_max = propulsion_velocity * 2
+	
+	# Sets the scale of the particle system
+	particle_system.scale_amount_max = (100 / -(propulsion_velocity + 50)) + 4
+	particle_system.scale_amount_min = particle_system.scale_amount_max / 2
+	
+	# Sets the lifetime of the particle system
+	particle_system.lifetime = exp(-0.01 * propulsion_velocity + 3)

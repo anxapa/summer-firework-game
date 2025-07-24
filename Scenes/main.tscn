@@ -40,6 +40,7 @@ position = Vector2(960, 540)
 [node name="Player" parent="." instance=ExtResource("3_jjvhh")]
 z_index = 10
 position = Vector2(960, 540)
+propulsion_velocity = 100.0
 speed = 700
 
 [node name="Clouds2" type="Node2D" parent="."]
@@ -93,7 +94,7 @@ scroll_magnitude = 0.1
 metadata/_custom_type_script = "uid://cxc85ab32ix3i"
 
 [node name="Cashes" type="Node2D" parent="."]
-position = Vector2(702, 404)
+position = Vector2(715, 150)
 scale = Vector2(2, 2)
 
 [node name="MovementComponent" type="Node2D" parent="Cashes"]
