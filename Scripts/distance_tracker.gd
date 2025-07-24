@@ -7,8 +7,5 @@ func _ready() -> void:
 	player = GameManager.player_manager.player
 
 func _process(delta: float) -> void:
-	# Show player speed
-	if player.scroll_speed > -1000:
-		text = "%d m/s" % -player.scroll_speed
-	else:
-		text = "%.1f km/s" % -(player.scroll_speed / 1000)
+	# Show total distance
+	text = "%.1f km" % -player.total_distance

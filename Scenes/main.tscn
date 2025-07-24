@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dqghyyo32sn2y"]
+[gd_scene load_steps=20 format=3 uid="uid://dqghyyo32sn2y"]
 
 [ext_resource type="Texture2D" uid="uid://cwm7n0ajguj2x" path="res://Sprites/firework_bg.png" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://dsn6mefgy5ijk" path="res://Scripts/game_manager.gd" id="2_8gbba"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://dmrdpj8mbjea5" path="res://Scripts/speedometer.gd" id="11_6iyac"]
 [ext_resource type="Script" uid="uid://s1rr3mqw6mx2" path="res://Scripts/cash_counter.gd" id="11_d1ilt"]
 [ext_resource type="Script" uid="uid://401mdwvvdsv7" path="res://Scripts/thrust_bar.gd" id="12_6iyac"]
+[ext_resource type="Script" uid="uid://b5s11hbsrdm7g" path="res://Scripts/distance_tracker.gd" id="12_wsu2k"]
 [ext_resource type="PackedScene" uid="uid://cilvhmx2uiuym" path="res://Scenes/bird.tscn" id="13_fdnlq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d1ilt"]
@@ -178,13 +179,25 @@ label_settings = SubResource("LabelSettings_d1ilt")
 vertical_alignment = 1
 script = ExtResource("11_d1ilt")
 
+[node name="Distance Tracker" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 1457.0
+offset_top = 806.0
+offset_right = 1889.0
+offset_bottom = 940.0
+text = "0 km"
+label_settings = SubResource("LabelSettings_d1ilt")
+horizontal_alignment = 2
+vertical_alignment = 1
+script = ExtResource("12_wsu2k")
+
 [node name="Speedometer" type="Label" parent="Control"]
 layout_mode = 0
-offset_left = 1309.0
-offset_top = 934.0
-offset_right = 1867.0
-offset_bottom = 1028.0
-text = " 0 mph"
+offset_left = 1457.0
+offset_top = 889.0
+offset_right = 1889.0
+offset_bottom = 1023.0
+text = " 0 m/s"
 label_settings = SubResource("LabelSettings_d1ilt")
 horizontal_alignment = 2
 vertical_alignment = 1

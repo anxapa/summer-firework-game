@@ -7,6 +7,7 @@ class_name Player
 var acceleration := Vector2.ZERO
 const GRAVITY := 10
 var scroll_speed : float
+var total_distance := 0.0
 
 @onready var particle_system := $CPUParticles2D
 
@@ -40,6 +41,9 @@ func movement(delta: float) -> void:
 	# Add in the acceleration and propulsion velocity
 	velocity += acceleration;
 	velocity.y -= propulsion_velocity
+	
+	# Add y velocity to the total distance
+	total_distance += velocity.y * delta / 1000
 	
 	# Put velocity y into scroll speed
 	scroll_speed = velocity.y
