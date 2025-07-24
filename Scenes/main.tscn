@@ -1,22 +1,56 @@
-[gd_scene load_steps=13 format=3 uid="uid://dqghyyo32sn2y"]
+[gd_scene load_steps=17 format=3 uid="uid://dqghyyo32sn2y"]
 
 [ext_resource type="Texture2D" uid="uid://cwm7n0ajguj2x" path="res://Sprites/firework_bg.png" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://dsn6mefgy5ijk" path="res://Scripts/game_manager.gd" id="2_8gbba"]
 [ext_resource type="Script" uid="uid://bbmuup40yufp3" path="res://Scripts/player_manager.gd" id="2_kry3j"]
 [ext_resource type="PackedScene" uid="uid://djxsfkro6ge2v" path="res://Scenes/player.tscn" id="3_jjvhh"]
 [ext_resource type="Texture2D" uid="uid://cqf0b67vpg8g6" path="res://Sprites/cloud.png" id="5_6bp64"]
-[ext_resource type="Script" uid="uid://cxc85ab32ix3i" path="res://Scenes/movement_component.gd" id="6_21xkr"]
+[ext_resource type="Script" uid="uid://cxc85ab32ix3i" path="res://Scripts/movement_component.gd" id="6_21xkr"]
 [ext_resource type="PackedScene" uid="uid://du4xkv4rwaw7d" path="res://Scenes/cash.tscn" id="8_ynf5e"]
 [ext_resource type="Texture2D" uid="uid://b6d0epgmhmh6s" path="res://Sprites/cash.png" id="9_ynf5e"]
 [ext_resource type="FontFile" uid="uid://c6dnwjcvpku5y" path="res://Fonts/Analog Whispers.ttf" id="10_hptm8"]
 [ext_resource type="Script" uid="uid://dmrdpj8mbjea5" path="res://Scripts/speedometer.gd" id="11_6iyac"]
-[ext_resource type="Script" uid="uid://s1rr3mqw6mx2" path="res://Scenes/cash_counter.gd" id="11_d1ilt"]
+[ext_resource type="Script" uid="uid://s1rr3mqw6mx2" path="res://Scripts/cash_counter.gd" id="11_d1ilt"]
+[ext_resource type="Script" uid="uid://401mdwvvdsv7" path="res://Scripts/thrust_bar.gd" id="12_6iyac"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d1ilt"]
 line_spacing = 0.0
 font = ExtResource("10_hptm8")
 font_size = 100
 font_color = Color(0.834795, 0.874471, 0.961176, 1)
+outline_size = 25
+outline_color = Color(0.439216, 0.145098, 0.14902, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d1ilt"]
+bg_color = Color(0.803922, 0.32549, 0.32549, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.441138, 0.144368, 0.148585, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6iyac"]
+bg_color = Color(0.956676, 0.609767, 0.308419, 1)
+border_width_left = 9
+border_width_top = 9
+border_width_right = 9
+border_width_bottom = 9
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_6iyac"]
+font = ExtResource("10_hptm8")
+font_size = 80
+font_color = Color(0.835294, 0.87451, 0.960784, 1)
+outline_size = 25
+outline_color = Color(0.439216, 0.145098, 0.14902, 1)
 
 [node name="Main Scene" type="Node2D"]
 
@@ -40,7 +74,7 @@ position = Vector2(960, 540)
 [node name="Player" parent="." instance=ExtResource("3_jjvhh")]
 z_index = 10
 position = Vector2(960, 540)
-propulsion_velocity = 100.0
+propulsion_velocity = 500.0
 speed = 700
 
 [node name="Clouds2" type="Node2D" parent="."]
@@ -151,14 +185,31 @@ horizontal_alignment = 2
 vertical_alignment = 1
 script = ExtResource("11_6iyac")
 
-[node name="Speedometer2" type="Label" parent="Control"]
+[node name="Thrust Bar" type="ProgressBar" parent="Control"]
 layout_mode = 0
-offset_left = 1309.0
-offset_top = 934.0
-offset_right = 1867.0
-offset_bottom = 1028.0
-text = " 0 mph"
-label_settings = SubResource("LabelSettings_d1ilt")
-horizontal_alignment = 2
+offset_left = 28.0
+offset_top = 946.0
+offset_right = 1430.0
+offset_bottom = 996.0
+theme_override_styles/background = SubResource("StyleBoxFlat_d1ilt")
+theme_override_styles/fill = SubResource("StyleBoxFlat_6iyac")
+max_value = 5.0
+value = 2.5
+show_percentage = false
+script = ExtResource("12_6iyac")
+
+[node name="Label" type="Label" parent="Control/Thrust Bar"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.374
+anchor_top = -0.08
+anchor_right = 0.613
+anchor_bottom = 1.12
+offset_left = 5.65198
+offset_top = 20.0
+offset_right = 24.574
+offset_bottom = 54.0
+text = "THRUST"
+label_settings = SubResource("LabelSettings_6iyac")
+horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("11_6iyac")

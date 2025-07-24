@@ -10,10 +10,19 @@ var scroll_speed : float
 
 @onready var particle_system := $CPUParticles2D
 
+# Thrust
+@export_group("Thrust")
+@export var thrust_acceleration := 40
+@export var max_thrust := 5.0
+var current_thrust := max_thrust
+
 func _ready() -> void:
 	particle_system.emitting = true
 
 func _physics_process(delta: float) -> void:
+	if Input.is_key_pressed(KEY_SPACE):
+		thrust(delta)
+	
 	apply_gravity(delta)
 	movement(delta)
 	update_particles()
@@ -44,6 +53,12 @@ func apply_gravity(delta: float) -> void:
 func apply_propulsion_velocity(velocity: float) -> void:
 	propulsion_velocity += velocity
 
+func thrust(delta: float) -> void:
+	print_debug(current_thrust)
+	if current_thrust > 0:
+		current_thrust = move_toward(current_thrust, 0, delta)
+		apply_propulsion_velocity(thrust_acceleration * delta)
+
 # Sets the parameters of the particle system depending on propulsion velocity
 func update_particles() -> void:
 	# Sets the speed of the particle system
@@ -55,4 +70,4 @@ func update_particles() -> void:
 	particle_system.scale_amount_min = particle_system.scale_amount_max / 2
 	
 	# Sets the lifetime of the particle system
-	particle_system.lifetime = exp(-0.01 * propulsion_velocity + 3)
+	particle_system.lifetime = exp(-0.01 * propulsion_velocity + 3) + 0.5

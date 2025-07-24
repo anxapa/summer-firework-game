@@ -25,11 +25,11 @@ scale_amount_min = 2.0
 scale_amount_max = 4.0
 color = Color(0.767888, 0.999273, 1, 0.47451)
 
-[node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(-2.26498e-06, 0.125003)
-scale = Vector2(2, 2)
-texture = ExtResource("1_v0iea")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_f60y1")
+
+[node name="Sprite" type="Sprite2D" parent="CollisionShape2D"]
+position = Vector2(-2.26498e-06, 2.125)
+scale = Vector2(2, 2)
+texture = ExtResource("1_v0iea")
