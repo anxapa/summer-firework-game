@@ -1,15 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://djxsfkro6ge2v"]
+[gd_scene load_steps=4 format=3 uid="uid://djxsfkro6ge2v"]
 
-[ext_resource type="Texture2D" uid="uid://0qgse0ond82g" path="res://Sprites/icon.svg" id="1_v0iea"]
+[ext_resource type="Script" uid="uid://dtrgdva2l6xwf" path="res://Scripts/player.gd" id="1_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://dyqsc2w2x5jdo" path="res://Sprites/firework.png" id="1_v0iea"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f60y1"]
-size = Vector2(128, 128)
+size = Vector2(64, 120)
 
 [node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_cvnsp")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(-2.26498e-06, 0.125003)
+scale = Vector2(2, 2)
 texture = ExtResource("1_v0iea")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_f60y1")

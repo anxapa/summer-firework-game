@@ -4,12 +4,12 @@
 [ext_resource type="Script" uid="uid://dsn6mefgy5ijk" path="res://Scripts/game_manager.gd" id="2_8gbba"]
 [ext_resource type="Script" uid="uid://bbmuup40yufp3" path="res://Scripts/player_manager.gd" id="2_kry3j"]
 [ext_resource type="PackedScene" uid="uid://djxsfkro6ge2v" path="res://Scenes/player.tscn" id="3_jjvhh"]
-[ext_resource type="Script" uid="uid://dtrgdva2l6xwf" path="res://Scripts/player.gd" id="4_21xkr"]
 [ext_resource type="Texture2D" uid="uid://cqf0b67vpg8g6" path="res://Sprites/cloud.png" id="5_6bp64"]
 [ext_resource type="Script" uid="uid://cxc85ab32ix3i" path="res://Scenes/movement_component.gd" id="6_21xkr"]
 [ext_resource type="PackedScene" uid="uid://du4xkv4rwaw7d" path="res://Scenes/cash.tscn" id="8_ynf5e"]
 [ext_resource type="Texture2D" uid="uid://b6d0epgmhmh6s" path="res://Sprites/cash.png" id="9_ynf5e"]
 [ext_resource type="FontFile" uid="uid://c6dnwjcvpku5y" path="res://Fonts/Analog Whispers.ttf" id="10_hptm8"]
+[ext_resource type="Script" uid="uid://dmrdpj8mbjea5" path="res://Scripts/speedometer.gd" id="11_6iyac"]
 [ext_resource type="Script" uid="uid://s1rr3mqw6mx2" path="res://Scenes/cash_counter.gd" id="11_d1ilt"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d1ilt"]
@@ -34,13 +34,13 @@ player = NodePath("../../Player")
 [node name="Audio Manager" type="Node2D" parent="Managers"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+z_index = 100
 position = Vector2(960, 540)
 
 [node name="Player" parent="." instance=ExtResource("3_jjvhh")]
 z_index = 10
 position = Vector2(960, 540)
-script = ExtResource("4_21xkr")
-speed = 1000
+speed = 700
 
 [node name="Clouds2" type="Node2D" parent="."]
 modulate = Color(0.897915, 0.920017, 0.986546, 1)
@@ -116,23 +116,48 @@ position = Vector2(29, -359)
 position = Vector2(117, -440.5)
 
 [node name="Control" type="Control" parent="."]
+z_index = 100
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 
 [node name="Cash" type="Sprite2D" parent="Control"]
-position = Vector2(1585, 86)
+position = Vector2(1576, 80)
 scale = Vector2(2, 2)
 texture = ExtResource("9_ynf5e")
 
 [node name="Cash Counter" type="Label" parent="Control"]
 layout_mode = 0
-offset_left = 1714.0
-offset_top = 53.0
-offset_right = 2002.0
-offset_bottom = 147.0
+offset_left = 1705.0
+offset_top = 47.0
+offset_right = 1993.0
+offset_bottom = 141.0
 text = "000"
 label_settings = SubResource("LabelSettings_d1ilt")
 vertical_alignment = 1
 script = ExtResource("11_d1ilt")
+
+[node name="Speedometer" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 1309.0
+offset_top = 934.0
+offset_right = 1867.0
+offset_bottom = 1028.0
+text = " 0 mph"
+label_settings = SubResource("LabelSettings_d1ilt")
+horizontal_alignment = 2
+vertical_alignment = 1
+script = ExtResource("11_6iyac")
+
+[node name="Speedometer2" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 1309.0
+offset_top = 934.0
+offset_right = 1867.0
+offset_bottom = 1028.0
+text = " 0 mph"
+label_settings = SubResource("LabelSettings_d1ilt")
+horizontal_alignment = 2
+vertical_alignment = 1
+script = ExtResource("11_6iyac")
