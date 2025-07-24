@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dqghyyo32sn2y"]
+[gd_scene load_steps=21 format=3 uid="uid://dqghyyo32sn2y"]
 
 [ext_resource type="Texture2D" uid="uid://cwm7n0ajguj2x" path="res://Sprites/firework_bg.png" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://dsn6mefgy5ijk" path="res://Scripts/game_manager.gd" id="2_8gbba"]
@@ -13,8 +13,9 @@
 [ext_resource type="Script" uid="uid://dmrdpj8mbjea5" path="res://Scripts/speedometer.gd" id="11_6iyac"]
 [ext_resource type="Script" uid="uid://s1rr3mqw6mx2" path="res://Scripts/cash_counter.gd" id="11_d1ilt"]
 [ext_resource type="Script" uid="uid://401mdwvvdsv7" path="res://Scripts/thrust_bar.gd" id="12_6iyac"]
-[ext_resource type="Script" path="res://Scripts/distance_tracker.gd" id="12_wsu2k"]
+[ext_resource type="Script" uid="uid://b5s11hbsrdm7g" path="res://Scripts/distance_tracker.gd" id="12_wsu2k"]
 [ext_resource type="PackedScene" uid="uid://cilvhmx2uiuym" path="res://Scenes/bird.tscn" id="13_fdnlq"]
+[ext_resource type="Texture2D" uid="uid://cfn0ej3biauv8" path="res://Sprites/pause_button.png" id="15_k12tt"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d1ilt"]
 line_spacing = 0.0
@@ -231,6 +232,22 @@ text = "THRUST"
 label_settings = SubResource("LabelSettings_6iyac")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.025
+anchor_top = 0.044
+anchor_right = 0.079
+anchor_bottom = 0.141
+offset_top = 0.479996
+offset_right = 0.319992
+offset_bottom = -0.279999
+texture_normal = ExtResource("15_k12tt")
+texture_pressed = ExtResource("15_k12tt")
+texture_hover = ExtResource("15_k12tt")
+texture_disabled = ExtResource("15_k12tt")
+texture_focused = ExtResource("15_k12tt")
 
 [node name="Bird" parent="." instance=ExtResource("13_fdnlq")]
 position = Vector2(1424, -108)
