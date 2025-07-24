@@ -1,6 +1,6 @@
 # TODO: Remove critical sections prior to game launch
 
-class_name Cash
+class_name Cash 
 extends Area2D
 @export var cash_value := 1
 var starting_position
@@ -15,7 +15,7 @@ func _ready() -> void:
 		global_position = starting_position
 
 func _on_body_entered(body: Node2D) -> void:
-	if body is Player:
+	if body is Player and visible:
 		GameManager.cash_collected += cash_value
 		queue_free()
 
