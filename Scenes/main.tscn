@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://dqghyyo32sn2y"]
+[gd_scene load_steps=18 format=3 uid="uid://dqghyyo32sn2y"]
 
 [ext_resource type="Texture2D" uid="uid://cwm7n0ajguj2x" path="res://Sprites/firework_bg.png" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://dsn6mefgy5ijk" path="res://Scripts/game_manager.gd" id="2_8gbba"]
 [ext_resource type="Script" uid="uid://bbmuup40yufp3" path="res://Scripts/player_manager.gd" id="2_kry3j"]
+[ext_resource type="Script" uid="uid://b87cshw4c77pp" path="res://Scripts/spawn_manager.gd" id="3_fdnlq"]
 [ext_resource type="PackedScene" uid="uid://djxsfkro6ge2v" path="res://Scenes/player.tscn" id="3_jjvhh"]
 [ext_resource type="Texture2D" uid="uid://cqf0b67vpg8g6" path="res://Sprites/cloud.png" id="5_6bp64"]
 [ext_resource type="Script" uid="uid://cxc85ab32ix3i" path="res://Scripts/movement_component.gd" id="6_21xkr"]
@@ -63,7 +64,10 @@ script = ExtResource("2_8gbba")
 script = ExtResource("2_kry3j")
 player = NodePath("../../Player")
 
-[node name="Spawn Manager" type="Node2D" parent="Managers"]
+[node name="Spawn Manager" type="Node2D" parent="Managers" node_paths=PackedStringArray("cash_parent", "cloud_parent")]
+script = ExtResource("3_fdnlq")
+cash_parent = NodePath("../../Cashes")
+cloud_parent = NodePath("../../Clouds")
 
 [node name="Audio Manager" type="Node2D" parent="Managers"]
 

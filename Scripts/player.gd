@@ -54,7 +54,7 @@ func apply_propulsion_velocity(velocity: float) -> void:
 	propulsion_velocity += velocity
 
 func thrust(delta: float) -> void:
-	print_debug(current_thrust)
+	# print_debug(current_thrust)
 	if current_thrust > 0:
 		current_thrust = move_toward(current_thrust, 0, delta)
 		apply_propulsion_velocity(thrust_acceleration * delta)
