@@ -3,6 +3,9 @@ class_name MovementComponent
 
 @export var scroll_magnitude := 1.0
 
+## For linear movement.
+@export var movement_velocity := Vector2.ZERO
+
 # Initialize player manager to copy scroll speed from
 @onready var player_manager := GameManager.player_manager
 var parent : Node2D
@@ -20,7 +23,6 @@ func scroll_movement(delta: float) -> void:
 	var scroll_speed = player_manager.get_scroll_speed() * scroll_magnitude
 	parent.global_position.y -= scroll_speed * delta
 
+# Supports linear movement
 func movement(delta: float) -> void:
-	# Must be overridden through inheritance to add movement 
-	return
-	
+	parent.global_position += movement_velocity * delta

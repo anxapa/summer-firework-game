@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dqghyyo32sn2y"]
+[gd_scene load_steps=19 format=3 uid="uid://dqghyyo32sn2y"]
 
 [ext_resource type="Texture2D" uid="uid://cwm7n0ajguj2x" path="res://Sprites/firework_bg.png" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://dsn6mefgy5ijk" path="res://Scripts/game_manager.gd" id="2_8gbba"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://dmrdpj8mbjea5" path="res://Scripts/speedometer.gd" id="11_6iyac"]
 [ext_resource type="Script" uid="uid://s1rr3mqw6mx2" path="res://Scripts/cash_counter.gd" id="11_d1ilt"]
 [ext_resource type="Script" uid="uid://401mdwvvdsv7" path="res://Scripts/thrust_bar.gd" id="12_6iyac"]
+[ext_resource type="PackedScene" uid="uid://cilvhmx2uiuym" path="res://Scenes/bird.tscn" id="13_fdnlq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d1ilt"]
 line_spacing = 0.0
@@ -122,7 +123,7 @@ z_index = 1
 texture = ExtResource("5_6bp64")
 
 [node name="Background Sprite" type="Sprite2D" parent="."]
-position = Vector2(960, 362)
+position = Vector2(960, -360)
 scale = Vector2(4, 4)
 texture = ExtResource("1_jjgbg")
 
@@ -217,3 +218,6 @@ text = "THRUST"
 label_settings = SubResource("LabelSettings_6iyac")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Bird" parent="." instance=ExtResource("13_fdnlq")]
+position = Vector2(1424, -108)
