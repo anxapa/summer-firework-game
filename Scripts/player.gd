@@ -4,25 +4,34 @@ class_name Player
 # Physics values
 @export var propulsion_velocity := 300.0
 @export var speed := 400
-var acceleration := Vector2.ZERO
-const GRAVITY := 10
+var outside_velocity := Vector2.ZERO
 var scroll_speed : float
 var total_distance := 0.0
+const GRAVITY := 10
 
 @onready var particle_system := $CPUParticles2D
 
 # Thrust
 @export_group("Thrust")
-@export var thrust_acceleration := 40
-@export var max_thrust := 5.0
-var current_thrust := max_thrust
+@export var thrust_velocity := 500
+@export var max_thrust := 2.5
+var current_thrust : float
+var is_thrusting := false
 
 func _ready() -> void:
+	# Makes sure the particle system is playing
 	particle_system.emitting = true
+	
+	# Sets thrust to full
+	current_thrust = max_thrust
 
 func _physics_process(delta: float) -> void:
-	if Input.is_key_pressed(KEY_SPACE):
+	# Thrust handling
+	if Input.is_key_pressed(KEY_SPACE) and current_thrust > 0:
+		is_thrusting = true
 		thrust(delta)
+	else:
+		is_thrusting = false
 	
 	apply_gravity(delta)
 	movement(delta)
@@ -38,8 +47,9 @@ func movement(delta: float) -> void:
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, speed)
 	
-	# Add in the acceleration and propulsion velocity
-	velocity += acceleration;
+	# Add in outside velocity and propulsion velocity
+	velocity += outside_velocity
+	outside_velocity = Vector2.ZERO
 	velocity.y -= propulsion_velocity
 	
 	# Add y velocity to the total distance
@@ -57,11 +67,12 @@ func apply_gravity(delta: float) -> void:
 func apply_propulsion_velocity(velocity: float) -> void:
 	propulsion_velocity += velocity
 
+func apply_velocity(velocity: Vector2) -> void:
+	outside_velocity += velocity
+
 func thrust(delta: float) -> void:
-	# print_debug(current_thrust)
-	if current_thrust > 0:
-		current_thrust = move_toward(current_thrust, 0, delta)
-		apply_propulsion_velocity(thrust_acceleration * delta)
+	current_thrust = move_toward(current_thrust, 0, delta)
+	apply_velocity(Vector2(0, -thrust_velocity))
 
 # Sets the parameters of the particle system depending on propulsion velocity
 func update_particles() -> void:
