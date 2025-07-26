@@ -81,7 +81,6 @@ position = Vector2(960, 540)
 [node name="Player" parent="." instance=ExtResource("3_jjvhh")]
 z_index = 10
 position = Vector2(960, 540)
-propulsion_velocity = 500.0
 speed = 700
 
 [node name="Clouds2" type="Node2D" parent="."]
@@ -157,19 +156,24 @@ position = Vector2(29, -359)
 [node name="Cash5" parent="Cashes" instance=ExtResource("8_ynf5e")]
 position = Vector2(117, -440.5)
 
-[node name="Control" type="Control" parent="."]
+[node name="UI" type="Control" parent="."]
 z_index = 100
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 
-[node name="Cash" type="Sprite2D" parent="Control"]
+[node name="Ingame GUI" type="Control" parent="UI"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Cash" type="Sprite2D" parent="UI/Ingame GUI"]
 position = Vector2(1576, 80)
 scale = Vector2(2, 2)
 texture = ExtResource("9_ynf5e")
 
-[node name="Cash Counter" type="Label" parent="Control"]
+[node name="Cash Counter" type="Label" parent="UI/Ingame GUI"]
 layout_mode = 0
 offset_left = 1705.0
 offset_top = 47.0
@@ -180,7 +184,7 @@ label_settings = SubResource("LabelSettings_d1ilt")
 vertical_alignment = 1
 script = ExtResource("11_d1ilt")
 
-[node name="Distance Tracker" type="Label" parent="Control"]
+[node name="Distance Tracker" type="Label" parent="UI/Ingame GUI"]
 layout_mode = 0
 offset_left = 1457.0
 offset_top = 806.0
@@ -192,7 +196,7 @@ horizontal_alignment = 2
 vertical_alignment = 1
 script = ExtResource("12_wsu2k")
 
-[node name="Speedometer" type="Label" parent="Control"]
+[node name="Speedometer" type="Label" parent="UI/Ingame GUI"]
 layout_mode = 0
 offset_left = 1457.0
 offset_top = 889.0
@@ -204,7 +208,7 @@ horizontal_alignment = 2
 vertical_alignment = 1
 script = ExtResource("11_6iyac")
 
-[node name="Thrust Bar" type="ProgressBar" parent="Control"]
+[node name="Thrust Bar" type="ProgressBar" parent="UI/Ingame GUI"]
 layout_mode = 0
 offset_left = 28.0
 offset_top = 946.0
@@ -217,7 +221,7 @@ value = 2.5
 show_percentage = false
 script = ExtResource("12_6iyac")
 
-[node name="Label" type="Label" parent="Control/Thrust Bar"]
+[node name="Label" type="Label" parent="UI/Ingame GUI/Thrust Bar"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.374
@@ -233,16 +237,17 @@ label_settings = SubResource("LabelSettings_6iyac")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureButton" type="TextureButton" parent="Control"]
+[node name="TextureButton" type="TextureButton" parent="UI/Ingame GUI"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.025
 anchor_top = 0.044
 anchor_right = 0.079
 anchor_bottom = 0.141
-offset_top = 0.479996
-offset_right = 0.319992
-offset_bottom = -0.279999
+offset_left = 31.0
+offset_top = 30.24
+offset_right = 132.84
+offset_bottom = 130.36
 texture_normal = ExtResource("15_k12tt")
 texture_pressed = ExtResource("15_k12tt")
 texture_hover = ExtResource("15_k12tt")

@@ -1,6 +1,11 @@
 extends CharacterBody2D
 class_name Player
 
+# Child Nodes
+@onready var smoke_particles := $"Smoke Particles"
+@onready var death_particles := $"Death Particles"
+@onready var sprite := $Sprite
+
 # Physics values
 @export var propulsion_velocity := 300.0
 @export var speed := 400
@@ -9,23 +14,29 @@ var scroll_speed : float
 var total_distance := 0.0
 const GRAVITY := 10
 
-@onready var particle_system := $CPUParticles2D
-
 # Thrust
 @export_group("Thrust")
 @export var thrust_velocity := 500
 @export var max_thrust := 2.5
 var current_thrust : float
+
+# States
 var is_thrusting := false
+var is_dead := false
 
 func _ready() -> void:
-	# Makes sure the particle system is playing
-	particle_system.emitting = true
+	# Makes sure the correct particle system is playing
+	smoke_particles.emitting = true
+	death_particles.emitting = false
 	
 	# Sets thrust to full
 	current_thrust = max_thrust
 
 func _physics_process(delta: float) -> void:
+	# No changes if dead
+	if is_dead:
+		return
+	
 	# Thrust handling
 	if Input.is_key_pressed(KEY_SPACE) and current_thrust > 0:
 		is_thrusting = true
@@ -35,6 +46,7 @@ func _physics_process(delta: float) -> void:
 	
 	apply_gravity(delta)
 	movement(delta)
+	death_check()
 	update_particles()
 	
 func movement(delta: float) -> void:
@@ -74,15 +86,31 @@ func thrust(delta: float) -> void:
 	current_thrust = move_toward(current_thrust, 0, delta)
 	apply_velocity(Vector2(0, -thrust_velocity))
 
-# Sets the parameters of the particle system depending on propulsion velocity
+func death_check() -> void:
+	if propulsion_velocity < 100:
+		death()
+
+## Player dies
+func death() -> void:
+	# Temporary behavior
+	propulsion_velocity = 0
+	smoke_particles.emitting = false
+	death_particles.emitting = true
+	sprite.visible = false
+	is_dead = true
+	
+	await get_tree().create_timer(2.0).timeout
+	get_tree().reload_current_scene()
+
+## Sets the parameters of the particle system depending on propulsion velocity
 func update_particles() -> void:
 	# Sets the speed of the particle system
-	particle_system.initial_velocity_min = propulsion_velocity * 2
-	particle_system.initial_velocity_max = propulsion_velocity * 2
+	smoke_particles.initial_velocity_min = propulsion_velocity * 2
+	smoke_particles.initial_velocity_max = propulsion_velocity * 2
 	
 	# Sets the scale of the particle system
-	particle_system.scale_amount_max = (100 / -(propulsion_velocity + 50)) + 4
-	particle_system.scale_amount_min = particle_system.scale_amount_max / 2
+	smoke_particles.scale_amount_max = (100 / -(propulsion_velocity + 50)) + 4
+	smoke_particles.scale_amount_min = smoke_particles.scale_amount_max / 2
 	
 	# Sets the lifetime of the particle system
-	particle_system.lifetime = exp(-0.01 * propulsion_velocity + 3) + 0.5
+	smoke_particles.lifetime = exp(-0.01 * propulsion_velocity + 3) + 1
