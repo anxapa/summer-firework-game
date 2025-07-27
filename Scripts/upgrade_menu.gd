@@ -1,13 +1,12 @@
-extends Panel
+extends Control
 
-func _ready() -> void:
-	close_upgrade_panel()
+@onready var animation_player := $AnimationPlayer
 
 func open_upgrade_panel() -> void:
-	visible = true
+	animation_player.play("enter_menu")
 
 func close_upgrade_panel() -> void:
-	visible = false
+	animation_player.play("exit_menu")
 
 # Functionality of the play button in the upgrade menu
 func _on_play_button_pressed() -> void:

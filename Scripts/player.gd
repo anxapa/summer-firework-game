@@ -97,7 +97,6 @@ func death_check() -> void:
 ## Player dies
 func death() -> void:
 	# Temporary behavior
-	propulsion_velocity = 0
 	scroll_speed = 0
 	smoke_particles.emitting = false
 	death_particles.emitting = true

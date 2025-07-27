@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://dqghyyo32sn2y"]
+[gd_scene load_steps=45 format=3 uid="uid://dqghyyo32sn2y"]
 
 [ext_resource type="Texture2D" uid="uid://cwm7n0ajguj2x" path="res://Sprites/firework_bg.png" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://dsn6mefgy5ijk" path="res://Scripts/game_manager.gd" id="2_8gbba"]
@@ -63,6 +63,143 @@ font_size = 80
 font_color = Color(0.835294, 0.87451, 0.960784, 1)
 outline_size = 25
 outline_color = Color(0.439216, 0.145098, 0.14902, 1)
+
+[sub_resource type="Animation" id="Animation_3pmx8"]
+resource_name = "enter_menu"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-2060, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_u50mg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Background Panel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_cbgmd"]
+resource_name = "exit_menu"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(2060, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Background Panel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cbgmd"]
+_data = {
+&"RESET": SubResource("Animation_u50mg"),
+&"enter_menu": SubResource("Animation_3pmx8"),
+&"exit_menu": SubResource("Animation_cbgmd")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3pmx8"]
+bg_color = Color(0, 0, 0, 0.588235)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pdsj5"]
+bg_color = Color(0.956863, 0.607843, 0.309804, 1)
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color(0.439216, 0.145098, 0.14902, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hibaj"]
+font = ExtResource("10_hptm8")
+font_size = 128
+font_color = Color(0.835294, 0.87451, 0.960784, 1)
+outline_size = 32
+outline_color = Color(0.439216, 0.145098, 0.14902, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ee4r6"]
+bg_color = Color(0.855171, 0.492253, 0.24868, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k12tt"]
 
 [sub_resource type="Animation" id="Animation_hibaj"]
 length = 0.001
@@ -142,28 +279,8 @@ _data = {
 &"unpause": SubResource("Animation_pdsj5")
 }
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pdsj5"]
-bg_color = Color(0.956863, 0.607843, 0.309804, 1)
-border_width_left = 16
-border_width_top = 16
-border_width_right = 16
-border_width_bottom = 16
-border_color = Color(0.439216, 0.145098, 0.14902, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_hibaj"]
-font = ExtResource("10_hptm8")
-font_size = 128
-font_color = Color(0.835294, 0.87451, 0.960784, 1)
-outline_size = 32
-outline_color = Color(0.439216, 0.145098, 0.14902, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ee4r6"]
-bg_color = Color(0.855171, 0.492253, 0.24868, 1)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k12tt"]
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hibaj"]
-bg_color = Color(0, 0, 0, 0.611765)
+bg_color = Color(0, 0, 0, 0.588235)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k12tt"]
 bg_color = Color(0.956863, 0.607843, 0.309804, 1)
@@ -385,28 +502,41 @@ texture_hover = ExtResource("15_k12tt")
 texture_disabled = ExtResource("15_k12tt")
 texture_focused = ExtResource("15_k12tt")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="UI"]
+[node name="Upgrade Menu" type="Control" parent="UI"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("16_gt3je")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Upgrade Menu"]
+root_node = NodePath("../Upgrade Panel")
 libraries = {
-&"": SubResource("AnimationLibrary_pdsj5")
+&"": SubResource("AnimationLibrary_cbgmd")
 }
 
-[node name="Upgrade Menu" type="Panel" parent="UI"]
+[node name="Background Panel" type="Panel" parent="UI/Upgrade Menu"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3pmx8")
+
+[node name="Upgrade Panel" type="Panel" parent="UI/Upgrade Menu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -960.0
-offset_top = -540.0
-offset_right = 960.0
-offset_bottom = 540.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 1900.0
+offset_bottom = 1060.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_pdsj5")
-script = ExtResource("16_gt3je")
 
-[node name="Pause Button" type="TextureButton" parent="UI/Upgrade Menu"]
+[node name="Pause Button" type="TextureButton" parent="UI/Upgrade Menu/Upgrade Panel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.033
@@ -415,8 +545,8 @@ anchor_right = 0.087
 anchor_bottom = 0.156
 offset_left = 0.639999
 offset_top = 0.279995
-offset_right = 0.959991
-offset_bottom = -0.480011
+offset_right = 102.48
+offset_bottom = 100.4
 focus_mode = 0
 texture_normal = ExtResource("15_k12tt")
 texture_pressed = ExtResource("15_k12tt")
@@ -424,7 +554,7 @@ texture_hover = ExtResource("15_k12tt")
 texture_disabled = ExtResource("15_k12tt")
 texture_focused = ExtResource("15_k12tt")
 
-[node name="Play Button" type="TextureButton" parent="UI/Upgrade Menu"]
+[node name="Play Button" type="TextureButton" parent="UI/Upgrade Menu/Upgrade Panel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.033
@@ -433,8 +563,8 @@ anchor_right = 0.087
 anchor_bottom = 0.156
 offset_left = 1668.64
 offset_top = 837.28
-offset_right = 1668.96
-offset_bottom = 836.52
+offset_right = 1770.48
+offset_bottom = 937.4
 focus_mode = 0
 texture_normal = ExtResource("17_3pmx8")
 texture_pressed = ExtResource("17_3pmx8")
@@ -442,22 +572,22 @@ texture_hover = ExtResource("17_3pmx8")
 texture_disabled = ExtResource("17_3pmx8")
 texture_focused = ExtResource("17_3pmx8")
 
-[node name="Header" type="Label" parent="UI/Upgrade Menu"]
+[node name="Header" type="Label" parent="UI/Upgrade Menu/Upgrade Panel"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -242.5
+offset_left = -310.0
 offset_top = 80.0
-offset_right = 242.5
-offset_bottom = 175.0
+offset_right = 310.0
+offset_bottom = 199.0
 grow_horizontal = 2
 text = "UPGRADES"
 label_settings = SubResource("LabelSettings_hibaj")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="UI/Upgrade Menu"]
+[node name="PanelContainer" type="PanelContainer" parent="UI/Upgrade Menu/Upgrade Panel"]
 layout_mode = 0
 offset_left = 70.0
 offset_top = 195.0
@@ -465,10 +595,10 @@ offset_right = 1397.0
 offset_bottom = 1033.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ee4r6")
 
-[node name="HFlowContainer" type="HFlowContainer" parent="UI/Upgrade Menu/PanelContainer"]
+[node name="HFlowContainer" type="HFlowContainer" parent="UI/Upgrade Menu/Upgrade Panel/PanelContainer"]
 layout_mode = 2
 
-[node name="PanelContainer2" type="PanelContainer" parent="UI/Upgrade Menu"]
+[node name="PanelContainer2" type="PanelContainer" parent="UI/Upgrade Menu/Upgrade Panel"]
 layout_mode = 0
 offset_left = 1421.0
 offset_top = 195.0
@@ -476,7 +606,7 @@ offset_right = 1867.0
 offset_bottom = 844.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ee4r6")
 
-[node name="Pause Menu" type="Panel" parent="UI" node_paths=PackedStringArray("animation_player")]
+[node name="Pause Menu" type="Panel" parent="UI"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -486,7 +616,12 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_k12tt")
 script = ExtResource("16_hibaj")
-animation_player = NodePath("../AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Pause Menu"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_pdsj5")
+}
 
 [node name="Background Button" type="Button" parent="UI/Pause Menu"]
 layout_mode = 1
@@ -614,9 +749,9 @@ position = Vector2(1424, -108)
 position = Vector2(1655, -406)
 
 [connection signal="pressed" from="UI/Ingame GUI/Pause Button" to="UI/Pause Menu" method="_on_pause_button_pressed"]
-[connection signal="pressed" from="UI/Upgrade Menu/Pause Button" to="UI/Pause Menu" method="_on_pause_button_pressed"]
-[connection signal="pressed" from="UI/Upgrade Menu/Play Button" to="UI/Upgrade Menu" method="_on_play_button_pressed"]
+[connection signal="pressed" from="UI/Upgrade Menu/Upgrade Panel/Pause Button" to="UI/Pause Menu" method="_on_pause_button_pressed"]
+[connection signal="pressed" from="UI/Upgrade Menu/Upgrade Panel/Play Button" to="UI/Upgrade Menu" method="_on_play_button_pressed"]
 [connection signal="pressed" from="UI/Pause Menu/Background Button" to="UI/Pause Menu" method="_on_background_button_pressed"]
-[connection signal="pressed" from="UI/Pause Menu/Pause Panel/Upgrades Button" to="UI/Upgrade Menu" method="_on_upgrades_button_pressed"]
 [connection signal="pressed" from="UI/Pause Menu/Pause Panel/Upgrades Button" to="UI/Pause Menu" method="_on_upgrades_button_pressed"]
+[connection signal="pressed" from="UI/Pause Menu/Pause Panel/Upgrades Button" to="UI/Upgrade Menu" method="_on_upgrades_button_pressed"]
 [connection signal="pressed" from="UI/Pause Menu/Pause Panel/Back Button" to="UI/Pause Menu" method="_on_back_button_pressed"]

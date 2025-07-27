@@ -1,6 +1,6 @@
 extends Panel
 
-@export var animation_player : AnimationPlayer
+@onready var animation_player := $AnimationPlayer
 
 # Buttons (mainly for disabling / enabling them)
 @onready var home_button := $"Pause Panel/Home Button"
