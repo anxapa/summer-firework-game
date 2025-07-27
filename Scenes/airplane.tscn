@@ -8,6 +8,7 @@
 size = Vector2(383, 90)
 
 [node name="Airplane" type="Area2D"]
+z_index = 5
 script = ExtResource("1_cmvah")
 hit_velocity = 200.0
 
