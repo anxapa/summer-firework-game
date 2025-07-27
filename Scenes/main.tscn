@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dqghyyo32sn2y"]
+[gd_scene load_steps=40 format=3 uid="uid://dqghyyo32sn2y"]
 
 [ext_resource type="Texture2D" uid="uid://cwm7n0ajguj2x" path="res://Sprites/firework_bg.png" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://dsn6mefgy5ijk" path="res://Scripts/game_manager.gd" id="2_8gbba"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://djxsfkro6ge2v" path="res://Scenes/player.tscn" id="3_jjvhh"]
 [ext_resource type="Texture2D" uid="uid://cqf0b67vpg8g6" path="res://Sprites/cloud.png" id="5_6bp64"]
 [ext_resource type="Script" uid="uid://cxc85ab32ix3i" path="res://Scripts/movement_component.gd" id="6_21xkr"]
+[ext_resource type="Script" uid="uid://cw6y255r14kjg" path="res://Scripts/background.gd" id="8_3pmx8"]
 [ext_resource type="PackedScene" uid="uid://du4xkv4rwaw7d" path="res://Scenes/cash.tscn" id="8_ynf5e"]
 [ext_resource type="Texture2D" uid="uid://b6d0epgmhmh6s" path="res://Sprites/cash.png" id="9_ynf5e"]
 [ext_resource type="FontFile" uid="uid://c6dnwjcvpku5y" path="res://Fonts/Analog Whispers.ttf" id="10_hptm8"]
@@ -16,8 +17,10 @@
 [ext_resource type="Script" uid="uid://b5s11hbsrdm7g" path="res://Scripts/distance_tracker.gd" id="12_wsu2k"]
 [ext_resource type="PackedScene" uid="uid://cilvhmx2uiuym" path="res://Scenes/bird.tscn" id="13_fdnlq"]
 [ext_resource type="Texture2D" uid="uid://cfn0ej3biauv8" path="res://Sprites/Buttons/pause_button.png" id="15_k12tt"]
+[ext_resource type="Script" uid="uid://ik1aq0btjwrp" path="res://Scripts/upgrade_menu.gd" id="16_gt3je"]
 [ext_resource type="Texture2D" uid="uid://qqxaclcotr0u" path="res://Sprites/Buttons/home_button.png" id="16_h1bgf"]
-[ext_resource type="Script" uid="uid://bi11kayyh6bl0" path="res://Scenes/pause_menu.gd" id="16_hibaj"]
+[ext_resource type="Script" uid="uid://bi11kayyh6bl0" path="res://Scripts/pause_menu.gd" id="16_hibaj"]
+[ext_resource type="Texture2D" uid="uid://b5tktyoifbo75" path="res://Sprites/Buttons/play_button.png" id="17_3pmx8"]
 [ext_resource type="Texture2D" uid="uid://csyp4gd0qnk27" path="res://Sprites/Buttons/upgrades_button.png" id="17_fevyy"]
 [ext_resource type="Texture2D" uid="uid://mynth24g78o8" path="res://Sprites/Buttons/back_button.png" id="18_hibaj"]
 [ext_resource type="PackedScene" uid="uid://dcgajalxovs5u" path="res://Scenes/airplane.tscn" id="21_pdsj5"]
@@ -248,12 +251,13 @@ texture = ExtResource("5_6bp64")
 z_index = 1
 texture = ExtResource("5_6bp64")
 
-[node name="Background Sprite" type="Sprite2D" parent="."]
+[node name="Background" type="Sprite2D" parent="."]
 position = Vector2(960, -360)
 scale = Vector2(4, 4)
 texture = ExtResource("1_jjgbg")
+script = ExtResource("8_3pmx8")
 
-[node name="MovementComponent" type="Node2D" parent="Background Sprite"]
+[node name="MovementComponent" type="Node2D" parent="Background"]
 script = ExtResource("6_21xkr")
 scroll_magnitude = 0.1
 metadata/_custom_type_script = "uid://cxc85ab32ix3i"
@@ -387,7 +391,6 @@ libraries = {
 }
 
 [node name="Upgrade Menu" type="Panel" parent="UI"]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -401,6 +404,7 @@ offset_bottom = 540.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_pdsj5")
+script = ExtResource("16_gt3je")
 
 [node name="Pause Button" type="TextureButton" parent="UI/Upgrade Menu"]
 layout_mode = 1
@@ -419,6 +423,24 @@ texture_pressed = ExtResource("15_k12tt")
 texture_hover = ExtResource("15_k12tt")
 texture_disabled = ExtResource("15_k12tt")
 texture_focused = ExtResource("15_k12tt")
+
+[node name="Play Button" type="TextureButton" parent="UI/Upgrade Menu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.033
+anchor_top = 0.059
+anchor_right = 0.087
+anchor_bottom = 0.156
+offset_left = 1668.64
+offset_top = 837.28
+offset_right = 1668.96
+offset_bottom = 836.52
+focus_mode = 0
+texture_normal = ExtResource("17_3pmx8")
+texture_pressed = ExtResource("17_3pmx8")
+texture_hover = ExtResource("17_3pmx8")
+texture_disabled = ExtResource("17_3pmx8")
+texture_focused = ExtResource("17_3pmx8")
 
 [node name="Header" type="Label" parent="UI/Upgrade Menu"]
 layout_mode = 1
@@ -593,5 +615,8 @@ position = Vector2(1655, -406)
 
 [connection signal="pressed" from="UI/Ingame GUI/Pause Button" to="UI/Pause Menu" method="_on_pause_button_pressed"]
 [connection signal="pressed" from="UI/Upgrade Menu/Pause Button" to="UI/Pause Menu" method="_on_pause_button_pressed"]
+[connection signal="pressed" from="UI/Upgrade Menu/Play Button" to="UI/Upgrade Menu" method="_on_play_button_pressed"]
 [connection signal="pressed" from="UI/Pause Menu/Background Button" to="UI/Pause Menu" method="_on_background_button_pressed"]
+[connection signal="pressed" from="UI/Pause Menu/Pause Panel/Upgrades Button" to="UI/Upgrade Menu" method="_on_upgrades_button_pressed"]
+[connection signal="pressed" from="UI/Pause Menu/Pause Panel/Upgrades Button" to="UI/Pause Menu" method="_on_upgrades_button_pressed"]
 [connection signal="pressed" from="UI/Pause Menu/Pause Panel/Back Button" to="UI/Pause Menu" method="_on_back_button_pressed"]

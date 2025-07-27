@@ -7,8 +7,10 @@ class_name Player
 @onready var sprite := $Sprite
 
 # Physics values
-@export var propulsion_velocity := 300.0
+@export var initial_velocity := 300.0
 @export var speed := 400
+var starting_position : Vector2
+var propulsion_velocity : float
 var outside_velocity := Vector2.ZERO
 var scroll_speed : float
 var total_distance := 0.0
@@ -25,12 +27,14 @@ var is_thrusting := false
 var is_dead := false
 
 func _ready() -> void:
-	# Makes sure the correct particle system is playing
-	smoke_particles.emitting = true
-	death_particles.emitting = false
+	# Records starting position set in the editor
+	starting_position = global_position
 	
-	# Sets thrust to full
-	current_thrust = max_thrust
+	# Initializes the player
+	_on_game_start()
+	
+	# Connecting signals
+	SignalBus.connect("game_start", _on_game_start)
 
 func _physics_process(delta: float) -> void:
 	# No changes if dead
@@ -99,9 +103,10 @@ func death() -> void:
 	death_particles.emitting = true
 	sprite.visible = false
 	is_dead = true
+	SignalBus.emit_signal("player_death")
 	
-	await get_tree().create_timer(2.0).timeout
-	get_tree().reload_current_scene()
+	await get_tree().create_timer(3.0).timeout
+	_on_game_start()
 
 ## Sets the parameters of the particle system depending on propulsion velocity
 func update_particles() -> void:
@@ -115,3 +120,22 @@ func update_particles() -> void:
 	
 	# Sets the lifetime of the particle system
 	smoke_particles.lifetime = exp(-0.01 * propulsion_velocity + 3) + 1
+
+## Resets values, and adds the upgrades on game start
+func _on_game_start() -> void:
+	# Makes sure the correct particle system is playing
+	smoke_particles.emitting = true
+	death_particles.emitting = false
+	
+	# Assign values at the start of the game
+	global_position = starting_position
+	current_thrust = max_thrust
+	propulsion_velocity = initial_velocity
+	sprite.visible = true
+	is_dead = false
+	
+	# Resets total distance to not accumulate over games
+	total_distance = 0
+	
+	# Apply upgrades
+	

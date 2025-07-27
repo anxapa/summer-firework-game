@@ -12,7 +12,6 @@ func _ready() -> void:
 	# CRITICAL: Temporarily disabling the buttons not functionable yet
 	disable_button(home_button)
 	disable_button(settings_button)
-	disable_button(upgrades_button)
 
 func _process(_delta: float) -> void:
 	# Checks for whenever the player is using an escape key
@@ -31,9 +30,20 @@ func pause() -> void:
 	get_tree().paused = true
 
 func unpause() -> void:
-	GameManager.current_game_state = GameManager.GameStates.GAME
 	animation_player.play("unpause")
-	get_tree().paused = false
+	
+	# Different functionality depending on Game state
+	match GameManager.current_game_state:
+		GameManager.GameStates.PAUSED:
+			GameManager.current_game_state = GameManager.GameStates.GAME
+			get_tree().paused = false
+		GameManager.GameStates.SHOP:
+			get_tree().paused = true
+
+func go_to_upgrades() -> void:
+	GameManager.current_game_state = GameManager.GameStates.SHOP
+	animation_player.play("unpause")
+	get_tree().paused = true
 
 func enable_button(button: Button) -> void:
 	button.disabled = false
@@ -54,3 +64,6 @@ func _on_background_button_pressed() -> void:
 # Functionality when pause button is pressed (duh)
 func _on_pause_button_pressed() -> void:
 	pause()
+
+func _on_upgrades_button_pressed() -> void:
+	go_to_upgrades()
