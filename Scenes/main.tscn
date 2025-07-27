@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dqghyyo32sn2y"]
+[gd_scene load_steps=33 format=3 uid="uid://dqghyyo32sn2y"]
 
 [ext_resource type="Texture2D" uid="uid://cwm7n0ajguj2x" path="res://Sprites/firework_bg.png" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://dsn6mefgy5ijk" path="res://Scripts/game_manager.gd" id="2_8gbba"]
@@ -15,7 +15,11 @@
 [ext_resource type="Script" uid="uid://401mdwvvdsv7" path="res://Scripts/thrust_bar.gd" id="12_6iyac"]
 [ext_resource type="Script" uid="uid://b5s11hbsrdm7g" path="res://Scripts/distance_tracker.gd" id="12_wsu2k"]
 [ext_resource type="PackedScene" uid="uid://cilvhmx2uiuym" path="res://Scenes/bird.tscn" id="13_fdnlq"]
-[ext_resource type="Texture2D" uid="uid://cfn0ej3biauv8" path="res://Sprites/pause_button.png" id="15_k12tt"]
+[ext_resource type="Texture2D" uid="uid://cfn0ej3biauv8" path="res://Sprites/Buttons/pause_button.png" id="15_k12tt"]
+[ext_resource type="Texture2D" uid="uid://qqxaclcotr0u" path="res://Sprites/Buttons/home_button.png" id="16_h1bgf"]
+[ext_resource type="Script" uid="uid://bi11kayyh6bl0" path="res://Scenes/pause_menu.gd" id="16_hibaj"]
+[ext_resource type="Texture2D" uid="uid://csyp4gd0qnk27" path="res://Sprites/Buttons/upgrades_button.png" id="17_fevyy"]
+[ext_resource type="Texture2D" uid="uid://mynth24g78o8" path="res://Sprites/Buttons/back_button.png" id="18_hibaj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d1ilt"]
 line_spacing = 0.0
@@ -54,6 +58,108 @@ font = ExtResource("10_hptm8")
 font_size = 80
 font_color = Color(0.835294, 0.87451, 0.960784, 1)
 outline_size = 25
+outline_color = Color(0.439216, 0.145098, 0.14902, 1)
+
+[sub_resource type="Animation" id="Animation_hibaj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pause Menu/Pause Panel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(560, 340)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pause Menu:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_fevyy"]
+resource_name = "on_pause"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pause Menu/Pause Panel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(560, -500), Vector2(560, 340)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pause Menu:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_pdsj5"]
+resource_name = "unpause"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pause Menu:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pdsj5"]
+_data = {
+&"RESET": SubResource("Animation_hibaj"),
+&"on_pause": SubResource("Animation_fevyy"),
+&"unpause": SubResource("Animation_pdsj5")
+}
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k12tt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hibaj"]
+bg_color = Color(0, 0, 0, 0.611765)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k12tt"]
+bg_color = Color(0.956863, 0.607843, 0.309804, 1)
+border_width_left = 12
+border_width_top = 12
+border_width_right = 12
+border_width_bottom = 12
+border_color = Color(0.439216, 0.145098, 0.14902, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_k12tt"]
+font = ExtResource("10_hptm8")
+font_size = 120
+font_color = Color(0.835294, 0.87451, 0.960784, 1)
+outline_size = 32
 outline_color = Color(0.439216, 0.145098, 0.14902, 1)
 
 [node name="Main Scene" type="Node2D"]
@@ -157,6 +263,7 @@ position = Vector2(29, -359)
 position = Vector2(117, -440.5)
 
 [node name="UI" type="Control" parent="."]
+process_mode = 3
 z_index = 100
 layout_mode = 3
 anchors_preset = 0
@@ -254,5 +361,144 @@ texture_hover = ExtResource("15_k12tt")
 texture_disabled = ExtResource("15_k12tt")
 texture_focused = ExtResource("15_k12tt")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI"]
+libraries = {
+&"": SubResource("AnimationLibrary_pdsj5")
+}
+
+[node name="Pause Menu" type="Panel" parent="UI" node_paths=PackedStringArray("animation_player")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_k12tt")
+script = ExtResource("16_hibaj")
+animation_player = NodePath("../AnimationPlayer")
+
+[node name="Background Button" type="Button" parent="UI/Pause Menu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxFlat_hibaj")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_hibaj")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_hibaj")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_hibaj")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_hibaj")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_hibaj")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hibaj")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_hibaj")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hibaj")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_hibaj")
+theme_override_styles/normal = SubResource("StyleBoxFlat_hibaj")
+
+[node name="Pause Panel" type="Panel" parent="UI/Pause Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -200.0
+offset_right = 400.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_k12tt")
+
+[node name="Heading" type="Label" parent="UI/Pause Menu/Pause Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -217.0
+offset_top = -118.0
+offset_right = 217.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "PAUSED"
+label_settings = SubResource("LabelSettings_k12tt")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Home Button" type="TextureButton" parent="UI/Pause Menu/Pause Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -321.0
+offset_top = 40.0
+offset_right = -217.0
+offset_bottom = 144.0
+texture_normal = ExtResource("16_h1bgf")
+texture_pressed = ExtResource("16_h1bgf")
+texture_hover = ExtResource("16_h1bgf")
+texture_disabled = ExtResource("16_h1bgf")
+texture_focused = ExtResource("16_h1bgf")
+
+[node name="Settings Button" type="TextureButton" parent="UI/Pause Menu/Pause Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -145.0
+offset_top = 40.0
+offset_right = -41.0
+offset_bottom = 144.0
+texture_normal = ExtResource("15_k12tt")
+texture_pressed = ExtResource("15_k12tt")
+texture_hover = ExtResource("15_k12tt")
+texture_disabled = ExtResource("15_k12tt")
+texture_focused = ExtResource("15_k12tt")
+
+[node name="Upgrades Button" type="TextureButton" parent="UI/Pause Menu/Pause Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 38.0
+offset_top = 40.0
+offset_right = 142.0
+offset_bottom = 144.0
+texture_normal = ExtResource("17_fevyy")
+texture_pressed = ExtResource("17_fevyy")
+texture_hover = ExtResource("17_fevyy")
+texture_disabled = ExtResource("17_fevyy")
+texture_focused = ExtResource("17_fevyy")
+
+[node name="Back Button" type="TextureButton" parent="UI/Pause Menu/Pause Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 216.0
+offset_top = 40.0
+offset_right = 320.0
+offset_bottom = 144.0
+texture_normal = ExtResource("18_hibaj")
+texture_pressed = ExtResource("18_hibaj")
+texture_hover = ExtResource("18_hibaj")
+texture_disabled = ExtResource("18_hibaj")
+texture_focused = ExtResource("18_hibaj")
+
 [node name="Bird" parent="." instance=ExtResource("13_fdnlq")]
 position = Vector2(1424, -108)
+
+[connection signal="pressed" from="UI/Pause Menu/Background Button" to="UI/Pause Menu" method="_on_background_button_pressed"]
+[connection signal="pressed" from="UI/Pause Menu/Pause Panel/Back Button" to="UI/Pause Menu" method="_on_back_button_pressed"]
