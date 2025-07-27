@@ -50,3 +50,7 @@ func _on_back_button_pressed() -> void:
 # Functionality when background is pressed (duh)
 func _on_background_button_pressed() -> void:
 	unpause()
+
+# Functionality when pause button is pressed (duh)
+func _on_pause_button_pressed() -> void:
+	pause()
