@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dygli7uvnadq7" path="res://Scripts/bird.gd" id="1_dnvpi"]
 [ext_resource type="Texture2D" uid="uid://c6arwphcnoyi" path="res://Sprites/bird-sheet.png" id="1_i8bdw"]
 [ext_resource type="Script" uid="uid://cxc85ab32ix3i" path="res://Scripts/movement_component.gd" id="2_dnvpi"]
-[ext_resource type="Script" uid="uid://dfi8p01y35ir5" path="res://Scenes/reset_component.gd" id="4_vl8r2"]
+[ext_resource type="Script" uid="uid://dfi8p01y35ir5" path="res://Scripts/reset_component.gd" id="4_vl8r2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mcegt"]
 size = Vector2(132, 40)

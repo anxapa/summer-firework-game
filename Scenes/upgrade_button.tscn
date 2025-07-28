@@ -1,0 +1,143 @@
+[gd_scene load_steps=9 format=3 uid="uid://cb6a4b35ycmai"]
+
+[ext_resource type="FontFile" uid="uid://c6dnwjcvpku5y" path="res://Fonts/Analog Whispers.ttf" id="1_47it6"]
+[ext_resource type="Script" uid="uid://pdla3quqq6do" path="res://Scripts/upgrade_button.gd" id="1_f5ow3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f5ow3"]
+bg_color = Color(0.76, 0.893, 0.95, 1)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 100
+border_color = Color(0.346176, 0.655688, 0.775847, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_neg2b"]
+bg_color = Color(0.889922, 0.476153, 0.278135, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.439216, 0.145098, 0.14902, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r33sp"]
+bg_color = Color(0.913403, 0.758047, 0.319832, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_e08e2"]
+line_spacing = 0.0
+font = ExtResource("1_47it6")
+font_size = 28
+font_color = Color(0.835294, 0.87451, 0.960784, 1)
+outline_size = 8
+outline_color = Color(0.439216, 0.145098, 0.14902, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hdf80"]
+line_spacing = 0.0
+font = ExtResource("1_47it6")
+font_size = 20
+font_color = Color(0.835294, 0.87451, 0.960784, 1)
+outline_size = 8
+outline_color = Color(0.439216, 0.145098, 0.14902, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jwpg7"]
+line_spacing = 0.0
+font = ExtResource("1_47it6")
+font_size = 32
+font_color = Color(0.835294, 0.87451, 0.960784, 1)
+outline_size = 8
+outline_color = Color(0.439216, 0.145098, 0.14902, 1)
+
+[node name="Upgrade Button" type="Button"]
+custom_minimum_size = Vector2(208, 288)
+anchors_preset = -1
+anchor_left = 0.013
+anchor_top = 0.022
+anchor_right = 0.121
+anchor_bottom = 0.289
+offset_left = 0.039999
+offset_top = 0.239998
+offset_right = 0.679993
+offset_bottom = -0.119995
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_f5ow3")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_f5ow3")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_f5ow3")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_f5ow3")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_f5ow3")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_f5ow3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_f5ow3")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_f5ow3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_f5ow3")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_f5ow3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_f5ow3")
+script = ExtResource("1_f5ow3")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_top = 210.0
+offset_right = 209.0
+offset_bottom = 237.0
+theme_override_styles/background = SubResource("StyleBoxFlat_neg2b")
+theme_override_styles/fill = SubResource("StyleBoxFlat_r33sp")
+value = 50.0
+show_percentage = false
+
+[node name="Name Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.552
+anchor_right = 1.0
+anchor_bottom = 0.778
+offset_left = 1.0
+offset_top = 0.0239868
+offset_right = 1.52588e-05
+offset_bottom = -0.0640106
+text = "THRUST"
+label_settings = SubResource("LabelSettings_e08e2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Progress Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.178
+anchor_top = 0.601
+anchor_right = 0.827
+anchor_bottom = 0.708
+offset_left = -1.024
+offset_top = 33.912
+offset_right = 3.98399
+offset_bottom = 31.096
+text = "2 / 4"
+label_settings = SubResource("LabelSettings_hdf80")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cost Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.178
+anchor_top = 0.601
+anchor_right = 0.827
+anchor_bottom = 0.708
+offset_left = -9.024
+offset_top = 58.912
+offset_right = -4.01601
+offset_bottom = 83.096
+text = "$ 10"
+label_settings = SubResource("LabelSettings_jwpg7")
+horizontal_alignment = 1
+vertical_alignment = 1

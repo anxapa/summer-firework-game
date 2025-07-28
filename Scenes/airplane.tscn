@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d4idcyieoean8" path="res://Scripts/enemy.gd" id="1_cmvah"]
 [ext_resource type="Texture2D" uid="uid://6ob6ewi0v2lj" path="res://Sprites/airplane.png" id="1_fl04u"]
-[ext_resource type="Script" uid="uid://dfi8p01y35ir5" path="res://Scenes/reset_component.gd" id="2_18kh8"]
+[ext_resource type="Script" uid="uid://dfi8p01y35ir5" path="res://Scripts/reset_component.gd" id="2_18kh8"]
 [ext_resource type="Script" uid="uid://cxc85ab32ix3i" path="res://Scripts/movement_component.gd" id="2_bqnni"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_42yli"]

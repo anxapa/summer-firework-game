@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://dqghyyo32sn2y"]
+[gd_scene load_steps=61 format=3 uid="uid://dqghyyo32sn2y"]
 
 [ext_resource type="Texture2D" uid="uid://cwm7n0ajguj2x" path="res://Sprites/firework_bg.png" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://dsn6mefgy5ijk" path="res://Scripts/game_manager.gd" id="2_8gbba"]
@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://Scripts/spawn_timer.gd" id="4_u50mg"]
 [ext_resource type="Texture2D" uid="uid://cqf0b67vpg8g6" path="res://Sprites/cloud.png" id="5_6bp64"]
 [ext_resource type="Script" uid="uid://cxc85ab32ix3i" path="res://Scripts/movement_component.gd" id="6_21xkr"]
-[ext_resource type="Script" uid="uid://dfi8p01y35ir5" path="res://Scenes/reset_component.gd" id="9_kltya"]
+[ext_resource type="Script" uid="uid://dfi8p01y35ir5" path="res://Scripts/reset_component.gd" id="9_kltya"]
 [ext_resource type="Texture2D" uid="uid://b6d0epgmhmh6s" path="res://Sprites/cash.png" id="9_ynf5e"]
 [ext_resource type="FontFile" uid="uid://c6dnwjcvpku5y" path="res://Fonts/Analog Whispers.ttf" id="10_hptm8"]
 [ext_resource type="Script" uid="uid://dmrdpj8mbjea5" path="res://Scripts/speedometer.gd" id="11_6iyac"]
@@ -20,10 +20,9 @@
 [ext_resource type="Script" uid="uid://ik1aq0btjwrp" path="res://Scripts/upgrade_menu.gd" id="16_gt3je"]
 [ext_resource type="Texture2D" uid="uid://qqxaclcotr0u" path="res://Sprites/Buttons/home_button.png" id="16_h1bgf"]
 [ext_resource type="Script" uid="uid://bi11kayyh6bl0" path="res://Scripts/pause_menu.gd" id="16_hibaj"]
-[ext_resource type="Texture2D" uid="uid://b5tktyoifbo75" path="res://Sprites/Buttons/play_button.png" id="17_3pmx8"]
 [ext_resource type="Texture2D" uid="uid://csyp4gd0qnk27" path="res://Sprites/Buttons/upgrades_button.png" id="17_fevyy"]
 [ext_resource type="StyleBox" uid="uid://bd1inqxbjl620" path="res://Sprites/Buttons/button.tres" id="18_6vcvc"]
-[ext_resource type="Script" uid="uid://dsauby8q8chj8" path="res://Scenes/death_menu.gd" id="18_e08e2"]
+[ext_resource type="Script" uid="uid://dsauby8q8chj8" path="res://Scripts/death_menu.gd" id="18_e08e2"]
 [ext_resource type="Texture2D" uid="uid://mynth24g78o8" path="res://Sprites/Buttons/back_button.png" id="18_hibaj"]
 [ext_resource type="StyleBox" uid="uid://cupqb7ffl47dk" path="res://Sprites/Buttons/button_disabled.tres" id="19_7k868"]
 [ext_resource type="StyleBox" uid="uid://ct3ftfudvl8" path="res://Sprites/Buttons/button_pressed.tres" id="20_hpc6h"]
@@ -32,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://cvrkn1vg0b5d2" path="res://Sprites/Buttons/restart_symbol.png" id="22_7k868"]
 [ext_resource type="Texture2D" uid="uid://cw7e2th5plyec" path="res://Sprites/Buttons/upgrades_symbol.png" id="23_hpc6h"]
 [ext_resource type="Texture2D" uid="uid://bu6i1kenv8sq2" path="res://Sprites/Buttons/home_symbol.png" id="24_kltya"]
+[ext_resource type="PackedScene" uid="uid://cb6a4b35ycmai" path="res://Scenes/upgrade_button.tscn" id="27_e08e2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d1ilt"]
 line_spacing = 0.0
@@ -332,6 +332,13 @@ border_width_top = 16
 border_width_right = 16
 border_width_bottom = 16
 border_color = Color(0.439216, 0.145098, 0.14902, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kltya"]
+font = ExtResource("10_hptm8")
+font_size = 72
+font_color = Color(0.427451, 0.294118, 0.180392, 1)
+shadow_color = Color(0.36, 0.2592, 0.144, 0)
+shadow_offset = Vector2(2, 2)
 
 [sub_resource type="LabelSettings" id="LabelSettings_hibaj"]
 font = ExtResource("10_hptm8")
@@ -890,23 +897,91 @@ texture_hover = ExtResource("15_k12tt")
 texture_disabled = ExtResource("15_k12tt")
 texture_focused = ExtResource("15_k12tt")
 
-[node name="Play Button" type="TextureButton" parent="UI/Upgrade Menu/Upgrade Panel"]
+[node name="Buy Button" type="Button" parent="UI/Upgrade Menu/Upgrade Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.033
-anchor_top = 0.059
-anchor_right = 0.087
-anchor_bottom = 0.156
-offset_left = 1668.64
-offset_top = 837.28
-offset_right = 1770.48
-offset_bottom = 937.4
-focus_mode = 0
-texture_normal = ExtResource("17_3pmx8")
-texture_pressed = ExtResource("17_3pmx8")
-texture_hover = ExtResource("17_3pmx8")
-texture_disabled = ExtResource("17_3pmx8")
-texture_focused = ExtResource("17_3pmx8")
+anchor_left = 0.702
+anchor_top = 0.82
+anchor_right = 0.837
+anchor_bottom = 0.933
+offset_left = 0.159912
+offset_top = 0.399963
+offset_right = 0.959961
+offset_bottom = 0.359985
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = ExtResource("18_6vcvc")
+theme_override_styles/disabled_mirrored = ExtResource("19_7k868")
+theme_override_styles/disabled = ExtResource("19_7k868")
+theme_override_styles/hover_pressed_mirrored = ExtResource("20_hpc6h")
+theme_override_styles/hover_pressed = ExtResource("20_hpc6h")
+theme_override_styles/hover_mirrored = ExtResource("21_kltya")
+theme_override_styles/hover = ExtResource("21_kltya")
+theme_override_styles/pressed_mirrored = ExtResource("20_hpc6h")
+theme_override_styles/pressed = ExtResource("20_hpc6h")
+theme_override_styles/normal_mirrored = ExtResource("18_6vcvc")
+theme_override_styles/normal = ExtResource("18_6vcvc")
+
+[node name="Label" type="Label" parent="UI/Upgrade Menu/Upgrade Panel/Buy Button"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.373
+anchor_top = 0.23
+anchor_right = 0.896
+anchor_bottom = 0.779
+offset_left = 0.0199966
+offset_top = -0.0599709
+offset_right = 0.0399933
+offset_bottom = -0.0379715
+text = "Buy"
+label_settings = SubResource("LabelSettings_kltya")
+
+[node name="Symbol" type="Sprite2D" parent="UI/Upgrade Menu/Upgrade Panel/Buy Button"]
+position = Vector2(52, 52)
+texture = ExtResource("24_kltya")
+
+[node name="Play Button" type="Button" parent="UI/Upgrade Menu/Upgrade Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.845
+anchor_top = 0.82
+anchor_right = 0.981
+anchor_bottom = 0.933
+offset_left = 0.599976
+offset_top = 0.399963
+offset_right = -0.520142
+offset_bottom = 0.359985
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = ExtResource("18_6vcvc")
+theme_override_styles/disabled_mirrored = ExtResource("19_7k868")
+theme_override_styles/disabled = ExtResource("19_7k868")
+theme_override_styles/hover_pressed_mirrored = ExtResource("20_hpc6h")
+theme_override_styles/hover_pressed = ExtResource("20_hpc6h")
+theme_override_styles/hover_mirrored = ExtResource("21_kltya")
+theme_override_styles/hover = ExtResource("21_kltya")
+theme_override_styles/pressed_mirrored = ExtResource("20_hpc6h")
+theme_override_styles/pressed = ExtResource("20_hpc6h")
+theme_override_styles/normal_mirrored = ExtResource("18_6vcvc")
+theme_override_styles/normal = ExtResource("18_6vcvc")
+
+[node name="Label" type="Label" parent="UI/Upgrade Menu/Upgrade Panel/Play Button"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.373
+anchor_top = 0.23
+anchor_right = 0.904
+anchor_bottom = 0.779
+offset_left = 0.0199966
+offset_top = -0.0599709
+offset_right = -2.04001
+offset_bottom = -0.0379715
+text = "Play"
+label_settings = SubResource("LabelSettings_kltya")
+
+[node name="Symbol" type="Sprite2D" parent="UI/Upgrade Menu/Upgrade Panel/Play Button"]
+position = Vector2(52, 52)
+texture = ExtResource("24_kltya")
 
 [node name="Header" type="Label" parent="UI/Upgrade Menu/Upgrade Panel"]
 layout_mode = 1
@@ -923,20 +998,148 @@ label_settings = SubResource("LabelSettings_hibaj")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="UI/Upgrade Menu/Upgrade Panel"]
-layout_mode = 0
-offset_left = 70.0
-offset_top = 195.0
-offset_right = 1397.0
-offset_bottom = 1033.0
+[node name="Upgrades" type="Panel" parent="UI/Upgrade Menu/Upgrade Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.036
+anchor_top = 0.181
+anchor_right = 0.728
+anchor_bottom = 0.956
+offset_left = 0.879997
+offset_top = -0.480011
+offset_right = -64.7601
+offset_bottom = 0.52002
 theme_override_styles/panel = SubResource("StyleBoxFlat_ee4r6")
 
-[node name="HFlowContainer" type="HFlowContainer" parent="UI/Upgrade Menu/Upgrade Panel/PanelContainer"]
+[node name="Upgrade Button" parent="UI/Upgrade Menu/Upgrade Panel/Upgrades" instance=ExtResource("27_e08e2")]
 layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.054
+anchor_top = 0.038
+anchor_right = 0.211
+anchor_bottom = 0.382
+offset_left = 0.341995
+offset_top = 0.155998
+offset_right = 0.00299072
+offset_bottom = -0.116028
+grow_horizontal = 1
+grow_vertical = 1
 
-[node name="PanelContainer2" type="PanelContainer" parent="UI/Upgrade Menu/Upgrade Panel"]
+[node name="Upgrade Button2" parent="UI/Upgrade Menu/Upgrade Panel/Upgrades" instance=ExtResource("27_e08e2")]
+layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.235
+anchor_top = 0.038
+anchor_right = 0.392
+anchor_bottom = 0.382
+offset_left = 0.154968
+offset_top = 0.155998
+offset_right = -0.184021
+offset_bottom = -0.116028
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Upgrade Button3" parent="UI/Upgrade Menu/Upgrade Panel/Upgrades" instance=ExtResource("27_e08e2")]
+layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.416
+anchor_top = 0.038
+anchor_right = 0.573
+anchor_bottom = 0.382
+offset_left = -0.0319824
+offset_top = 0.155998
+offset_right = -0.371033
+offset_bottom = -0.116028
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Upgrade Button4" parent="UI/Upgrade Menu/Upgrade Panel/Upgrades" instance=ExtResource("27_e08e2")]
+layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.597
+anchor_top = 0.038
+anchor_right = 0.754
+anchor_bottom = 0.382
+offset_left = -0.218994
+offset_top = 0.155998
+offset_right = -0.557983
+offset_bottom = -0.116028
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Upgrade Button5" parent="UI/Upgrade Menu/Upgrade Panel/Upgrades" instance=ExtResource("27_e08e2")]
+layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.778
+anchor_top = 0.038
+anchor_right = 0.934
+anchor_bottom = 0.382
+offset_left = -0.406128
+offset_top = 0.155998
+offset_right = 0.582031
+offset_bottom = -0.116028
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Upgrade Button6" parent="UI/Upgrade Menu/Upgrade Panel/Upgrades" instance=ExtResource("27_e08e2")]
+layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.054
+anchor_top = 0.433
+anchor_right = 0.211
+anchor_bottom = 0.777
+offset_left = 0.341995
+offset_top = 0.145966
+offset_right = 0.00299072
+offset_bottom = -0.126038
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Upgrade Button7" parent="UI/Upgrade Menu/Upgrade Panel/Upgrades" instance=ExtResource("27_e08e2")]
+layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.235
+anchor_top = 0.433
+anchor_right = 0.392
+anchor_bottom = 0.777
+offset_left = 0.154968
+offset_top = 0.145966
+offset_right = -0.184021
+offset_bottom = -0.126038
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Upgrade Button8" parent="UI/Upgrade Menu/Upgrade Panel/Upgrades" instance=ExtResource("27_e08e2")]
+layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.416
+anchor_top = 0.433
+anchor_right = 0.573
+anchor_bottom = 0.777
+offset_left = -0.0319824
+offset_top = 0.145966
+offset_right = -0.371033
+offset_bottom = -0.126038
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Upgrade Button9" parent="UI/Upgrade Menu/Upgrade Panel/Upgrades" instance=ExtResource("27_e08e2")]
+layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.597
+anchor_top = 0.433
+anchor_right = 0.754
+anchor_bottom = 0.777
+offset_left = -0.218994
+offset_top = 0.145966
+offset_right = -0.557983
+offset_bottom = -0.126038
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Text Panel" type="Panel" parent="UI/Upgrade Menu/Upgrade Panel"]
 layout_mode = 0
-offset_left = 1421.0
+offset_left = 1362.0
 offset_top = 195.0
 offset_right = 1867.0
 offset_bottom = 844.0

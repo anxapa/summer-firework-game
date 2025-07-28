@@ -16,14 +16,36 @@ enum UPGRADES {
 }
 
 static var current_upgrades : Array[int]
-static var max_upgrades : Array[int]
+
+# Max upgrades will be dependent on this
+static var upgrade_costs := [
+	[10, 100], #THRUST,
+	[100000, 1000000], #THRUST_SPEED,
+	[100000, 1000000], #MAGNET,
+	[100000, 1000000], #TURN_SPEED,
+	[100000, 1000000], #LAUNCH_VELOCITY,
+	[100000, 1000000], #INVINCIBLE_THRUST,
+	[100000, 1000000], #GUN,
+	[100000, 1000000], #BOOST_ACCELERATION,
+	[100000, 1000000], #CASH_DIAMOND,
+	]
+
+static var upgrade_names := [
+	"Thrust",
+	"Thrust Speed",
+	"Magnet",
+	"Turn Speed",
+	"Launch Velocity",
+	"Invincible Thrust",
+	"Gun",
+	"Boost Acceleration",
+	"Cash Diamond",
+]
 
 static func initialize() -> void:
 	# Puts 0 in every upgrade slot to start
-	# CRITICAL: Temporarily putting in 5 for max of each upgrade for testing
 	for n in UPGRADES.size():
 		current_upgrades.append(0)
-		max_upgrades.append(5)
 
 ## Increments an upgrade based on its cost.
 ## If the cost is buyable
