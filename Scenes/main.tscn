@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://dqghyyo32sn2y"]
+[gd_scene load_steps=46 format=3 uid="uid://dqghyyo32sn2y"]
 
 [ext_resource type="Texture2D" uid="uid://cwm7n0ajguj2x" path="res://Sprites/firework_bg.png" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://dsn6mefgy5ijk" path="res://Scripts/game_manager.gd" id="2_8gbba"]
@@ -65,34 +65,6 @@ font_color = Color(0.835294, 0.87451, 0.960784, 1)
 outline_size = 25
 outline_color = Color(0.439216, 0.145098, 0.14902, 1)
 
-[sub_resource type="Animation" id="Animation_3pmx8"]
-resource_name = "enter_menu"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-2060, 0), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("..:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="Animation" id="Animation_u50mg"]
 length = 0.001
 tracks/0/type = "value"
@@ -126,6 +98,34 @@ tracks/2/path = NodePath("../Background Panel:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_3pmx8"]
+resource_name = "enter_menu"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-2060, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -758,6 +758,6 @@ position = Vector2(1655, -406)
 [connection signal="pressed" from="UI/Upgrade Menu/Upgrade Panel/Pause Button" to="UI/Pause Menu" method="_on_pause_button_pressed"]
 [connection signal="pressed" from="UI/Upgrade Menu/Upgrade Panel/Play Button" to="UI/Upgrade Menu" method="_on_play_button_pressed"]
 [connection signal="pressed" from="UI/Pause Menu/Background Button" to="UI/Pause Menu" method="_on_background_button_pressed"]
-[connection signal="pressed" from="UI/Pause Menu/Pause Panel/Upgrades Button" to="UI/Pause Menu" method="_on_upgrades_button_pressed"]
 [connection signal="pressed" from="UI/Pause Menu/Pause Panel/Upgrades Button" to="UI/Upgrade Menu" method="_on_upgrades_button_pressed"]
+[connection signal="pressed" from="UI/Pause Menu/Pause Panel/Upgrades Button" to="UI/Pause Menu" method="_on_upgrades_button_pressed"]
 [connection signal="pressed" from="UI/Pause Menu/Pause Panel/Back Button" to="UI/Pause Menu" method="_on_back_button_pressed"]
