@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cilvhmx2uiuym"]
+[gd_scene load_steps=9 format=3 uid="uid://cilvhmx2uiuym"]
 
 [ext_resource type="Script" uid="uid://dygli7uvnadq7" path="res://Scripts/bird.gd" id="1_dnvpi"]
 [ext_resource type="Texture2D" uid="uid://c6arwphcnoyi" path="res://Sprites/bird-sheet.png" id="1_i8bdw"]
 [ext_resource type="Script" uid="uid://cxc85ab32ix3i" path="res://Scripts/movement_component.gd" id="2_dnvpi"]
+[ext_resource type="Script" uid="uid://dfi8p01y35ir5" path="res://Scenes/reset_component.gd" id="4_vl8r2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mcegt"]
 size = Vector2(132, 40)
@@ -48,6 +49,10 @@ _data = {
 [node name="Bird" type="Area2D"]
 z_index = 5
 script = ExtResource("1_dnvpi")
+
+[node name="ResetComponent" type="Node2D" parent="."]
+script = ExtResource("4_vl8r2")
+metadata/_custom_type_script = "uid://dfi8p01y35ir5"
 
 [node name="MovementComponent" type="Node2D" parent="."]
 script = ExtResource("2_dnvpi")

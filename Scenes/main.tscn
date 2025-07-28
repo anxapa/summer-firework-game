@@ -1,21 +1,20 @@
-[gd_scene load_steps=46 format=3 uid="uid://dqghyyo32sn2y"]
+[gd_scene load_steps=60 format=3 uid="uid://dqghyyo32sn2y"]
 
 [ext_resource type="Texture2D" uid="uid://cwm7n0ajguj2x" path="res://Sprites/firework_bg.png" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://dsn6mefgy5ijk" path="res://Scripts/game_manager.gd" id="2_8gbba"]
 [ext_resource type="Script" uid="uid://bbmuup40yufp3" path="res://Scripts/player_manager.gd" id="2_kry3j"]
 [ext_resource type="Script" uid="uid://b87cshw4c77pp" path="res://Scripts/spawn_manager.gd" id="3_fdnlq"]
 [ext_resource type="PackedScene" uid="uid://djxsfkro6ge2v" path="res://Scenes/player.tscn" id="3_jjvhh"]
-[ext_resource type="Script" uid="uid://dbc1bmrhtrcnx" path="res://Scripts/spawn_timer.gd" id="4_u50mg"]
+[ext_resource type="Script" path="res://Scripts/spawn_timer.gd" id="4_u50mg"]
 [ext_resource type="Texture2D" uid="uid://cqf0b67vpg8g6" path="res://Sprites/cloud.png" id="5_6bp64"]
 [ext_resource type="Script" uid="uid://cxc85ab32ix3i" path="res://Scripts/movement_component.gd" id="6_21xkr"]
-[ext_resource type="Script" uid="uid://cw6y255r14kjg" path="res://Scripts/background.gd" id="8_3pmx8"]
-[ext_resource type="PackedScene" uid="uid://du4xkv4rwaw7d" path="res://Scenes/cash.tscn" id="8_ynf5e"]
+[ext_resource type="Script" uid="uid://dfi8p01y35ir5" path="res://Scenes/reset_component.gd" id="9_kltya"]
 [ext_resource type="Texture2D" uid="uid://b6d0epgmhmh6s" path="res://Sprites/cash.png" id="9_ynf5e"]
 [ext_resource type="FontFile" uid="uid://c6dnwjcvpku5y" path="res://Fonts/Analog Whispers.ttf" id="10_hptm8"]
 [ext_resource type="Script" uid="uid://dmrdpj8mbjea5" path="res://Scripts/speedometer.gd" id="11_6iyac"]
 [ext_resource type="Script" uid="uid://s1rr3mqw6mx2" path="res://Scripts/cash_counter.gd" id="11_d1ilt"]
 [ext_resource type="Script" uid="uid://401mdwvvdsv7" path="res://Scripts/thrust_bar.gd" id="12_6iyac"]
-[ext_resource type="Script" path="res://Scripts/distance_tracker.gd" id="12_wsu2k"]
+[ext_resource type="Script" uid="uid://b5s11hbsrdm7g" path="res://Scripts/distance_tracker.gd" id="12_wsu2k"]
 [ext_resource type="PackedScene" uid="uid://cilvhmx2uiuym" path="res://Scenes/bird.tscn" id="13_fdnlq"]
 [ext_resource type="Texture2D" uid="uid://cfn0ej3biauv8" path="res://Sprites/Buttons/pause_button.png" id="15_k12tt"]
 [ext_resource type="Script" uid="uid://ik1aq0btjwrp" path="res://Scripts/upgrade_menu.gd" id="16_gt3je"]
@@ -23,8 +22,16 @@
 [ext_resource type="Script" uid="uid://bi11kayyh6bl0" path="res://Scripts/pause_menu.gd" id="16_hibaj"]
 [ext_resource type="Texture2D" uid="uid://b5tktyoifbo75" path="res://Sprites/Buttons/play_button.png" id="17_3pmx8"]
 [ext_resource type="Texture2D" uid="uid://csyp4gd0qnk27" path="res://Sprites/Buttons/upgrades_button.png" id="17_fevyy"]
+[ext_resource type="StyleBox" uid="uid://bd1inqxbjl620" path="res://Sprites/Buttons/button.tres" id="18_6vcvc"]
+[ext_resource type="Script" uid="uid://dsauby8q8chj8" path="res://Scenes/death_menu.gd" id="18_e08e2"]
 [ext_resource type="Texture2D" uid="uid://mynth24g78o8" path="res://Sprites/Buttons/back_button.png" id="18_hibaj"]
+[ext_resource type="StyleBox" uid="uid://cupqb7ffl47dk" path="res://Sprites/Buttons/button_disabled.tres" id="19_7k868"]
+[ext_resource type="StyleBox" uid="uid://ct3ftfudvl8" path="res://Sprites/Buttons/button_pressed.tres" id="20_hpc6h"]
+[ext_resource type="StyleBox" uid="uid://djtr22ao8wbus" path="res://Sprites/Buttons/button_hover.tres" id="21_kltya"]
 [ext_resource type="PackedScene" uid="uid://dcgajalxovs5u" path="res://Scenes/airplane.tscn" id="21_pdsj5"]
+[ext_resource type="Texture2D" uid="uid://cvrkn1vg0b5d2" path="res://Sprites/Buttons/restart_symbol.png" id="22_7k868"]
+[ext_resource type="Texture2D" uid="uid://cw7e2th5plyec" path="res://Sprites/Buttons/upgrades_symbol.png" id="23_hpc6h"]
+[ext_resource type="Texture2D" uid="uid://bu6i1kenv8sq2" path="res://Sprites/Buttons/home_symbol.png" id="24_kltya"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d1ilt"]
 line_spacing = 0.0
@@ -64,6 +71,142 @@ font_size = 80
 font_color = Color(0.835294, 0.87451, 0.960784, 1)
 outline_size = 25
 outline_color = Color(0.439216, 0.145098, 0.14902, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k12tt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e08e2"]
+bg_color = Color(0, 0, 0, 0.588235)
+
+[sub_resource type="Animation" id="Animation_neg2b"]
+resource_name = "show_menu"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Death Panel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_r33sp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Death Panel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_hdf80"]
+resource_name = "hide_menu"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jwpg7"]
+_data = {
+&"RESET": SubResource("Animation_r33sp"),
+&"hide_menu": SubResource("Animation_hdf80"),
+&"show_menu": SubResource("Animation_neg2b")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k12tt"]
+bg_color = Color(0.956863, 0.607843, 0.309804, 1)
+border_width_left = 12
+border_width_top = 12
+border_width_right = 12
+border_width_bottom = 12
+border_color = Color(0.439216, 0.145098, 0.14902, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_k12tt"]
+font = ExtResource("10_hptm8")
+font_size = 120
+font_color = Color(0.835294, 0.87451, 0.960784, 1)
+outline_size = 32
+outline_color = Color(0.439216, 0.145098, 0.14902, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6vcvc"]
+font = ExtResource("10_hptm8")
+font_size = 48
+font_color = Color(0.439216, 0.145098, 0.14902, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hpc6h"]
+font = ExtResource("10_hptm8")
+font_size = 72
+font_color = Color(0.427451, 0.294118, 0.180392, 1)
+shadow_color = Color(0.36, 0.2592, 0.144, 0)
+shadow_offset = Vector2(2, 2)
 
 [sub_resource type="Animation" id="Animation_u50mg"]
 length = 0.001
@@ -200,8 +343,6 @@ outline_color = Color(0.439216, 0.145098, 0.14902, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ee4r6"]
 bg_color = Color(0.855171, 0.492253, 0.24868, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k12tt"]
-
 [sub_resource type="Animation" id="Animation_hibaj"]
 length = 0.001
 tracks/0/type = "value"
@@ -283,25 +424,6 @@ _data = {
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hibaj"]
 bg_color = Color(0, 0, 0, 0.588235)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k12tt"]
-bg_color = Color(0.956863, 0.607843, 0.309804, 1)
-border_width_left = 12
-border_width_top = 12
-border_width_right = 12
-border_width_bottom = 12
-border_color = Color(0.439216, 0.145098, 0.14902, 1)
-corner_radius_top_left = 32
-corner_radius_top_right = 32
-corner_radius_bottom_right = 32
-corner_radius_bottom_left = 32
-
-[sub_resource type="LabelSettings" id="LabelSettings_k12tt"]
-font = ExtResource("10_hptm8")
-font_size = 120
-font_color = Color(0.835294, 0.87451, 0.960784, 1)
-outline_size = 32
-outline_color = Color(0.439216, 0.145098, 0.14902, 1)
-
 [node name="Main Scene" type="Node2D"]
 
 [node name="Managers" type="Node2D" parent="."]
@@ -378,12 +500,17 @@ texture = ExtResource("5_6bp64")
 position = Vector2(960, -360)
 scale = Vector2(4, 4)
 texture = ExtResource("1_jjgbg")
-script = ExtResource("8_3pmx8")
 
 [node name="MovementComponent" type="Node2D" parent="Background"]
 script = ExtResource("6_21xkr")
 scroll_magnitude = 0.1
 metadata/_custom_type_script = "uid://cxc85ab32ix3i"
+
+[node name="ResetComponent" type="Node2D" parent="Background"]
+script = ExtResource("9_kltya")
+remove_off_screen = false
+reset_option = 1
+metadata/_custom_type_script = "uid://dfi8p01y35ir5"
 
 [node name="Cashes" type="Node2D" parent="."]
 position = Vector2(715, 150)
@@ -393,20 +520,6 @@ scale = Vector2(2, 2)
 script = ExtResource("6_21xkr")
 scroll_magnitude = 0.7
 metadata/_custom_type_script = "uid://cxc85ab32ix3i"
-
-[node name="Cash" parent="Cashes" instance=ExtResource("8_ynf5e")]
-
-[node name="Cash2" parent="Cashes" instance=ExtResource("8_ynf5e")]
-position = Vector2(-66, -128.5)
-
-[node name="Cash3" parent="Cashes" instance=ExtResource("8_ynf5e")]
-position = Vector2(-64.5, -251.5)
-
-[node name="Cash4" parent="Cashes" instance=ExtResource("8_ynf5e")]
-position = Vector2(29, -359)
-
-[node name="Cash5" parent="Cashes" instance=ExtResource("8_ynf5e")]
-position = Vector2(117, -440.5)
 
 [node name="UI" type="Control" parent="."]
 process_mode = 3
@@ -507,6 +620,216 @@ texture_pressed = ExtResource("15_k12tt")
 texture_hover = ExtResource("15_k12tt")
 texture_disabled = ExtResource("15_k12tt")
 texture_focused = ExtResource("15_k12tt")
+
+[node name="Death Menu" type="Panel" parent="UI"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_k12tt")
+script = ExtResource("18_e08e2")
+
+[node name="Panel" type="Panel" parent="UI/Death Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_e08e2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Death Menu"]
+libraries = {
+&"": SubResource("AnimationLibrary_jwpg7")
+}
+
+[node name="Death Panel" type="Panel" parent="UI/Death Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -400.0
+offset_right = 400.0
+offset_bottom = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_k12tt")
+
+[node name="Heading" type="Label" parent="UI/Death Menu/Death Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -281.5
+offset_top = -330.0
+offset_right = 281.5
+offset_bottom = -218.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Exploded..."
+label_settings = SubResource("LabelSettings_k12tt")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Stat Label" type="Label" parent="UI/Death Menu/Death Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -272.0
+offset_top = -187.0
+offset_right = 273.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Cash Collected:
+Total Distance: "
+label_settings = SubResource("LabelSettings_6vcvc")
+
+[node name="Restart Button" type="Button" parent="UI/Death Menu/Death Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -295.0
+offset_top = -15.0
+offset_right = 295.0
+offset_bottom = 101.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = ExtResource("18_6vcvc")
+theme_override_styles/disabled_mirrored = ExtResource("19_7k868")
+theme_override_styles/disabled = ExtResource("19_7k868")
+theme_override_styles/hover_pressed_mirrored = ExtResource("20_hpc6h")
+theme_override_styles/hover_pressed = ExtResource("20_hpc6h")
+theme_override_styles/hover_mirrored = ExtResource("21_kltya")
+theme_override_styles/hover = ExtResource("21_kltya")
+theme_override_styles/pressed_mirrored = ExtResource("20_hpc6h")
+theme_override_styles/pressed = ExtResource("20_hpc6h")
+theme_override_styles/normal_mirrored = ExtResource("18_6vcvc")
+theme_override_styles/normal = ExtResource("18_6vcvc")
+
+[node name="Label" type="Label" parent="UI/Death Menu/Death Panel/Restart Button"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.133
+anchor_right = 0.5
+anchor_bottom = 0.133
+offset_left = -168.0
+offset_top = 11.572
+offset_right = 125.0
+offset_bottom = 78.572
+text = "Restart"
+label_settings = SubResource("LabelSettings_hpc6h")
+
+[node name="Symbol" type="Sprite2D" parent="UI/Death Menu/Death Panel/Restart Button"]
+position = Vector2(65, 52)
+texture = ExtResource("22_7k868")
+
+[node name="Upgrades Button" type="Button" parent="UI/Death Menu/Death Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -295.0
+offset_top = 118.0
+offset_right = 295.0
+offset_bottom = 234.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = ExtResource("18_6vcvc")
+theme_override_styles/disabled_mirrored = ExtResource("19_7k868")
+theme_override_styles/disabled = ExtResource("19_7k868")
+theme_override_styles/hover_pressed_mirrored = ExtResource("20_hpc6h")
+theme_override_styles/hover_pressed = ExtResource("20_hpc6h")
+theme_override_styles/hover_mirrored = ExtResource("21_kltya")
+theme_override_styles/hover = ExtResource("21_kltya")
+theme_override_styles/pressed_mirrored = ExtResource("20_hpc6h")
+theme_override_styles/pressed = ExtResource("20_hpc6h")
+theme_override_styles/normal_mirrored = ExtResource("18_6vcvc")
+theme_override_styles/normal = ExtResource("18_6vcvc")
+
+[node name="Label" type="Label" parent="UI/Death Menu/Death Panel/Upgrades Button"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = -1.033
+anchor_right = 0.5
+anchor_bottom = -1.033
+offset_left = -167.0
+offset_top = 146.828
+offset_right = 137.0
+offset_bottom = 213.828
+text = "Upgrades"
+label_settings = SubResource("LabelSettings_hpc6h")
+
+[node name="Symbol" type="Sprite2D" parent="UI/Death Menu/Death Panel/Upgrades Button"]
+position = Vector2(65, 52)
+texture = ExtResource("23_hpc6h")
+
+[node name="Home Button" type="Button" parent="UI/Death Menu/Death Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -295.0
+offset_top = 251.0
+offset_right = 295.0
+offset_bottom = 367.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = ExtResource("18_6vcvc")
+theme_override_styles/disabled_mirrored = ExtResource("19_7k868")
+theme_override_styles/disabled = ExtResource("19_7k868")
+theme_override_styles/hover_pressed_mirrored = ExtResource("20_hpc6h")
+theme_override_styles/hover_pressed = ExtResource("20_hpc6h")
+theme_override_styles/hover_mirrored = ExtResource("21_kltya")
+theme_override_styles/hover = ExtResource("21_kltya")
+theme_override_styles/pressed_mirrored = ExtResource("20_hpc6h")
+theme_override_styles/pressed = ExtResource("20_hpc6h")
+theme_override_styles/normal_mirrored = ExtResource("18_6vcvc")
+theme_override_styles/normal = ExtResource("18_6vcvc")
+
+[node name="Label" type="Label" parent="UI/Death Menu/Death Panel/Home Button"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = -2.146
+anchor_right = 0.5
+anchor_bottom = -2.146
+offset_left = -167.0
+offset_top = 275.936
+offset_right = 137.0
+offset_bottom = 342.936
+text = "Main Menu"
+label_settings = SubResource("LabelSettings_hpc6h")
+
+[node name="Symbol" type="Sprite2D" parent="UI/Death Menu/Death Panel/Home Button"]
+position = Vector2(65, 52)
+texture = ExtResource("24_kltya")
 
 [node name="Upgrade Menu" type="Control" parent="UI"]
 visible = false
@@ -755,6 +1078,9 @@ position = Vector2(1424, -108)
 position = Vector2(1655, -406)
 
 [connection signal="pressed" from="UI/Ingame GUI/Pause Button" to="UI/Pause Menu" method="_on_pause_button_pressed"]
+[connection signal="pressed" from="UI/Death Menu/Death Panel/Restart Button" to="UI/Death Menu" method="_on_restart_button_pressed"]
+[connection signal="pressed" from="UI/Death Menu/Death Panel/Upgrades Button" to="UI/Death Menu" method="_on_upgrades_button_pressed"]
+[connection signal="pressed" from="UI/Death Menu/Death Panel/Upgrades Button" to="UI/Upgrade Menu" method="_on_upgrades_button_pressed"]
 [connection signal="pressed" from="UI/Upgrade Menu/Upgrade Panel/Pause Button" to="UI/Pause Menu" method="_on_pause_button_pressed"]
 [connection signal="pressed" from="UI/Upgrade Menu/Upgrade Panel/Play Button" to="UI/Upgrade Menu" method="_on_play_button_pressed"]
 [connection signal="pressed" from="UI/Pause Menu/Background Button" to="UI/Pause Menu" method="_on_background_button_pressed"]

@@ -17,6 +17,7 @@ func _ready() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player and visible:
 		GameManager.cash_collected += cash_value
+		(body as Player).cash_collected += cash_value
 		queue_free()
 
 static func spawn(starting_position: Vector2) -> Cash:

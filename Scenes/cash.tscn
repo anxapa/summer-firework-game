@@ -1,13 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://du4xkv4rwaw7d"]
+[gd_scene load_steps=5 format=3 uid="uid://du4xkv4rwaw7d"]
 
 [ext_resource type="Script" uid="uid://cy2msxs6vl8qt" path="res://Scripts/cash.gd" id="1_g4qth"]
 [ext_resource type="Texture2D" uid="uid://cltxqfi23ldte" path="res://Sprites/cash_small.png" id="1_ua8r7"]
+[ext_resource type="Script" uid="uid://dfi8p01y35ir5" path="res://Scenes/reset_component.gd" id="3_2xbqq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ua8r7"]
 size = Vector2(39, 23)
 
 [node name="Cash" type="Area2D"]
 script = ExtResource("1_g4qth")
+
+[node name="ResetComponent" type="Node2D" parent="."]
+script = ExtResource("3_2xbqq")
+metadata/_custom_type_script = "uid://dfi8p01y35ir5"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -1.5)

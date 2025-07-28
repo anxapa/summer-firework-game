@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dk6nkylup6a7x"]
+[gd_scene load_steps=10 format=3 uid="uid://dk6nkylup6a7x"]
 
 [ext_resource type="PackedScene" uid="uid://du4xkv4rwaw7d" path="res://Scenes/cash.tscn" id="1_gyak6"]
 [ext_resource type="Script" uid="uid://dfcdv5g50cw2w" path="res://Cash Patterns/patterns.gd" id="1_ywvgv"]
+[ext_resource type="Script" uid="uid://dfi8p01y35ir5" path="res://Scenes/reset_component.gd" id="2_gbkht"]
 
 [sub_resource type="Animation" id="Animation_gmxib"]
 length = 0.001
@@ -1471,6 +1472,10 @@ _data = {
 
 [node name="Patterns" type="Node2D"]
 script = ExtResource("1_ywvgv")
+
+[node name="ResetComponent" type="Node2D" parent="."]
+script = ExtResource("2_gbkht")
+metadata/_custom_type_script = "uid://dfi8p01y35ir5"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

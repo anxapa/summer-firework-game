@@ -13,7 +13,6 @@ var starting_position : Vector2
 var propulsion_velocity : float
 var outside_velocity := Vector2.ZERO
 var scroll_speed : float
-var total_distance := 0.0
 const GRAVITY := 10
 
 # Thrust
@@ -25,6 +24,10 @@ var current_thrust : float
 # States
 var is_thrusting := false
 var is_dead := false
+
+# Stats per run
+var total_distance := 0.0
+var cash_collected := 0
 
 func _ready() -> void:
 	# Records starting position set in the editor
@@ -102,10 +105,9 @@ func death() -> void:
 	death_particles.emitting = true
 	sprite.visible = false
 	is_dead = true
-	SignalBus.emit_signal("player_death")
 	
 	await get_tree().create_timer(3.0).timeout
-	_on_game_start()
+	SignalBus.emit_signal("player_death")
 
 ## Sets the parameters of the particle system depending on propulsion velocity
 func update_particles() -> void:
@@ -133,8 +135,9 @@ func _on_game_start() -> void:
 	sprite.visible = true
 	is_dead = false
 	
-	# Resets total distance to not accumulate over games
+	# Resets stats to not accumulate over multiple games
 	total_distance = 0
+	cash_collected = 0
 	
 	# Apply upgrades
 	
