@@ -19,40 +19,46 @@ func _ready() -> void:
 			button.pressed.connect(_on_upgrade_pressed.bind(button))
 
 # Select a certain upgrade in the menu
-func select_upgrade(num : int) -> void:
-	deselect_upgrade()
-	var upgrade = upgrades[num]
-	selected_upgrade = upgrade
-	upgrade.modulate = Color.WHITE
+func select_upgrade(button: UpgradeButton) -> void:
+	deselect_upgrade(selected_upgrade)
+	selected_upgrade = button
+	button.select()
+	
+	# Disable buy button if cost is not buyable
+	var upgrade = button.upgrade_type
+	buy_button.disabled = not PlayerUpgrades.is_upgrade_buyable(upgrade)
 
 # Deselect the previous selected upgrade
-func deselect_upgrade() -> void:
+func deselect_upgrade(button: UpgradeButton) -> void:
 	# Makes sure that there is a selected upgrade
 	if not selected_upgrade:
 		return
 	
-	selected_upgrade.modulate = Color.GRAY
-
-# Disable upgrade
-func disable_upgrade(num : int) -> void:
-	var upgrade = upgrades[num]
-	upgrade.disabled = true
-	upgrade.modulate = Color.WEB_GRAY
+	button.deselect()
 
 # Update the shop to reflect current levels / etc.
 func update_shop_contents() -> void:
 	# Update each label in the upgrades
 	for n in upgrades.size():
-		upgrades[n].update(n)
+		var button = upgrades[n]
+		button.update(n)
 		
 		# Make sure every button is initially enabled 
-		upgrades[n].disabled = false
-		upgrades[n].modulate = Color.GRAY
+		button.disable(false)
 		
 		# If the upgrade has not been bought before and is too expensive,
 		# then disable it
-		if upgrades[n].current_level == 0 and upgrades[n].cost > GameManager.cash_collected:
-			disable_upgrade(n)
+		if button.current_level == 0 and button.cost > GameManager.cash_collected:
+			button.disable(true)
+
+# Buy upgrade
+func buy_current_upgrade() -> void:
+	var upgrade = selected_upgrade.upgrade_type
+	PlayerUpgrades.increment_upgrade(upgrade)
+	
+	# Update shop & buy button
+	update_shop_contents()
+	select_upgrade(selected_upgrade)
 
 func open_upgrade_panel() -> void:
 	update_shop_contents()
@@ -71,4 +77,7 @@ func _on_upgrades_button_pressed() -> void:
 	open_upgrade_panel()
 
 func _on_upgrade_pressed(button: UpgradeButton) -> void:
-	select_upgrade(button.upgrade_type)
+	select_upgrade(button)
+
+func _on_buy_button_pressed() -> void:
+	buy_current_upgrade()

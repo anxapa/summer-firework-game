@@ -910,6 +910,7 @@ offset_right = 0.959961
 offset_bottom = 0.359985
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 0
 theme_override_styles/focus = ExtResource("18_6vcvc")
 theme_override_styles/disabled_mirrored = ExtResource("19_7k868")
 theme_override_styles/disabled = ExtResource("19_7k868")
@@ -953,6 +954,7 @@ offset_right = -0.520142
 offset_bottom = 0.359985
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 0
 theme_override_styles/focus = ExtResource("18_6vcvc")
 theme_override_styles/disabled_mirrored = ExtResource("19_7k868")
 theme_override_styles/disabled = ExtResource("19_7k868")
@@ -1303,6 +1305,7 @@ bank_paths = ["res://Banks/Master.strings.bank", "res://Banks/Master.bank", "res
 [connection signal="pressed" from="UI/Death Menu/Death Panel/Upgrades Button" to="UI/Death Menu" method="_on_upgrades_button_pressed"]
 [connection signal="pressed" from="UI/Death Menu/Death Panel/Upgrades Button" to="UI/Upgrade Menu" method="_on_upgrades_button_pressed"]
 [connection signal="pressed" from="UI/Upgrade Menu/Upgrade Panel/Pause Button" to="UI/Pause Menu" method="_on_pause_button_pressed"]
+[connection signal="pressed" from="UI/Upgrade Menu/Upgrade Panel/Buy Button" to="UI/Upgrade Menu" method="_on_buy_button_pressed"]
 [connection signal="pressed" from="UI/Upgrade Menu/Upgrade Panel/Play Button" to="UI/Upgrade Menu" method="_on_play_button_pressed"]
 [connection signal="pressed" from="UI/Pause Menu/Background Button" to="UI/Pause Menu" method="_on_background_button_pressed"]
 [connection signal="pressed" from="UI/Pause Menu/Pause Panel/Upgrades Button" to="UI/Upgrade Menu" method="_on_upgrades_button_pressed"]
