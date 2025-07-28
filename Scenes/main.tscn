@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://bbmuup40yufp3" path="res://Scripts/player_manager.gd" id="2_kry3j"]
 [ext_resource type="Script" uid="uid://b87cshw4c77pp" path="res://Scripts/spawn_manager.gd" id="3_fdnlq"]
 [ext_resource type="PackedScene" uid="uid://djxsfkro6ge2v" path="res://Scenes/player.tscn" id="3_jjvhh"]
-[ext_resource type="Script" path="res://Scripts/spawn_timer.gd" id="4_u50mg"]
+[ext_resource type="Script" uid="uid://dbc1bmrhtrcnx" path="res://Scripts/spawn_timer.gd" id="4_u50mg"]
 [ext_resource type="Texture2D" uid="uid://cqf0b67vpg8g6" path="res://Sprites/cloud.png" id="5_6bp64"]
 [ext_resource type="Script" uid="uid://cxc85ab32ix3i" path="res://Scripts/movement_component.gd" id="6_21xkr"]
 [ext_resource type="Script" uid="uid://dfi8p01y35ir5" path="res://Scenes/reset_component.gd" id="9_kltya"]
@@ -14,7 +14,7 @@
 [ext_resource type="Script" uid="uid://dmrdpj8mbjea5" path="res://Scripts/speedometer.gd" id="11_6iyac"]
 [ext_resource type="Script" uid="uid://s1rr3mqw6mx2" path="res://Scripts/cash_counter.gd" id="11_d1ilt"]
 [ext_resource type="Script" uid="uid://401mdwvvdsv7" path="res://Scripts/thrust_bar.gd" id="12_6iyac"]
-[ext_resource type="Script" uid="uid://b5s11hbsrdm7g" path="res://Scripts/distance_tracker.gd" id="12_wsu2k"]
+[ext_resource type="Script" path="res://Scripts/distance_tracker.gd" id="12_wsu2k"]
 [ext_resource type="PackedScene" uid="uid://cilvhmx2uiuym" path="res://Scenes/bird.tscn" id="13_fdnlq"]
 [ext_resource type="Texture2D" uid="uid://cfn0ej3biauv8" path="res://Sprites/Buttons/pause_button.png" id="15_k12tt"]
 [ext_resource type="Script" uid="uid://ik1aq0btjwrp" path="res://Scripts/upgrade_menu.gd" id="16_gt3je"]
@@ -77,45 +77,6 @@ outline_color = Color(0.439216, 0.145098, 0.14902, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e08e2"]
 bg_color = Color(0, 0, 0, 0.588235)
 
-[sub_resource type="Animation" id="Animation_neg2b"]
-resource_name = "show_menu"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Death Panel:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Panel:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_r33sp"]
 length = 0.001
 tracks/0/type = "value"
@@ -168,6 +129,45 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_neg2b"]
+resource_name = "show_menu"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Death Panel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jwpg7"]
@@ -455,6 +455,13 @@ position = Vector2(960, 540)
 z_index = 10
 position = Vector2(960, 540)
 speed = 700
+
+[node name="ThrustSound" type="FmodEventEmitter2D" parent="Player"]
+event_name = "event:/Thrust"
+event_guid = "{31867624-78ca-4b30-b869-2b8d8d6b43e8}"
+fmod_parameters/Panning/id = 4376713049390549596
+fmod_parameters/Panning = -50.0
+fmod_parameters/Panning/variant_type = 3
 
 [node name="Clouds2" type="Node2D" parent="."]
 modulate = Color(0.897915, 0.920017, 0.986546, 1)
@@ -1071,11 +1078,22 @@ texture_hover = ExtResource("18_hibaj")
 texture_disabled = ExtResource("18_hibaj")
 texture_focused = ExtResource("18_hibaj")
 
+[node name="Pause" type="FmodEventEmitter2D" parent="UI/Pause Menu"]
+event_name = "event:/Button1"
+event_guid = "{07c14ecb-398a-43d6-8373-147c1de0399a}"
+
+[node name="Unpause" type="FmodEventEmitter2D" parent="UI/Pause Menu"]
+event_name = "event:/Button2"
+event_guid = "{ed3ca5d1-4148-4c78-9759-9d07cd46942f}"
+
 [node name="Bird" parent="." instance=ExtResource("13_fdnlq")]
 position = Vector2(1424, -108)
 
 [node name="Airplane" parent="." instance=ExtResource("21_pdsj5")]
 position = Vector2(1655, -406)
+
+[node name="FmodBankLoader" type="FmodBankLoader" parent="."]
+bank_paths = ["res://Banks/Master.strings.bank", "res://Banks/Master.bank", "res://Banks/SFX.bank"]
 
 [connection signal="pressed" from="UI/Ingame GUI/Pause Button" to="UI/Pause Menu" method="_on_pause_button_pressed"]
 [connection signal="pressed" from="UI/Death Menu/Death Panel/Restart Button" to="UI/Death Menu" method="_on_restart_button_pressed"]

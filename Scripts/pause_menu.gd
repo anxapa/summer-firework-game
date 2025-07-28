@@ -27,11 +27,12 @@ func _process(_delta: float) -> void:
 func pause() -> void:
 	GameManager.current_game_state = GameManager.GameStates.PAUSED
 	animation_player.play("on_pause")
+	$Pause.play_one_shot()
 	get_tree().paused = true
 
 func unpause() -> void:
 	animation_player.play("unpause")
-	
+	$Unpause.play_one_shot()
 	# Different functionality depending on Game state
 	match GameManager.current_game_state:
 		GameManager.GameStates.PAUSED:

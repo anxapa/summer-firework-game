@@ -77,7 +77,9 @@ func movement(delta: float) -> void:
 	# Put velocity y into scroll speed
 	scroll_speed = velocity.y
 	velocity.y = 0
-	
+	if GameManager.current_game_state == GameManager.GameStates.GAME:
+		$ThrustSound.play(false)
+		
 	move_and_slide()
 
 func apply_gravity(delta: float) -> void:
