@@ -61,6 +61,11 @@ func buy_current_upgrade() -> void:
 	select_upgrade(selected_upgrade)
 
 func open_upgrade_panel() -> void:
+	# Deselect on enter
+	deselect_upgrade(selected_upgrade)
+	selected_upgrade = null
+	buy_button.disabled = true
+	
 	update_shop_contents()
 	animation_player.play("enter_menu")
 
