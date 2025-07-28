@@ -879,6 +879,21 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_pdsj5")
 
+[node name="Cash" type="Sprite2D" parent="UI/Upgrade Menu/Upgrade Panel"]
+position = Vector2(1537, 101)
+scale = Vector2(2, 2)
+texture = ExtResource("9_ynf5e")
+
+[node name="Cash Counter" type="Label" parent="UI/Upgrade Menu/Upgrade Panel"]
+offset_left = 1672.0
+offset_top = 72.0
+offset_right = 1857.0
+offset_bottom = 166.0
+text = "000"
+label_settings = SubResource("LabelSettings_d1ilt")
+vertical_alignment = 1
+script = ExtResource("11_d1ilt")
+
 [node name="Pause Button" type="TextureButton" parent="UI/Upgrade Menu/Upgrade Panel"]
 layout_mode = 1
 anchors_preset = -1
