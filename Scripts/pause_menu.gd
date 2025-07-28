@@ -25,10 +25,13 @@ func _process(_delta: float) -> void:
 				pause()
 
 func pause() -> void:
-	GameManager.current_game_state = GameManager.GameStates.PAUSED
 	animation_player.play("on_pause")
 	$Pause.play_one_shot()
 	get_tree().paused = true
+	
+	# Only change game state if it is unpaused
+	if GameManager.current_game_state == GameManager.GameStates.GAME:
+		GameManager.current_game_state = GameManager.GameStates.PAUSED
 
 func unpause() -> void:
 	animation_player.play("unpause")
