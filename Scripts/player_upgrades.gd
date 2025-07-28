@@ -19,8 +19,8 @@ static var current_upgrades : Array[int]
 
 # Max upgrades will be dependent on this
 static var upgrade_costs := [
-	[1, 10, 100], #THRUST,
-	[1, 10, 100], #THRUST_SPEED,
+	[1, 100, 500, 1000], #THRUST,
+	[20, 200, 1000], #THRUST_SPEED,
 	[100000, 1000000], #MAGNET,
 	[100000, 1000000], #TURN_SPEED,
 	[100000, 1000000], #LAUNCH_VELOCITY,

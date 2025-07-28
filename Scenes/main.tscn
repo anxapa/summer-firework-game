@@ -885,6 +885,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("9_ynf5e")
 
 [node name="Cash Counter" type="Label" parent="UI/Upgrade Menu/Upgrade Panel"]
+layout_mode = 0
 offset_left = 1672.0
 offset_top = 72.0
 offset_right = 1857.0

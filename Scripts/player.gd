@@ -133,6 +133,10 @@ func _on_game_start() -> void:
 	smoke_particles.emitting = true
 	death_particles.emitting = false
 	
+	# Apply upgrades
+	max_thrust = 2.5 * PlayerUpgrades.current_upgrades[PlayerUpgrades.UPGRADES.THRUST]
+	thrust_velocity = 500 + 250 * PlayerUpgrades.current_upgrades[PlayerUpgrades.UPGRADES.THRUST_SPEED]
+	
 	# Assign values at the start of the game
 	global_position = starting_position
 	current_thrust = max_thrust
@@ -143,6 +147,3 @@ func _on_game_start() -> void:
 	# Resets stats to not accumulate over multiple games
 	total_distance = 0
 	cash_collected = 0
-	
-	# Apply upgrades
-	
