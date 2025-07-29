@@ -32,6 +32,12 @@ func pause() -> void:
 	# Only change game state if it is unpaused
 	if GameManager.current_game_state == GameManager.GameStates.GAME:
 		GameManager.current_game_state = GameManager.GameStates.PAUSED
+	
+	# Disable some buttons depending on the game state
+	if GameManager.current_game_state == GameManager.GameStates.SHOP:
+		disable_button(upgrades_button)
+	else:
+		enable_button(upgrades_button)
 
 func unpause() -> void:
 	animation_player.play("unpause")
@@ -49,7 +55,7 @@ func go_to_upgrades() -> void:
 	animation_player.play("unpause")
 	get_tree().paused = true
 
-func enable_button(button: Button) -> void:
+func enable_button(button: BaseButton) -> void:
 	button.disabled = false
 	button.modulate = Color.WHITE
 

@@ -1,12 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://djxsfkro6ge2v"]
+[gd_scene load_steps=10 format=3 uid="uid://djxsfkro6ge2v"]
 
 [ext_resource type="Script" uid="uid://dtrgdva2l6xwf" path="res://Scripts/player.gd" id="1_cvnsp"]
-[ext_resource type="Texture2D" uid="uid://dyqsc2w2x5jdo" path="res://Sprites/firework.png" id="1_v0iea"]
-[ext_resource type="Texture2D" uid="uid://d25ksndy32pjk" path="res://Sprites/firework_cloud.png" id="2_6t5aa"]
+[ext_resource type="Texture2D" uid="uid://dyqsc2w2x5jdo" path="res://Sprites/Firework/firework.png" id="1_v0iea"]
+[ext_resource type="Texture2D" uid="uid://d25ksndy32pjk" path="res://Sprites/Firework/firework_cloud.png" id="2_6t5aa"]
 
 [sub_resource type="Curve" id="Curve_fkybt"]
 _data = [Vector2(0, 0.651685), 0.0, 0.0, 0, 0, Vector2(0.227273, 1), 0.0, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_6t5aa"]
+colors = PackedColorArray(0.768627, 1, 1, 0.47451, 1, 1, 1, 0)
 
 [sub_resource type="Curve" id="Curve_vgqql"]
 _data = [Vector2(0, 1), 0.0, -0.149561, 0, 1, Vector2(0.676136, 0.898876), -0.346068, -0.346068, 0, 0, Vector2(1, 0.449438), 0.0, 0.0, 0, 0]
@@ -18,7 +21,7 @@ _data = [Vector2(0, 0.011236), 0.0, 0.0, 0, 0, Vector2(0.102273, 1), 0.0, 0.0, 0
 point_count = 9
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f60y1"]
-size = Vector2(60, 116)
+size = Vector2(64, 124)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6t5aa"]
 radius = 48.0
@@ -40,7 +43,7 @@ initial_velocity_max = 500.0
 scale_amount_min = 2.0
 scale_amount_max = 4.0
 scale_amount_curve = SubResource("Curve_fkybt")
-color = Color(0.767888, 0.999273, 1, 0.47451)
+color_ramp = SubResource("Gradient_6t5aa")
 
 [node name="Death Particles" type="CPUParticles2D" parent="."]
 position = Vector2(0, -54)
@@ -62,6 +65,7 @@ hue_variation_max = 1.0
 hue_variation_curve = SubResource("Curve_6t5aa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_f60y1")
 
 [node name="MagnetArea" type="Area2D" parent="."]
@@ -71,5 +75,5 @@ shape = SubResource("CircleShape2D_6t5aa")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(-2.26498e-06, 0.125)
-scale = Vector2(2, 2)
+scale = Vector2(4, 4)
 texture = ExtResource("1_v0iea")

@@ -10,3 +10,7 @@ func _ready() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
 		(body as Player).apply_propulsion_velocity(-hit_velocity)
+		death()
+
+func death() -> void:
+	return

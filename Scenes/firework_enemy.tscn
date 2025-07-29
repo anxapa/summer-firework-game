@@ -1,0 +1,85 @@
+[gd_scene load_steps=11 format=3 uid="uid://f3fsxnirll72"]
+
+[ext_resource type="Texture2D" uid="uid://d25ksndy32pjk" path="res://Sprites/Firework/firework_cloud.png" id="1_2n8ga"]
+[ext_resource type="Script" uid="uid://br0eeraddmvvh" path="res://Scripts/firework_enemy.gd" id="1_d657c"]
+[ext_resource type="Texture2D" uid="uid://dsmhx3s8vnm21" path="res://Sprites/Firework/firework_body_gray.png" id="3_c0rrf"]
+[ext_resource type="Script" uid="uid://cxc85ab32ix3i" path="res://Scripts/movement_component.gd" id="3_d657c"]
+[ext_resource type="Texture2D" uid="uid://c5cd7uppif05s" path="res://Sprites/Firework/firework_strips.png" id="4_d657c"]
+
+[sub_resource type="Curve" id="Curve_dra34"]
+_data = [Vector2(0, 0.651685), 0.0, 0.0, 0, 0, Vector2(0.227273, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_rakp3"]
+colors = PackedColorArray(0.768627, 1, 1, 0.47451, 1, 1, 1, 0)
+
+[sub_resource type="Curve" id="Curve_ykd8e"]
+_data = [Vector2(0, 1), 0.0, -0.149561, 0, 1, Vector2(0.676136, 0.898876), -0.346068, -0.346068, 0, 0, Vector2(1, 0.449438), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_8teo4"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 0.011236), 0.0, 0.0, 0, 0, Vector2(0.102273, 1), 0.0, 0.0, 0, 0, Vector2(0.210227, 0.0561798), 0.0, 0.0, 0, 0, Vector2(0.335227, 0.977528), 0.0, 0.0, 0, 0, Vector2(0.460227, 0.0337079), 0.0, 0.0, 0, 0, Vector2(0.602273, 1), 0.0, 0.0, 0, 0, Vector2(0.75, 0.011236), 0.0, 0.0, 0, 0, Vector2(0.920455, 0.977528), 0.0, 0.0, 0, 0, Vector2(1, 0.011236), 0.0, 0.0, 0, 0]
+point_count = 9
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w6hyo"]
+size = Vector2(64, 124)
+
+[node name="Firework Enemy" type="Area2D"]
+z_index = 5
+script = ExtResource("1_d657c")
+hit_velocity = -200.0
+
+[node name="MovementComponent" type="Node2D" parent="."]
+script = ExtResource("3_d657c")
+movement_velocity = Vector2(0, -200)
+metadata/_custom_type_script = "uid://cxc85ab32ix3i"
+
+[node name="Smoke Particles" type="CPUParticles2D" parent="."]
+position = Vector2(0, 56)
+emitting = false
+amount = 20
+texture = ExtResource("1_2n8ga")
+local_coords = true
+direction = Vector2(0, 1)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 500.0
+initial_velocity_max = 500.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_dra34")
+color_ramp = SubResource("Gradient_rakp3")
+
+[node name="Death Particles" type="CPUParticles2D" parent="."]
+position = Vector2(0, -54)
+emitting = false
+amount = 100
+lifetime = 3.0
+one_shot = true
+explosiveness = 0.9
+local_coords = true
+spread = 180.0
+gravity = Vector2(0, 100)
+initial_velocity_min = 100.0
+initial_velocity_max = 250.0
+scale_amount_min = 20.0
+scale_amount_max = 20.0
+scale_amount_curve = SubResource("Curve_ykd8e")
+color = Color(0.929518, 0.591769, 0.198485, 1)
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+hue_variation_curve = SubResource("Curve_8teo4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_w6hyo")
+
+[node name="Firework Body Sprite" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0.658157, 0.769513, 1)
+position = Vector2(-2.26498e-06, 0.125)
+scale = Vector2(4, 4)
+texture = ExtResource("3_c0rrf")
+
+[node name="Firework Strips Sprite" type="Sprite2D" parent="Firework Body Sprite"]
+texture = ExtResource("4_d657c")
