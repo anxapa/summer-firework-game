@@ -354,7 +354,7 @@ bg_color = Color(0.855171, 0.492253, 0.24868, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_neg2b"]
 font = ExtResource("10_hptm8")
-font_size = 64
+font_size = 48
 font_color = Color(0.439216, 0.145098, 0.14902, 1)
 
 [sub_resource type="Animation" id="Animation_hibaj"]

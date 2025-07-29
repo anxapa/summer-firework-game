@@ -43,10 +43,12 @@ static var upgrade_names := [
 ]
 
 static var upgrade_descriptions := [
-	"", # THRUST,
-	"", # THRUST_SPEED,
-	"", # MAGNET,
-	"", # TURN_SPEED,
+	"Press [Spacebar] to activate thrust, giving you an extra boost!\n\n" + 
+			"Each upgrade gives 2.5s of thrust.", # THRUST,
+	"Upgrading this will make your thrust even more faster!", # THRUST_SPEED,
+	"This increases your collection radius, allowing you to collect from far away!", # MAGNET,
+	"Each upgrade of this will give you more horizontal speed, " + 
+			"allowing for more agile movements!", # TURN_SPEED,
 	"", # LAUNCH_VELOCITY,
 	"", # INVINCIBLE_THRUST,
 	"", # GUN,
