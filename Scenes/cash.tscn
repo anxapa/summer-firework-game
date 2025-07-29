@@ -22,4 +22,5 @@ shape = SubResource("RectangleShape2D_ua8r7")
 z_index = 5
 texture = ExtResource("1_ua8r7")
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

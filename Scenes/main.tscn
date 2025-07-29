@@ -36,7 +36,7 @@
 [sub_resource type="LabelSettings" id="LabelSettings_d1ilt"]
 line_spacing = 0.0
 font = ExtResource("10_hptm8")
-font_size = 100
+font_size = 80
 font_color = Color(0.834795, 0.874471, 0.961176, 1)
 outline_size = 25
 outline_color = Color(0.439216, 0.145098, 0.14902, 1)
@@ -461,7 +461,6 @@ position = Vector2(960, 540)
 [node name="Player" parent="." instance=ExtResource("3_jjvhh")]
 z_index = 10
 position = Vector2(960, 540)
-speed = 700
 
 [node name="ThrustSound" type="FmodEventEmitter2D" parent="Player"]
 event_name = "event:/Thrust"
@@ -549,16 +548,16 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Cash" type="Sprite2D" parent="UI/Ingame GUI"]
-position = Vector2(1576, 80)
+position = Vector2(1565, 80)
 scale = Vector2(2, 2)
 texture = ExtResource("9_ynf5e")
 
 [node name="Cash Counter" type="Label" parent="UI/Ingame GUI"]
 layout_mode = 0
-offset_left = 1705.0
-offset_top = 47.0
-offset_right = 1993.0
-offset_bottom = 141.0
+offset_left = 1689.0
+offset_top = 50.0
+offset_right = 1977.0
+offset_bottom = 144.0
 text = "000"
 label_settings = SubResource("LabelSettings_d1ilt")
 vertical_alignment = 1
@@ -886,9 +885,9 @@ texture = ExtResource("9_ynf5e")
 
 [node name="Cash Counter" type="Label" parent="UI/Upgrade Menu/Upgrade Panel"]
 layout_mode = 0
-offset_left = 1672.0
+offset_left = 1665.0
 offset_top = 72.0
-offset_right = 1857.0
+offset_right = 1850.0
 offset_bottom = 166.0
 text = "000"
 label_settings = SubResource("LabelSettings_d1ilt")

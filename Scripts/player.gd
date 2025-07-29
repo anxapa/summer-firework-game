@@ -5,10 +5,11 @@ class_name Player
 @onready var smoke_particles := $"Smoke Particles"
 @onready var death_particles := $"Death Particles"
 @onready var sprite := $Sprite
+@onready var magnet_shape := $"MagnetArea/CollisionShape2D"
 
 # Physics values
 @export var initial_velocity := 300.0
-@export var speed := 400
+var turn_speed := 400
 var starting_position : Vector2
 var propulsion_velocity : float
 var outside_velocity := Vector2.ZERO
@@ -53,6 +54,7 @@ func _physics_process(delta: float) -> void:
 	
 	apply_gravity(delta)
 	movement(delta)
+	clamp_position()
 	death_check()
 	update_particles()
 	
@@ -62,9 +64,9 @@ func movement(delta: float) -> void:
 	
 	# Moves in input direction. If no input direction, moves to the zero vector.
 	if direction:
-		velocity = direction * propulsion_velocity * 2
+		velocity = direction * propulsion_velocity * turn_speed
 	else:
-		velocity = velocity.move_toward(Vector2.ZERO, speed)
+		velocity = velocity.lerp(Vector2.ZERO, turn_speed * 10 * delta)
 	
 	# Add in outside velocity and propulsion velocity
 	velocity += outside_velocity
@@ -127,15 +129,29 @@ func update_particles() -> void:
 	# Sets the lifetime of the particle system
 	smoke_particles.lifetime = exp(-0.01 * propulsion_velocity + 3) + 1
 
+## Clamps the position of the player to stay within the screen
+func clamp_position() -> void:
+	var padding = 30
+	global_position.x = clampf(global_position.x, 0 + padding, 1920 - padding)
+
+## Applies upgrades on game start
+func apply_upgrades() -> void:
+	# THRUST
+	max_thrust = 2.5 * PlayerUpgrades.current_upgrades[PlayerUpgrades.UPGRADES.THRUST]
+	# THRUST SPEED
+	thrust_velocity = 500 + 250 * PlayerUpgrades.current_upgrades[PlayerUpgrades.UPGRADES.THRUST_SPEED]
+	# MAGNET
+	magnet_shape.shape.radius = 64 + 32 * PlayerUpgrades.current_upgrades[PlayerUpgrades.UPGRADES.MAGNET] 
+	# TURN_SPEED
+	turn_speed = 2 + 1 * PlayerUpgrades.current_upgrades[PlayerUpgrades.UPGRADES.TURN_SPEED]
+
 ## Resets values, and adds the upgrades on game start
 func _on_game_start() -> void:
 	# Makes sure the correct particle system is playing
 	smoke_particles.emitting = true
 	death_particles.emitting = false
 	
-	# Apply upgrades
-	max_thrust = 2.5 * PlayerUpgrades.current_upgrades[PlayerUpgrades.UPGRADES.THRUST]
-	thrust_velocity = 500 + 250 * PlayerUpgrades.current_upgrades[PlayerUpgrades.UPGRADES.THRUST_SPEED]
+	apply_upgrades()
 	
 	# Assign values at the start of the game
 	global_position = starting_position

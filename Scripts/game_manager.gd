@@ -7,7 +7,7 @@ var spawn_manager: Node2D
 var audio_manager: Node2D
 
 # Game stats
-var cash_collected := 10
+var cash_collected := 10000
 
 # Game states
 enum GameStates {

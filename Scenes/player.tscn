@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://djxsfkro6ge2v"]
+[gd_scene load_steps=9 format=3 uid="uid://djxsfkro6ge2v"]
 
 [ext_resource type="Script" uid="uid://dtrgdva2l6xwf" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://dyqsc2w2x5jdo" path="res://Sprites/firework.png" id="1_v0iea"]
@@ -19,6 +19,9 @@ point_count = 9
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f60y1"]
 size = Vector2(60, 116)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6t5aa"]
+radius = 64.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_cvnsp")
@@ -60,6 +63,11 @@ hue_variation_curve = SubResource("Curve_6t5aa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_f60y1")
+
+[node name="MagnetArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MagnetArea"]
+shape = SubResource("CircleShape2D_6t5aa")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(-2.26498e-06, 0.125)
