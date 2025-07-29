@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://dqghyyo32sn2y"]
+[gd_scene load_steps=64 format=3 uid="uid://dqghyyo32sn2y"]
 
 [ext_resource type="Texture2D" uid="uid://cwm7n0ajguj2x" path="res://Sprites/firework_bg.png" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://dsn6mefgy5ijk" path="res://Scripts/game_manager.gd" id="2_8gbba"]
@@ -31,6 +31,8 @@
 [ext_resource type="Texture2D" uid="uid://cvrkn1vg0b5d2" path="res://Sprites/Buttons/restart_symbol.png" id="22_7k868"]
 [ext_resource type="Texture2D" uid="uid://cw7e2th5plyec" path="res://Sprites/Buttons/upgrades_symbol.png" id="23_hpc6h"]
 [ext_resource type="Texture2D" uid="uid://bu6i1kenv8sq2" path="res://Sprites/Buttons/home_symbol.png" id="24_kltya"]
+[ext_resource type="Texture2D" uid="uid://c4v6yw1xfwnbq" path="res://Sprites/Buttons/play_symbol.png" id="26_e08e2"]
+[ext_resource type="Texture2D" uid="uid://c0lh4c1stuycm" path="res://Sprites/Buttons/buy_symbol.png" id="26_neg2b"]
 [ext_resource type="PackedScene" uid="uid://cb6a4b35ycmai" path="res://Scenes/upgrade_button.tscn" id="27_e08e2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d1ilt"]
@@ -349,6 +351,11 @@ outline_color = Color(0.439216, 0.145098, 0.14902, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ee4r6"]
 bg_color = Color(0.855171, 0.492253, 0.24868, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_neg2b"]
+font = ExtResource("10_hptm8")
+font_size = 64
+font_color = Color(0.439216, 0.145098, 0.14902, 1)
 
 [sub_resource type="Animation" id="Animation_hibaj"]
 length = 0.001
@@ -954,7 +961,7 @@ label_settings = SubResource("LabelSettings_kltya")
 
 [node name="Symbol" type="Sprite2D" parent="UI/Upgrade Menu/Upgrade Panel/Buy Button"]
 position = Vector2(52, 52)
-texture = ExtResource("24_kltya")
+texture = ExtResource("26_neg2b")
 
 [node name="Play Button" type="Button" parent="UI/Upgrade Menu/Upgrade Panel"]
 layout_mode = 1
@@ -997,8 +1004,8 @@ text = "Play"
 label_settings = SubResource("LabelSettings_kltya")
 
 [node name="Symbol" type="Sprite2D" parent="UI/Upgrade Menu/Upgrade Panel/Play Button"]
-position = Vector2(52, 52)
-texture = ExtResource("24_kltya")
+position = Vector2(52, 55.0001)
+texture = ExtResource("26_e08e2")
 
 [node name="Header" type="Label" parent="UI/Upgrade Menu/Upgrade Panel"]
 layout_mode = 1
@@ -1155,12 +1162,34 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [node name="Text Panel" type="Panel" parent="UI/Upgrade Menu/Upgrade Panel"]
-layout_mode = 0
-offset_left = 1362.0
-offset_top = 195.0
-offset_right = 1867.0
-offset_bottom = 844.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.709
+anchor_top = 0.181
+anchor_right = 0.972
+anchor_bottom = 0.781
+offset_left = 0.719849
+offset_top = -0.480011
+offset_right = 0.759888
+offset_bottom = 0.519958
 theme_override_styles/panel = SubResource("StyleBoxFlat_ee4r6")
+
+[node name="Description Label" type="Label" parent="UI/Upgrade Menu/Upgrade Panel/Text Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.032
+anchor_top = 0.028
+anchor_right = 0.968
+anchor_bottom = 0.975
+offset_left = 15.84
+offset_top = 13.828
+offset_right = -15.84
+offset_bottom = -17.775
+grow_horizontal = 2
+grow_vertical = 2
+text = "This is an upgrade description, potentially..."
+label_settings = SubResource("LabelSettings_neg2b")
+autowrap_mode = 3
 
 [node name="Pause Menu" type="Panel" parent="UI"]
 visible = false

@@ -4,6 +4,7 @@ extends Control
 @onready var animation_player := $AnimationPlayer
 @onready var upgrades_parent := $"Upgrade Panel/Upgrades"
 @onready var buy_button := $"Upgrade Panel/Buy Button"
+@onready var desc_label := $"Upgrade Panel/Text Panel/Description Label"
 var upgrades : Array[UpgradeButton]
 
 # Upgrade button selection
@@ -23,6 +24,7 @@ func select_upgrade(button: UpgradeButton) -> void:
 	deselect_upgrade(selected_upgrade)
 	selected_upgrade = button
 	button.select()
+	update_description()
 	
 	# Disable buy button if cost is not buyable
 	var upgrade = button.upgrade_type
@@ -51,6 +53,15 @@ func update_shop_contents() -> void:
 		if button.current_level == 0 and button.cost > GameManager.cash_collected:
 			button.disable(true)
 
+# Update the upgrade description depending on the selected upgrade
+func update_description() -> void:
+	# If there is no selected button, put placeholder text
+	if not selected_upgrade:
+		desc_label.text = "Click on an upgrade to see its effects!"
+		return
+	
+	desc_label.text = PlayerUpgrades.upgrade_descriptions[selected_upgrade.upgrade_type]
+
 # Buy upgrade
 func buy_current_upgrade() -> void:
 	var upgrade = selected_upgrade.upgrade_type
@@ -65,6 +76,7 @@ func open_upgrade_panel() -> void:
 	deselect_upgrade(selected_upgrade)
 	selected_upgrade = null
 	buy_button.disabled = true
+	update_description()
 	
 	update_shop_contents()
 	animation_player.play("enter_menu")

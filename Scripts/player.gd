@@ -141,7 +141,7 @@ func apply_upgrades() -> void:
 	# THRUST SPEED
 	thrust_velocity = 500 + 250 * PlayerUpgrades.current_upgrades[PlayerUpgrades.UPGRADES.THRUST_SPEED]
 	# MAGNET
-	magnet_shape.shape.radius = 64 + 32 * PlayerUpgrades.current_upgrades[PlayerUpgrades.UPGRADES.MAGNET] 
+	magnet_shape.shape.radius = 48 + 32 * PlayerUpgrades.current_upgrades[PlayerUpgrades.UPGRADES.MAGNET] 
 	# TURN_SPEED
 	turn_speed = 2 + 1 * PlayerUpgrades.current_upgrades[PlayerUpgrades.UPGRADES.TURN_SPEED]
 

@@ -42,6 +42,18 @@ static var upgrade_names := [
 	"Cash Diamond",
 ]
 
+static var upgrade_descriptions := [
+	"", # THRUST,
+	"", # THRUST_SPEED,
+	"", # MAGNET,
+	"", # TURN_SPEED,
+	"", # LAUNCH_VELOCITY,
+	"", # INVINCIBLE_THRUST,
+	"", # GUN,
+	"", # BOOST_ACCELERATION,
+	"", # CASH_DIAMOND,
+]
+
 static func initialize() -> void:
 	# Puts 0 in every upgrade slot to start
 	for n in UPGRADES.size():
