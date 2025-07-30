@@ -14,6 +14,8 @@ var starting_position : Vector2
 var propulsion_velocity : float
 var outside_velocity := Vector2.ZERO
 var scroll_speed : float
+# Player dies reaching this velocity
+var death_velocity := 100.0
 const GRAVITY := 10
 
 # Thrust
@@ -113,7 +115,7 @@ func thrust(delta: float) -> void:
 	apply_velocity(Vector2(0, -thrust_velocity))
 
 func death_check() -> void:
-	if propulsion_velocity < 100:
+	if propulsion_velocity < death_velocity:
 		death()
 
 ## Player dies

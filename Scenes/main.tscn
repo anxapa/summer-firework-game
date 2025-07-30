@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://dqghyyo32sn2y"]
+[gd_scene load_steps=67 format=3 uid="uid://dqghyyo32sn2y"]
 
 [ext_resource type="Texture2D" uid="uid://cwm7n0ajguj2x" path="res://Sprites/Firework/firework_bg.png" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://dsn6mefgy5ijk" path="res://Scripts/game_manager.gd" id="2_8gbba"]
@@ -42,6 +42,14 @@ line_spacing = 0.0
 font = ExtResource("10_hptm8")
 font_size = 80
 font_color = Color(0.834795, 0.874471, 0.961176, 1)
+outline_size = 25
+outline_color = Color(0.439216, 0.145098, 0.14902, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hdf80"]
+line_spacing = 0.0
+font = ExtResource("10_hptm8")
+font_size = 80
+font_color = Color(0.835294, 0.87451, 0.960784, 1)
 outline_size = 25
 outline_color = Color(0.439216, 0.145098, 0.14902, 1)
 
@@ -591,10 +599,13 @@ offset_top = 889.0
 offset_right = 1889.0
 offset_bottom = 1023.0
 text = " 0 m/s"
-label_settings = SubResource("LabelSettings_d1ilt")
+label_settings = SubResource("LabelSettings_hdf80")
 horizontal_alignment = 2
 vertical_alignment = 1
 script = ExtResource("11_6iyac")
+normal_color = Color(0.835294, 0.87451, 0.960784, 1)
+near_death_color = Color(0.964706, 0.878431, 0.439216, 1)
+death_color = Color(1, 0.290196, 0.341176, 1)
 
 [node name="Thrust Bar" type="ProgressBar" parent="UI/Ingame GUI"]
 layout_mode = 0
@@ -879,10 +890,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -6.0
-offset_top = -8.0
-offset_right = 1914.0
-offset_bottom = 1072.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 1900.0
+offset_bottom = 1060.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_pdsj5")
