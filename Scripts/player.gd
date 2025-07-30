@@ -22,6 +22,11 @@ const GRAVITY := 10
 @export var max_thrust := 2.5
 var current_thrust : float
 
+# Textures 
+@export_group("Textures")
+@export var normal_texture : Texture2D
+@export var boost_texture : Texture2D
+
 # States
 var is_thrusting := false
 var is_dead := false
@@ -45,13 +50,7 @@ func _physics_process(delta: float) -> void:
 	if is_dead:
 		return
 	
-	# Thrust handling
-	if Input.is_key_pressed(KEY_SPACE) and current_thrust > 0:
-		is_thrusting = true
-		thrust(delta)
-	else:
-		is_thrusting = false
-	
+	thrust_handling(delta)
 	apply_gravity(delta)
 	movement(delta)
 	clamp_position()
@@ -99,6 +98,16 @@ func apply_velocity(velocity: Vector2) -> void:
 func add_thrust(num: float) -> void:
 	current_thrust = move_toward(current_thrust, max_thrust, num)
 
+func thrust_handling(delta: float) -> void:
+	# Thrust handling
+	if Input.is_key_pressed(KEY_SPACE) and current_thrust > 0:
+		is_thrusting = true
+		thrust(delta)
+		sprite.texture = boost_texture
+	else:
+		is_thrusting = false
+		sprite.texture = normal_texture
+
 func thrust(delta: float) -> void:
 	current_thrust = move_toward(current_thrust, 0, delta)
 	apply_velocity(Vector2(0, -thrust_velocity))
@@ -115,6 +124,7 @@ func death() -> void:
 	death_particles.emitting = true
 	sprite.visible = false
 	is_dead = true
+	set_collision_layer_value(1, false) # Disable collisions
 	
 	await get_tree().create_timer(3.0).timeout
 	SignalBus.emit_signal("player_death")
@@ -162,6 +172,7 @@ func _on_game_start() -> void:
 	propulsion_velocity = initial_velocity
 	sprite.visible = true
 	is_dead = false
+	set_collision_layer_value(1, true) # Allow for collisions
 	
 	# Resets stats to not accumulate over multiple games
 	total_distance = 0

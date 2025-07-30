@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://b80ecmvlcrmyu"]
+
+[ext_resource type="Script" uid="uid://cxc85ab32ix3i" path="res://Scripts/movement_component.gd" id="1_ikuje"]
+[ext_resource type="Script" uid="uid://d4idcyieoean8" path="res://Scripts/enemy.gd" id="1_uqv0e"]
+[ext_resource type="Texture2D" uid="uid://ck3ln8wjfslve" path="res://Sprites/hot_air_balloon.png" id="2_hi46t"]
+[ext_resource type="Script" uid="uid://dfi8p01y35ir5" path="res://Scripts/reset_component.gd" id="2_uqv0e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uqv0e"]
+radius = 144.087
+
+[node name="BalloonEnemy" type="Area2D"]
+z_index = 5
+script = ExtResource("1_uqv0e")
+hit_velocity = 500.0
+metadata/_custom_type_script = "uid://d4idcyieoean8"
+
+[node name="MovementComponent" type="Node2D" parent="."]
+script = ExtResource("1_ikuje")
+metadata/_custom_type_script = "uid://cxc85ab32ix3i"
+
+[node name="ResetComponent" type="Node2D" parent="."]
+script = ExtResource("2_uqv0e")
+metadata/_custom_type_script = "uid://dfi8p01y35ir5"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -34)
+shape = SubResource("CircleShape2D_uqv0e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("2_hi46t")
