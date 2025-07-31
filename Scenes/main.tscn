@@ -520,6 +520,10 @@ event_name = "event:/ShopMusic"
 event_guid = "{8f5e5134-fe03-4d6c-bac5-e6a8526a53d7}"
 process_mode = 3
 
+[node name="Play Sound" type="FmodEventEmitter2D" parent="Managers/Audio Manager"]
+event_name = "event:/Button3"
+event_guid = "{e8b16145-1cc2-4c09-9bcb-1c2455ab0a82}"
+
 [node name="Camera2D" type="Camera2D" parent="."]
 z_index = 100
 position = Vector2(960, 540)
