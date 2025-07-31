@@ -104,7 +104,7 @@ func apply_propulsion_velocity(velocity: float) -> void:
 	if velocity > 0:
 		velocity *= boost_multiplier
 	# Negative velocity is deceleration from enemies
-	else:
+	if velocity < 0 and is_thrusting:
 		velocity *= hurt_multiplier
 	
 	propulsion_velocity += velocity
@@ -177,7 +177,7 @@ func apply_upgrades() -> void:
 	# LAUNCH VELOCITY
 	initial_velocity = 300.0 + 100.0 * PlayerUpgrades.current_upgrades[PlayerUpgrades.UPGRADES.LAUNCH_VELOCITY]
 	# INVINCIBILITY THRUST
-	hurt_multiplier = pow(0.5, PlayerUpgrades.current_upgrades[PlayerUpgrades.UPGRADES.INVINCIBLE_THRUST])
+	hurt_multiplier = 0.5 - 0.25 * PlayerUpgrades.current_upgrades[PlayerUpgrades.UPGRADES.INVINCIBLE_THRUST]
 	# BOOST ACCELERATION
 	boost_multiplier = 1.0 + 0.25 * PlayerUpgrades.current_upgrades[PlayerUpgrades.UPGRADES.BOOST_ACCELERATION]
 

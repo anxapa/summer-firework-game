@@ -1,0 +1,73 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvabdr4a0yy7v"]
+
+[ext_resource type="PackedScene" uid="uid://cilvhmx2uiuym" path="res://Scenes/bird.tscn" id="1_djg4b"]
+[ext_resource type="PackedScene" uid="uid://du4xkv4rwaw7d" path="res://Scenes/cash.tscn" id="2_6ft8x"]
+
+[node name="Bird Pattern" type="Node2D"]
+
+[node name="Bird" parent="." instance=ExtResource("1_djg4b")]
+position = Vector2(538, -524)
+
+[node name="Bird8" parent="." instance=ExtResource("1_djg4b")]
+position = Vector2(538, -900)
+
+[node name="Bird2" parent="." instance=ExtResource("1_djg4b")]
+position = Vector2(424, -581)
+
+[node name="Bird7" parent="." instance=ExtResource("1_djg4b")]
+position = Vector2(424, -834)
+
+[node name="Bird3" parent="." instance=ExtResource("1_djg4b")]
+position = Vector2(314, -647)
+
+[node name="Bird6" parent="." instance=ExtResource("1_djg4b")]
+position = Vector2(314, -773)
+
+[node name="Bird4" parent="." instance=ExtResource("1_djg4b")]
+position = Vector2(197, -713)
+
+[node name="Bird9" parent="." instance=ExtResource("1_djg4b")]
+position = Vector2(-1386, -1152)
+h_flip = true
+
+[node name="Bird10" parent="." instance=ExtResource("1_djg4b")]
+position = Vector2(-1386, -1528)
+h_flip = true
+
+[node name="Bird11" parent="." instance=ExtResource("1_djg4b")]
+position = Vector2(-1279, -1209)
+h_flip = true
+
+[node name="Bird12" parent="." instance=ExtResource("1_djg4b")]
+position = Vector2(-1279, -1462)
+h_flip = true
+
+[node name="Bird13" parent="." instance=ExtResource("1_djg4b")]
+position = Vector2(-1184, -1275)
+h_flip = true
+
+[node name="Bird14" parent="." instance=ExtResource("1_djg4b")]
+position = Vector2(-1184, -1401)
+h_flip = true
+
+[node name="Bird16" parent="." instance=ExtResource("1_djg4b")]
+position = Vector2(-1051, -1337)
+h_flip = true
+
+[node name="Cash" parent="." instance=ExtResource("2_6ft8x")]
+position = Vector2(-499, -613)
+
+[node name="Cash2" parent="." instance=ExtResource("2_6ft8x")]
+position = Vector2(-439, -753)
+
+[node name="Cash3" parent="." instance=ExtResource("2_6ft8x")]
+position = Vector2(-347, -909)
+
+[node name="Cash4" parent="." instance=ExtResource("2_6ft8x")]
+position = Vector2(-230, -1051)
+
+[node name="Cash5" parent="." instance=ExtResource("2_6ft8x")]
+position = Vector2(-129, -1210)
+
+[node name="Cash6" parent="." instance=ExtResource("2_6ft8x")]
+position = Vector2(-129, -1362)

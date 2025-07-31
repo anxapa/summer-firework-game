@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dcgajalxovs5u"]
 
-[ext_resource type="Script" uid="uid://d4idcyieoean8" path="res://Scripts/enemy.gd" id="1_cmvah"]
+[ext_resource type="Script" uid="uid://cw5yo5tipfvrd" path="res://Scripts/airplane.gd" id="1_bqnni"]
 [ext_resource type="Texture2D" uid="uid://6ob6ewi0v2lj" path="res://Sprites/airplane.png" id="1_fl04u"]
 [ext_resource type="Script" uid="uid://dfi8p01y35ir5" path="res://Scripts/reset_component.gd" id="2_18kh8"]
 [ext_resource type="Script" uid="uid://cxc85ab32ix3i" path="res://Scripts/movement_component.gd" id="2_bqnni"]
@@ -10,8 +10,8 @@ size = Vector2(383, 90)
 
 [node name="Airplane" type="Area2D"]
 z_index = 5
-script = ExtResource("1_cmvah")
-hit_velocity = 200.0
+script = ExtResource("1_bqnni")
+hit_velocity = 150.0
 
 [node name="ResetComponent" type="Node2D" parent="."]
 script = ExtResource("2_18kh8")

@@ -43,7 +43,7 @@ static var upgrade_names := [
 ]
 
 static var upgrade_descriptions := [
-	"Press [Spacebar] to activate thrust, giving you an extra boost!\n\n" + 
+	"Press [Spacebar] to activate thrust, giving you an extra boost and makes enemies hit less!\n\n" + 
 			"Each upgrade gives 2.5s of thrust.", # THRUST,
 	"Upgrading this will make your thrust even more faster!", # THRUST_SPEED,
 	"This increases your collection radius, allowing you to collect from far away!", # MAGNET,
@@ -52,8 +52,8 @@ static var upgrade_descriptions := [
 	"Adds more initial velocity to your ascent! \n\n" +
 			"Each upgrade adds 100m\\s to your initial velocity", # LAUNCH_VELOCITY,
 	"With this upgrade, obstacles will no longer be a problem for you.\n\n" +
-			"Each upgrade halves the damage you take from obstacles!", # INVINCIBLE_THRUST,
-	"", # GUN,
+			"Each upgrade reduces damage you take from obstacles while thrusting!", # INVINCIBLE_THRUST,
+	"...", # GUN,
 	"Fellow fireworks will help you more!\n\n" +
 			"Each upgrade adds 25% more boost from fireworks.", # BOOST_ACCELERATION,
 	"Has a chance of turning your cash to diamonds! \n\n" +

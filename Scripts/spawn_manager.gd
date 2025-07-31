@@ -24,6 +24,7 @@ var p_y_max := 3
 @onready var rocket_spawner := $"Rocket Spawner"
 @onready var cloud_spawner := $"Cloud Spawner"
 @onready var cloud2_spawner := $"Cloud2 Spawner"
+@onready var enemy_spawner := $"Enemy Spawner"
 
 func _ready() -> void:
 	GameManager.spawn_manager = self
@@ -40,6 +41,7 @@ func _ready() -> void:
 # ... I think all of these need to be scrapped
 func _process(delta: float) -> void:
 	rocket_spawner.spawn()
+	enemy_spawner.spawn()
 	
 	# Spawns cloud until the cutoff
 	if -player_manager.player.total_distance < cloud_cutoff_distance:
@@ -59,5 +61,3 @@ func get_random_position(margin := 200.0) -> Vector2:
 	var new_position := Vector2(randf_range(margin, viewport_size.x - margin), -margin)
 	
 	return new_position
-	
-	

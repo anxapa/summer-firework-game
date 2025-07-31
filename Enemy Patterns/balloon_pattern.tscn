@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://3jnpx4xlnqk7"]
+
+[ext_resource type="Script" uid="uid://b6gayl1xqvnj1" path="res://Scripts/parent_reset_component.gd" id="1_fj7fj"]
+[ext_resource type="PackedScene" uid="uid://b80ecmvlcrmyu" path="res://Scenes/balloon_enemy.tscn" id="1_vts8c"]
+
+[node name="Balloon Pattern" type="Node2D"]
+
+[node name="ParentResetComponent" type="Node2D" parent="." node_paths=PackedStringArray("parent_node")]
+script = ExtResource("1_fj7fj")
+parent_node = NodePath("../Balloons")
+metadata/_custom_type_script = "uid://b6gayl1xqvnj1"
+
+[node name="Balloons" type="Node2D" parent="."]
+
+[node name="BalloonEnemy3" parent="Balloons" instance=ExtResource("1_vts8c")]
+position = Vector2(1265, -851)
+
+[node name="BalloonEnemy5" parent="Balloons" instance=ExtResource("1_vts8c")]
+position = Vector2(581, -1182)
+
+[node name="BalloonEnemy8" parent="Balloons" instance=ExtResource("1_vts8c")]
+position = Vector2(323, -1596)
+
+[node name="BalloonEnemy6" parent="Balloons" instance=ExtResource("1_vts8c")]
+position = Vector2(1519, -1257)
+
+[node name="BalloonEnemy9" parent="Balloons" instance=ExtResource("1_vts8c")]
+position = Vector2(1539, -2071)
+
+[node name="BalloonEnemy10" parent="Balloons" instance=ExtResource("1_vts8c")]
+position = Vector2(311, -2106)
+
+[node name="BalloonEnemy7" parent="Balloons" instance=ExtResource("1_vts8c")]
+position = Vector2(1013, -1711)
+
+[node name="BalloonEnemy2" parent="Balloons" instance=ExtResource("1_vts8c")]
+position = Vector2(379, -268)

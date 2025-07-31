@@ -1,17 +1,13 @@
 extends Enemy
 
 ## For linear movement.
-@export var movement_velocity := Vector2(-100, 0)
+@export var movement_velocity := Vector2(-300, 0)
 @export var h_flip := false
-@onready var animation_player := $AnimationPlayer
 @onready var movement_component := $MovementComponent
-@onready var sprite := $Sprite2D
+@onready var sprite := $Airplane
 
 func _ready() -> void:
 	super._ready()
-	
-	# Plays animation for bird flight 
-	animation_player.play("flight")
 
 	# Flips the bird if it is enabled
 	if h_flip:

@@ -1,9 +1,10 @@
 extends Node2D
+class_name DistanceSpawner
 
 @onready var player := GameManager.player_manager.player
 var spawn_manager : SpawnManager
 ## Scene to spawn
-@export var scene : PackedScene
+@export var scene : Array[PackedScene]
 ## Parent to attach spawned scenes
 @export var parent : Node2D
 
@@ -26,7 +27,7 @@ func spawn() -> void:
 	var total_distance = -player.total_distance
 	
 	if total_distance > distance_since_spawn:
-		var child = scene.instantiate()
+		var child = scene.pick_random().instantiate()
 		parent.add_child(child)
 		child.global_position = spawn_manager.get_random_position()
 		print_debug("Spawned at: x: %d, y:%d" % [child.global_position.x, child.global_position.y])
