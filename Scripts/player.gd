@@ -33,6 +33,11 @@ var hurt_multiplier := 1.0
 @export var normal_texture : Texture2D
 @export var boost_texture : Texture2D
 
+# Sounds
+@onready var thrust_sound := $"Sounds/ThrustSound"
+@onready var diamond_sound := $"Sounds/DiamondSound"
+@onready var coin_sound := $"Sounds/CoinSound"
+
 # States
 var is_thrusting := false
 var is_dead := false
@@ -86,8 +91,8 @@ func movement(delta: float) -> void:
 	velocity.y = 0
 
 	if GameManager.current_game_state == GameManager.GameStates.GAME:
-		$ThrustSound.set_parameter("Panning", (global_position.x - 960)/19.2)
-		$ThrustSound.play(false)
+		thrust_sound.set_parameter("Panning", (global_position.x - 960)/19.2)
+		thrust_sound.play(false)
 	
 	move_and_slide()
 

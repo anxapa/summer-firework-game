@@ -488,13 +488,6 @@ position = Vector2(960, 540)
 z_index = 10
 position = Vector2(960, 540)
 
-[node name="ThrustSound" type="FmodEventEmitter2D" parent="Player"]
-event_name = "event:/Thrust"
-event_guid = "{31867624-78ca-4b30-b869-2b8d8d6b43e8}"
-fmod_parameters/Panning/id = 4376713049390549596
-fmod_parameters/Panning = -50.0
-fmod_parameters/Panning/variant_type = 3
-
 [node name="Clouds2" type="Node2D" parent="."]
 modulate = Color(0.897915, 0.920017, 0.986546, 1)
 position = Vector2(551, 596)
@@ -917,6 +910,20 @@ offset_bottom = 1060.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_pdsj5")
+
+[node name="Sounds" type="Node2D" parent="UI/Upgrade Menu/Upgrade Panel"]
+
+[node name="Shop Buy1 Sound" type="FmodEventEmitter2D" parent="UI/Upgrade Menu/Upgrade Panel/Sounds"]
+event_name = "event:/Shop1"
+event_guid = "{cf343810-8660-407e-8fcc-b7f8401e6c0b}"
+
+[node name="Shop Buy2 Sound" type="FmodEventEmitter2D" parent="UI/Upgrade Menu/Upgrade Panel/Sounds"]
+event_name = "event:/Shop2"
+event_guid = "{21f7fb08-cf40-4445-a39c-c21f4e715a03}"
+
+[node name="Shop Open Sound" type="FmodEventEmitter2D" parent="UI/Upgrade Menu/Upgrade Panel/Sounds"]
+event_name = "event:/ShopOpen"
+event_guid = "{8582432f-8ea9-45e4-9e0f-10a70f55fa9e}"
 
 [node name="Cash" type="Sprite2D" parent="UI/Upgrade Menu/Upgrade Panel"]
 position = Vector2(1537, 101)

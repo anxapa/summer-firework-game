@@ -7,6 +7,11 @@ extends Control
 @onready var desc_label := $"Upgrade Panel/Text Panel/Description Label"
 var upgrades : Array[UpgradeButton]
 
+# Sounds
+@onready var buy1_sound := $"Upgrade Panel/Sounds/Shop Buy1 Sound"
+@onready var buy2_sound := $"Upgrade Panel/Sounds/Shop Buy2 Sound"
+@onready var open_sound := $"Upgrade Panel/Sounds/Shop Open Sound"
+
 # Upgrade button selection
 var selected_upgrade : UpgradeButton
 
@@ -70,6 +75,14 @@ func buy_current_upgrade() -> void:
 	# Update shop & buy button
 	update_shop_contents()
 	select_upgrade(selected_upgrade)
+	
+	# Sound
+	# Buy1 sound - for upgrades that are not max level
+	if PlayerUpgrades.current_upgrades[upgrade] < PlayerUpgrades.get_max_upgrade_count(upgrade):
+		buy1_sound.play(true)
+	# Buy2 sound - for upgrades that are max level
+	else:
+		buy2_sound.play(true)
 
 func open_upgrade_panel() -> void:
 	# Deselect on enter
@@ -80,6 +93,7 @@ func open_upgrade_panel() -> void:
 	
 	update_shop_contents()
 	animation_player.play("enter_menu")
+	open_sound.play(true)
 
 func close_upgrade_panel() -> void:
 	animation_player.play("exit_menu")

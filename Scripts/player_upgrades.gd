@@ -81,8 +81,11 @@ static func increment_upgrade(upgrade: UPGRADES) -> bool:
 static func is_upgrade_buyable(upgrade: UPGRADES) -> bool:
 	# If the upgrade is maxed out, return false
 	var cost_array: Array = upgrade_costs[upgrade]
-	if current_upgrades[upgrade] >= upgrade_costs[upgrade].size():
+	if current_upgrades[upgrade] >= get_max_upgrade_count(upgrade):
 		return false
 	
 	var cost = cost_array[current_upgrades[upgrade]]
 	return cost <= GameManager.cash_collected
+
+static func get_max_upgrade_count(upgrade: UPGRADES) -> int:
+	return upgrade_costs[upgrade].size()

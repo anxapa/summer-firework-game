@@ -26,7 +26,7 @@ func update(upgrade: PlayerUpgrades.UPGRADES):
 	
 	# Assigning stats
 	current_level = PlayerUpgrades.current_upgrades[upgrade]
-	max_level = cost_array.size()
+	max_level = PlayerUpgrades.get_max_upgrade_count(upgrade)
 	# If upgrade is maxed out, then it cannot be bought anymore
 	if current_level == max_level:
 		cost = -1

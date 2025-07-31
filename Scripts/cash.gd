@@ -3,6 +3,7 @@
 class_name Cash 
 extends Area2D
 @export var cash_value := 1
+var is_diamond := false
 var starting_position
 # false indicates fixed spawn
 var spawned = false
@@ -30,10 +31,19 @@ func convert_to_diamond() -> void:
 	if randf() < diamond_chance:
 		sprite.texture = diamond_texture
 		cash_value *= 10
+		is_diamond = true
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.get_parent() is Player and visible:
 		GameManager.add_money(cash_value)
+		
+		# Sound effect played on player
+		var player := area.get_parent() as Player
+		if is_diamond:
+			player.diamond_sound.play(true)
+		else:
+			player.coin_sound.play(true)
+		
 		queue_free()
 
 #static func spawn(starting_position: Vector2) -> Cash:

@@ -80,3 +80,26 @@ shape = SubResource("CircleShape2D_6t5aa")
 position = Vector2(-2.26498e-06, 0.125)
 scale = Vector2(4, 4)
 texture = ExtResource("1_v0iea")
+
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="ThrustSound" type="FmodEventEmitter2D" parent="Sounds"]
+event_name = "event:/Thrust"
+event_guid = "{31867624-78ca-4b30-b869-2b8d8d6b43e8}"
+fmod_parameters/Panning/id = 4376713049390549596
+fmod_parameters/Panning = -50.0
+fmod_parameters/Panning/variant_type = 3
+fmod_parameters/Girth/id = 2705248742494598051
+fmod_parameters/Girth = 1.0
+fmod_parameters/Girth/variant_type = 3
+fmod_parameters/Thrusting/id = 1042496273269895678
+fmod_parameters/Thrusting = 0.0
+fmod_parameters/Thrusting/variant_type = 3
+
+[node name="DiamondSound" type="FmodEventEmitter2D" parent="Sounds"]
+event_name = "event:/Coin1"
+event_guid = "{9bfc265f-1462-418d-a93e-8e4ebf645559}"
+
+[node name="CoinSound" type="FmodEventEmitter2D" parent="Sounds"]
+event_name = "event:/Coin2"
+event_guid = "{57014ef5-bf26-409d-8df1-03bb95eba556}"
