@@ -90,9 +90,9 @@ func movement(delta: float) -> void:
 	scroll_speed = velocity.y
 	velocity.y = 0
 
-	if GameManager.current_game_state == GameManager.GameStates.GAME:
-		thrust_sound.set_parameter("Panning", (global_position.x - 960)/19.2)
-		thrust_sound.play(false)
+	#if GameManager.current_game_state == GameManager.GameStates.GAME:
+		#thrust_sound.set_parameter("Panning", (global_position.x - 960)/19.2)
+		#thrust_sound.play(false)
 	
 	move_and_slide()
 
