@@ -125,7 +125,7 @@ func thrust(delta: float) -> void:
 	apply_velocity(Vector2(0, -thrust_velocity))
 
 func death_check() -> void:
-	if propulsion_velocity < death_velocity:
+	if propulsion_velocity < death_velocity and not is_thrusting:
 		death()
 
 ## Player dies

@@ -2,7 +2,7 @@ extends Label
 
 func _process(delta: float) -> void:
 	# Changes the text if the cash is in the thousands or millions
-	var cash = GameManager.cash_collected
+	var cash : float = GameManager.cash_collected
 	
 	if cash > 1000000:
 		text = "%.1fm" % (cash / 1000000)
