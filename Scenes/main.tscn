@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://dqghyyo32sn2y"]
+[gd_scene load_steps=69 format=3 uid="uid://dqghyyo32sn2y"]
 
 [ext_resource type="Texture2D" uid="uid://m7j13uu5n81k" path="res://Sprites/Firework/firework_bg.png" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://dsn6mefgy5ijk" path="res://Scripts/game_manager.gd" id="2_8gbba"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://401mdwvvdsv7" path="res://Scripts/thrust_bar.gd" id="12_6iyac"]
 [ext_resource type="Script" uid="uid://b5s11hbsrdm7g" path="res://Scripts/distance_tracker.gd" id="12_wsu2k"]
 [ext_resource type="PackedScene" uid="uid://cilvhmx2uiuym" path="res://Scenes/bird.tscn" id="13_fdnlq"]
+[ext_resource type="Script" uid="uid://bkinl31dh0k68" path="res://Scripts/cash_multiplier.gd" id="13_jwpg7"]
 [ext_resource type="Texture2D" uid="uid://cfn0ej3biauv8" path="res://Sprites/Buttons/pause_button.png" id="15_k12tt"]
 [ext_resource type="Script" uid="uid://ik1aq0btjwrp" path="res://Scripts/upgrade_menu.gd" id="16_gt3je"]
 [ext_resource type="Texture2D" uid="uid://qqxaclcotr0u" path="res://Sprites/Buttons/home_button.png" id="16_h1bgf"]
@@ -41,6 +42,14 @@
 line_spacing = 0.0
 font = ExtResource("10_hptm8")
 font_size = 80
+font_color = Color(0.834795, 0.874471, 0.961176, 1)
+outline_size = 25
+outline_color = Color(0.439216, 0.145098, 0.14902, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jwpg7"]
+line_spacing = 0.0
+font = ExtResource("10_hptm8")
+font_size = 40
 font_color = Color(0.834795, 0.874471, 0.961176, 1)
 outline_size = 25
 outline_color = Color(0.439216, 0.145098, 0.14902, 1)
@@ -580,6 +589,17 @@ label_settings = SubResource("LabelSettings_d1ilt")
 vertical_alignment = 1
 script = ExtResource("11_d1ilt")
 
+[node name="Cash Multiplier" type="Label" parent="UI/Ingame GUI"]
+layout_mode = 0
+offset_left = 1624.0
+offset_top = 103.0
+offset_right = 1687.0
+offset_bottom = 155.0
+text = "x 1"
+label_settings = SubResource("LabelSettings_jwpg7")
+vertical_alignment = 1
+script = ExtResource("13_jwpg7")
+
 [node name="Distance Tracker" type="Label" parent="UI/Ingame GUI"]
 layout_mode = 0
 offset_left = 1457.0
@@ -890,10 +910,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -6.0
-offset_top = -8.0
-offset_right = 1914.0
-offset_bottom = 1072.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 1900.0
+offset_bottom = 1060.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_pdsj5")

@@ -33,8 +33,7 @@ func convert_to_diamond() -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.get_parent() is Player and visible:
-		GameManager.cash_collected += cash_value
-		(area.get_parent() as Player).cash_collected += cash_value
+		GameManager.add_money(cash_value)
 		queue_free()
 
 #static func spawn(starting_position: Vector2) -> Cash:

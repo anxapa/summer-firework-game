@@ -24,6 +24,10 @@ const GRAVITY := 10
 @export var max_thrust := 2.5
 var current_thrust : float
 
+# Upgrades
+var boost_multiplier := 1.0
+var hurt_multiplier := 1.0
+
 # Textures 
 @export_group("Textures")
 @export var normal_texture : Texture2D
@@ -91,6 +95,13 @@ func apply_gravity(delta: float) -> void:
 	propulsion_velocity = move_toward(propulsion_velocity, 1, GRAVITY * delta)
 
 func apply_propulsion_velocity(velocity: float) -> void:
+	# Positive velocity is boost from fireworks
+	if velocity > 0:
+		velocity *= boost_multiplier
+	# Negative velocity is deceleration from enemies
+	else:
+		velocity *= hurt_multiplier
+	
 	propulsion_velocity += velocity
 
 func apply_velocity(velocity: Vector2) -> void:
@@ -158,6 +169,12 @@ func apply_upgrades() -> void:
 	magnet_shape.shape.radius = 48 + 32 * PlayerUpgrades.current_upgrades[PlayerUpgrades.UPGRADES.MAGNET] 
 	# TURN_SPEED
 	turn_speed = 2 + 1 * PlayerUpgrades.current_upgrades[PlayerUpgrades.UPGRADES.TURN_SPEED]
+	# LAUNCH VELOCITY
+	initial_velocity = 300.0 + 100.0 * PlayerUpgrades.current_upgrades[PlayerUpgrades.UPGRADES.LAUNCH_VELOCITY]
+	# INVINCIBILITY THRUST
+	hurt_multiplier = pow(0.5, PlayerUpgrades.current_upgrades[PlayerUpgrades.UPGRADES.INVINCIBLE_THRUST])
+	# BOOST ACCELERATION
+	boost_multiplier = 1.0 + 0.25 * PlayerUpgrades.current_upgrades[PlayerUpgrades.UPGRADES.BOOST_ACCELERATION]
 
 ## Resets values, and adds the upgrades on game start
 func _on_game_start() -> void:

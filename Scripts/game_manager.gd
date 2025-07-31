@@ -26,3 +26,14 @@ func start_game() -> void:
 	# Signal for game start
 	current_game_state = GameStates.GAME
 	SignalBus.emit_signal("game_start")
+
+func add_money(money: int) -> void:
+	# Cash multiplier from distance
+	money *= get_cash_multiplier()
+	
+	cash_collected += money
+	player_manager.player.cash_collected += money
+
+func get_cash_multiplier() -> int:
+	return 1 + (int)(-player_manager.player.total_distance / 20)
+	

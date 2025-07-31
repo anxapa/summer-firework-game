@@ -24,9 +24,9 @@ static var upgrade_costs := [
 	[50, 750, 5000], #MAGNET,
 	[100, 1500, 5000], #TURN_SPEED,
 	[100, 2000, 5000, 10000], #LAUNCH_VELOCITY,
-	[10000, 100000], #INVINCIBLE_THRUST,
+	[500, 5000], #INVINCIBLE_THRUST,
 	[100000, 1000000], #GUN,
-	[100000, 1000000], #BOOST_ACCELERATION,
+	[500, 5000], #BOOST_ACCELERATION,
 	[100, 2000, 5000, 10000], #CASH_DIAMOND,
 	]
 
@@ -49,10 +49,13 @@ static var upgrade_descriptions := [
 	"This increases your collection radius, allowing you to collect from far away!", # MAGNET,
 	"Each upgrade of this will give you more horizontal speed, " + 
 			"allowing for more agile movements!", # TURN_SPEED,
-	"", # LAUNCH_VELOCITY,
-	"", # INVINCIBLE_THRUST,
+	"Adds more initial velocity to your ascent! \n\n" +
+			"Each upgrade adds 100m\\s to your initial velocity", # LAUNCH_VELOCITY,
+	"With this upgrade, obstacles will no longer be a problem for you.\n\n" +
+			"Each upgrade halves the damage you take from obstacles!", # INVINCIBLE_THRUST,
 	"", # GUN,
-	"", # BOOST_ACCELERATION,
+	"Fellow fireworks will help you more!\n\n" +
+			"Each upgrade adds 25% more boost from fireworks.", # BOOST_ACCELERATION,
 	"Has a chance of turning your cash to diamonds! \n\n" +
 			"Each upgrade gives 25% chance for the effect to occur.", # CASH_DIAMOND,
 ]
