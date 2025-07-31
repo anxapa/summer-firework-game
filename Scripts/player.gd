@@ -16,7 +16,7 @@ var outside_velocity := Vector2.ZERO
 var scroll_speed : float
 # Player dies reaching this velocity
 var death_velocity := 100.0
-const GRAVITY := 10
+var GRAVITY := 10
 
 # Thrust
 @export_group("Thrust")

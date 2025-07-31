@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://dqghyyo32sn2y"]
+[gd_scene load_steps=72 format=3 uid="uid://dqghyyo32sn2y"]
 
 [ext_resource type="Texture2D" uid="uid://m7j13uu5n81k" path="res://Sprites/Firework/firework_bg.png" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://dsn6mefgy5ijk" path="res://Scripts/game_manager.gd" id="2_8gbba"]
@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://b87cshw4c77pp" path="res://Scripts/spawn_manager.gd" id="3_fdnlq"]
 [ext_resource type="PackedScene" uid="uid://djxsfkro6ge2v" path="res://Scenes/player.tscn" id="3_jjvhh"]
 [ext_resource type="Script" uid="uid://cbwhngqdxrxga" path="res://Scripts/distance_spawner.gd" id="4_k2e45"]
-[ext_resource type="Script" path="res://Scripts/spawn_timer.gd" id="4_u50mg"]
+[ext_resource type="Script" uid="uid://dbc1bmrhtrcnx" path="res://Scripts/spawn_timer.gd" id="4_u50mg"]
 [ext_resource type="Script" uid="uid://cxc85ab32ix3i" path="res://Scripts/movement_component.gd" id="6_21xkr"]
 [ext_resource type="PackedScene" uid="uid://f3pmdyvqaw5a" path="res://Scenes/cloud.tscn" id="6_k2e45"]
 [ext_resource type="Script" uid="uid://phfw4l5fnhut" path="res://Scripts/audio_manager.gd" id="8_536cc"]
@@ -16,9 +16,9 @@
 [ext_resource type="Script" uid="uid://dmrdpj8mbjea5" path="res://Scripts/speedometer.gd" id="11_6iyac"]
 [ext_resource type="Script" uid="uid://s1rr3mqw6mx2" path="res://Scripts/cash_counter.gd" id="11_d1ilt"]
 [ext_resource type="Script" uid="uid://401mdwvvdsv7" path="res://Scripts/thrust_bar.gd" id="12_6iyac"]
-[ext_resource type="Script" uid="uid://b5s11hbsrdm7g" path="res://Scripts/distance_tracker.gd" id="12_wsu2k"]
+[ext_resource type="Script" path="res://Scripts/distance_tracker.gd" id="12_wsu2k"]
 [ext_resource type="PackedScene" uid="uid://cilvhmx2uiuym" path="res://Scenes/bird.tscn" id="13_fdnlq"]
-[ext_resource type="Script" uid="uid://bkinl31dh0k68" path="res://Scripts/cash_multiplier.gd" id="13_jwpg7"]
+[ext_resource type="Script" path="res://Scripts/cash_multiplier.gd" id="13_jwpg7"]
 [ext_resource type="Texture2D" uid="uid://cfn0ej3biauv8" path="res://Sprites/Buttons/pause_button.png" id="15_k12tt"]
 [ext_resource type="Script" uid="uid://ik1aq0btjwrp" path="res://Scripts/upgrade_menu.gd" id="16_gt3je"]
 [ext_resource type="Texture2D" uid="uid://qqxaclcotr0u" path="res://Sprites/Buttons/home_button.png" id="16_h1bgf"]
@@ -39,6 +39,7 @@
 [ext_resource type="PackedScene" uid="uid://cb6a4b35ycmai" path="res://Scenes/upgrade_button.tscn" id="27_e08e2"]
 [ext_resource type="PackedScene" uid="uid://f3fsxnirll72" path="res://Scenes/firework_enemy.tscn" id="35_r33sp"]
 [ext_resource type="PackedScene" uid="uid://b80ecmvlcrmyu" path="res://Scenes/balloon_enemy.tscn" id="36_hdf80"]
+[ext_resource type="Script" uid="uid://cflmouhd8qya4" path="res://Scripts/credits.gd" id="40_aqgau"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d1ilt"]
 line_spacing = 0.0
@@ -515,16 +516,19 @@ script = ExtResource("8_536cc")
 [node name="Overworld Music" type="FmodEventEmitter2D" parent="Managers/Audio Manager"]
 event_name = "event:/OverworldMusic"
 event_guid = "{fc1db03d-98ba-4ad5-82af-1f64faf83790}"
+volume = 0.3
 fmod_parameters/Ending/id = 8893632812959826794
 fmod_parameters/Ending = 0.0
 fmod_parameters/Ending/variant_type = 3
 fmod_parameters/Checkpoint/id = -3177232437866544158
-fmod_parameters/Checkpoint = 3.5
+fmod_parameters/Checkpoint = 0.0
 fmod_parameters/Checkpoint/variant_type = 3
 process_mode = 1
 
 [node name="Shop Music" type="FmodEventEmitter2D" parent="Managers/Audio Manager"]
+event_name = "event:/ShopMusic"
 event_guid = "{8f5e5134-fe03-4d6c-bac5-e6a8526a53d7}"
+volume = 0.3
 process_mode = 3
 
 [node name="Play Sound" type="FmodEventEmitter2D" parent="Managers/Audio Manager"]
@@ -1412,6 +1416,67 @@ position = Vector2(823, -907)
 
 [node name="BalloonEnemy" parent="." instance=ExtResource("36_hdf80")]
 position = Vector2(417, -510)
+
+[node name="Credits" type="Node2D" parent="." node_paths=PackedStringArray("background_mvmnt")]
+script = ExtResource("40_aqgau")
+background_mvmnt = NodePath("../Background/MovementComponent")
+
+[node name="Control" type="Control" parent="Credits"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Credits/Control"]
+layout_mode = 0
+offset_left = 629.0
+offset_top = 180.0
+offset_right = 1310.0
+offset_bottom = 227.0
+theme_override_fonts/font = ExtResource("10_hptm8")
+theme_override_font_sizes/font_size = 50
+text = "Thank you for playing our game!"
+
+[node name="Label2" type="Label" parent="Credits/Control"]
+offset_left = 1053.0
+offset_top = -410.0
+offset_right = 1734.0
+offset_bottom = -313.0
+theme_override_fonts/font = ExtResource("10_hptm8")
+theme_override_font_sizes/font_size = 50
+text = "Programmer
+Anxapa"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Credits/Control"]
+offset_left = 225.0
+offset_top = -857.0
+offset_right = 906.0
+offset_bottom = -740.0
+theme_override_fonts/font = ExtResource("10_hptm8")
+theme_override_font_sizes/font_size = 50
+text = "SFX
+A_Robin"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="Credits/Control"]
+offset_left = 974.0
+offset_top = -1281.0
+offset_right = 1655.0
+offset_bottom = -1164.0
+theme_override_fonts/font = ExtResource("10_hptm8")
+theme_override_font_sizes/font_size = 50
+text = "Art
+Anxapa"
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="Credits"]
+
+[node name="MovementComponent" type="Node2D" parent="Credits"]
+script = ExtResource("6_21xkr")
+scroll_magnitude = 0.0
+metadata/_custom_type_script = "uid://cxc85ab32ix3i"
 
 [connection signal="pressed" from="UI/Ingame GUI/Pause Button" to="UI/Pause Menu" method="_on_pause_button_pressed"]
 [connection signal="pressed" from="UI/Death Menu/Death Panel/Restart Button" to="UI/Death Menu" method="_on_restart_button_pressed"]
