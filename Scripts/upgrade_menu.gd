@@ -114,3 +114,6 @@ func _on_upgrade_pressed(button: UpgradeButton) -> void:
 
 func _on_buy_button_pressed() -> void:
 	buy_current_upgrade()
+
+func _on_home_button_pressed() -> void:
+	visible = false

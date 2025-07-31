@@ -1808,6 +1808,7 @@ metadata/_custom_type_script = "uid://cxc85ab32ix3i"
 [connection signal="pressed" from="UI/Upgrade Menu/Upgrade Panel/Buy Button" to="UI/Upgrade Menu" method="_on_buy_button_pressed"]
 [connection signal="pressed" from="UI/Upgrade Menu/Upgrade Panel/Play Button" to="UI/Upgrade Menu" method="_on_play_button_pressed"]
 [connection signal="pressed" from="UI/Pause Menu/Background Button" to="UI/Pause Menu" method="_on_background_button_pressed"]
+[connection signal="pressed" from="UI/Pause Menu/Pause Panel/Home Button" to="UI/Upgrade Menu" method="_on_home_button_pressed"]
 [connection signal="pressed" from="UI/Pause Menu/Pause Panel/Home Button" to="UI/Pause Menu" method="_on_home_button_pressed"]
 [connection signal="pressed" from="UI/Pause Menu/Pause Panel/Home Button" to="UI/Main Menu" method="_on_home_button_pressed"]
 [connection signal="pressed" from="UI/Pause Menu/Pause Panel/Upgrades Button" to="UI/Upgrade Menu" method="_on_upgrades_button_pressed"]
