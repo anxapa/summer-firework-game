@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cb6a4b35ycmai"]
+[gd_scene load_steps=10 format=3 uid="uid://cb6a4b35ycmai"]
 
 [ext_resource type="FontFile" uid="uid://c6dnwjcvpku5y" path="res://Fonts/Analog Whispers.ttf" id="1_47it6"]
 [ext_resource type="Script" uid="uid://pdla3quqq6do" path="res://Scripts/upgrade_button.gd" id="1_f5ow3"]
+[ext_resource type="Texture2D" uid="uid://bppha4mwjtos2" path="res://Sprites/Upgrade Logos/thrust_logo.png" id="3_ymg7c"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f5ow3"]
 bg_color = Color(0.76, 0.893, 0.95, 1)
@@ -141,6 +142,11 @@ text = "$ 10"
 label_settings = SubResource("LabelSettings_jwpg7")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(106, 100)
+scale = Vector2(4, 4)
+texture = ExtResource("3_ymg7c")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

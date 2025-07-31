@@ -14,6 +14,7 @@ var max_level : int
 @onready var progress_bar := $ProgressBar
 @onready var progress_label := $"Progress Label"
 @onready var cost_label := $"Cost Label"
+@onready var sprite := $Sprite2D
 
 # Modulate colors
 var normal_color := Color.LIGHT_GRAY
@@ -36,6 +37,7 @@ func update(upgrade: PlayerUpgrades.UPGRADES):
 	update_name(PlayerUpgrades.upgrade_names[upgrade])
 	update_progress_bar(current_level, max_level)
 	update_cost(cost)
+	update_logo(PlayerUpgrades.upgrade_logos[upgrade])
 	
 	upgrade_type = upgrade
 
@@ -59,6 +61,9 @@ func update_cost(cost: int) -> void:
 		cost_label.text = "$ %d" % cost
 	else:
 		cost_label.text = "$ %.1fk" % (cost / 1000)
+
+func update_logo(texture : Texture2D) -> void:
+	sprite.texture = texture
 
 func select() -> void:
 	modulate = selected_color

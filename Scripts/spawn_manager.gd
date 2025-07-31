@@ -5,6 +5,7 @@ extends Node2D
 @export var cloud_cutoff_distance := 20.0
 @onready var player_manager := GameManager.player_manager
 
+var disabled := false
 
 # Strange OFF_SCREEN constant to prevent animationPlayer flickering 
 const OFF_SCREEN_Y = 1080/2 + 312
@@ -40,6 +41,9 @@ func _ready() -> void:
 #
 # ... I think all of these need to be scrapped
 func _process(delta: float) -> void:
+	if disabled:
+		return
+	
 	rocket_spawner.spawn()
 	enemy_spawner.spawn()
 	
@@ -49,6 +53,9 @@ func _process(delta: float) -> void:
 		cloud2_spawner.spawn()
 
 func _spawn_cash() -> void:
+	if disabled:
+		return
+	
 	var p_y_distance := randf_range(p_y_min * player_manager.get_scroll_speed(), p_y_max * player_manager.get_scroll_speed())
 	var p_x_distance := 0
 	

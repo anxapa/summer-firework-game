@@ -10,9 +10,9 @@ enum UPGRADES {
 	TURN_SPEED,
 	LAUNCH_VELOCITY,
 	INVINCIBLE_THRUST,
-	GUN,
 	BOOST_ACCELERATION,
 	CASH_DIAMOND,
+	GUN,
 }
 
 static var current_upgrades : Array[int]
@@ -25,9 +25,9 @@ static var upgrade_costs := [
 	[100, 1500, 5000], #TURN_SPEED,
 	[100, 2000, 5000, 10000], #LAUNCH_VELOCITY,
 	[500, 5000], #INVINCIBLE_THRUST,
-	[100000, 1000000], #GUN,
 	[500, 5000], #BOOST_ACCELERATION,
 	[100, 2000, 5000, 10000], #CASH_DIAMOND,
+	[10000000, 100000000], #GUN,
 	]
 
 static var upgrade_names := [
@@ -37,9 +37,9 @@ static var upgrade_names := [
 	"Turn Speed",
 	"Launch Velocity",
 	"Invincible Thrust",
-	"Gun",
 	"Boost Acceleration",
 	"Cash Diamond",
+	"Gun",
 ]
 
 static var upgrade_descriptions := [
@@ -53,11 +53,24 @@ static var upgrade_descriptions := [
 			"Each upgrade adds 100m\\s to your initial velocity", # LAUNCH_VELOCITY,
 	"With this upgrade, obstacles will no longer be a problem for you.\n\n" +
 			"Each upgrade reduces damage you take from obstacles while thrusting!", # INVINCIBLE_THRUST,
-	"...", # GUN,
 	"Fellow fireworks will help you more!\n\n" +
 			"Each upgrade adds 25% more boost from fireworks.", # BOOST_ACCELERATION,
 	"Has a chance of turning your cash to diamonds! \n\n" +
 			"Each upgrade gives 25% chance for the effect to occur.", # CASH_DIAMOND,
+	"...", # GUN,
+]
+
+# Textures 
+static var upgrade_logos := [
+	load("res://Sprites/Upgrade Logos/thrust_logo.png"), #THRUST,
+	load("res://Sprites/Upgrade Logos/thrust_speed_logo.png"), # THRUST_SPEED,
+	load("res://Sprites/Upgrade Logos/magnet_logo.png"), # MAGNET,
+	load("res://Sprites/Upgrade Logos/turn_speed_logo.png"), # TURN_SPEED,
+	load("res://Sprites/Upgrade Logos/launch_velocity_logo.png"), # LAUNCH_VELOCITY,
+	load("res://Sprites/Upgrade Logos/invincible_thrust_logo.png"), # INVINCIBLE_THRUST,
+	load("res://Sprites/Upgrade Logos/boost_speed_logo.png"), # BOOST_ACCELERATION,
+	load("res://Sprites/Upgrade Logos/cash_diamond_logo.png"), # CASH_DIAMOND,
+	load("res://Sprites/Upgrade Logos/gun_logo.png"), # GUN,
 ]
 
 static func initialize() -> void:

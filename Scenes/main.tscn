@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://b87cshw4c77pp" path="res://Scripts/spawn_manager.gd" id="3_fdnlq"]
 [ext_resource type="PackedScene" uid="uid://djxsfkro6ge2v" path="res://Scenes/player.tscn" id="3_jjvhh"]
 [ext_resource type="Script" uid="uid://cbwhngqdxrxga" path="res://Scripts/distance_spawner.gd" id="4_k2e45"]
-[ext_resource type="Script" uid="uid://dbc1bmrhtrcnx" path="res://Scripts/spawn_timer.gd" id="4_u50mg"]
+[ext_resource type="Script" path="res://Scripts/spawn_timer.gd" id="4_u50mg"]
 [ext_resource type="Script" uid="uid://cxc85ab32ix3i" path="res://Scripts/movement_component.gd" id="6_21xkr"]
 [ext_resource type="PackedScene" uid="uid://f3pmdyvqaw5a" path="res://Scenes/cloud.tscn" id="6_k2e45"]
 [ext_resource type="Script" uid="uid://phfw4l5fnhut" path="res://Scripts/audio_manager.gd" id="8_536cc"]
@@ -16,9 +16,9 @@
 [ext_resource type="Script" uid="uid://dmrdpj8mbjea5" path="res://Scripts/speedometer.gd" id="11_6iyac"]
 [ext_resource type="Script" uid="uid://s1rr3mqw6mx2" path="res://Scripts/cash_counter.gd" id="11_d1ilt"]
 [ext_resource type="Script" uid="uid://401mdwvvdsv7" path="res://Scripts/thrust_bar.gd" id="12_6iyac"]
-[ext_resource type="Script" path="res://Scripts/distance_tracker.gd" id="12_wsu2k"]
+[ext_resource type="Script" uid="uid://b5s11hbsrdm7g" path="res://Scripts/distance_tracker.gd" id="12_wsu2k"]
 [ext_resource type="PackedScene" uid="uid://cilvhmx2uiuym" path="res://Scenes/bird.tscn" id="13_fdnlq"]
-[ext_resource type="Script" path="res://Scripts/cash_multiplier.gd" id="13_jwpg7"]
+[ext_resource type="Script" uid="uid://bkinl31dh0k68" path="res://Scripts/cash_multiplier.gd" id="13_jwpg7"]
 [ext_resource type="Texture2D" uid="uid://cfn0ej3biauv8" path="res://Sprites/Buttons/pause_button.png" id="15_k12tt"]
 [ext_resource type="Script" uid="uid://ik1aq0btjwrp" path="res://Scripts/upgrade_menu.gd" id="16_gt3je"]
 [ext_resource type="Texture2D" uid="uid://qqxaclcotr0u" path="res://Sprites/Buttons/home_button.png" id="16_h1bgf"]
@@ -1439,6 +1439,7 @@ theme_override_font_sizes/font_size = 50
 text = "Thank you for playing our game!"
 
 [node name="Label2" type="Label" parent="Credits/Control"]
+layout_mode = 0
 offset_left = 1053.0
 offset_top = -410.0
 offset_right = 1734.0
@@ -1450,6 +1451,7 @@ Anxapa"
 horizontal_alignment = 1
 
 [node name="Label3" type="Label" parent="Credits/Control"]
+layout_mode = 0
 offset_left = 225.0
 offset_top = -857.0
 offset_right = 906.0
@@ -1461,6 +1463,7 @@ A_Robin"
 horizontal_alignment = 1
 
 [node name="Label4" type="Label" parent="Credits/Control"]
+layout_mode = 0
 offset_left = 974.0
 offset_top = -1281.0
 offset_right = 1655.0

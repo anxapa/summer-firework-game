@@ -4,8 +4,10 @@ extends Node2D
 @onready var player = GameManager.player_manager.player
 var rolling := false
 
-func _physics_process(delta: float) -> void:
+func _ready() -> void:
 	SignalBus.game_start.connect(_on_game_start)
+
+func _physics_process(delta: float) -> void:
 	if GameManager.player_manager.player.total_distance < -50 and not rolling:
 		rolling = true
 		roll_credits()
@@ -17,8 +19,7 @@ func _physics_process(delta: float) -> void:
 # wow this is so cool
 func roll_credits() -> void:
 	background_mvmnt.scroll_magnitude = 0
-	GameManager.spawn_manager.process_mode = 4
-	GameManager.player_manager.player.GRAVITY = 0
+	GameManager.spawn_manager.disabled = true
 	$Control.visible = true
 	$Control.global_position.y = GameManager.player_manager.player.global_position.y - (1080/2 + 312)
 	$MovementComponent.scroll_magnitude = 0.2
@@ -28,6 +29,8 @@ func roll_credits() -> void:
 func _on_game_start() -> void:
 	$Control.global_position = Vector2(0, 0)
 	$Control.visible = false
+	$MovementComponent.scroll_magnitude = 0.0
+	GameManager.spawn_manager.disabled = false
 	rolling = false
 	background_mvmnt.scroll_magnitude = 0.05
 	
