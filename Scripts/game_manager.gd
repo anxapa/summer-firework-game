@@ -17,7 +17,7 @@ enum GameStates {
 	SHOP,
 }
 
-var current_game_state := GameStates.GAME
+var current_game_state := GameStates.MAIN_MENU
 
 func start_game() -> void:
 	# Makes sure the game is not paused

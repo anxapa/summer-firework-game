@@ -10,7 +10,6 @@ extends Panel
 
 func _ready() -> void:
 	# CRITICAL: Temporarily disabling the buttons not functionable yet
-	disable_button(home_button)
 	disable_button(settings_button)
 
 func _process(_delta: float) -> void:
@@ -53,7 +52,6 @@ func unpause() -> void:
 			get_tree().paused = true
 
 func go_to_upgrades() -> void:
-	GameManager.current_game_state = GameManager.GameStates.SHOP
 	animation_player.play("unpause")
 	print_debug("help")
 	get_tree().paused = true
@@ -80,3 +78,6 @@ func _on_pause_button_pressed() -> void:
 
 func _on_upgrades_button_pressed() -> void:
 	go_to_upgrades()
+
+func _on_home_button_pressed() -> void:
+	animation_player.play("unpause")

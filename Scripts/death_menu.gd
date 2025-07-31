@@ -36,3 +36,6 @@ func _on_restart_button_pressed() -> void:
 
 func _on_upgrades_button_pressed() -> void:
 	hide_death_menu()
+
+func _on_home_button_pressed() -> void:
+	hide_death_menu()

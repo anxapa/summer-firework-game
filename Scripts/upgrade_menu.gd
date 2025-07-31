@@ -85,6 +85,8 @@ func buy_current_upgrade() -> void:
 		buy2_sound.play(true)
 
 func open_upgrade_panel() -> void:
+	GameManager.current_game_state = GameManager.GameStates.SHOP
+	
 	# Deselect on enter
 	deselect_upgrade(selected_upgrade)
 	selected_upgrade = null

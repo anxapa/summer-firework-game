@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://dqghyyo32sn2y"]
+[gd_scene load_steps=80 format=3 uid="uid://dqghyyo32sn2y"]
 
 [ext_resource type="Texture2D" uid="uid://m7j13uu5n81k" path="res://Sprites/Firework/firework_bg.png" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://dsn6mefgy5ijk" path="res://Scripts/game_manager.gd" id="2_8gbba"]
@@ -39,7 +39,10 @@
 [ext_resource type="PackedScene" uid="uid://cb6a4b35ycmai" path="res://Scenes/upgrade_button.tscn" id="27_e08e2"]
 [ext_resource type="PackedScene" uid="uid://f3fsxnirll72" path="res://Scenes/firework_enemy.tscn" id="35_r33sp"]
 [ext_resource type="PackedScene" uid="uid://b80ecmvlcrmyu" path="res://Scenes/balloon_enemy.tscn" id="36_hdf80"]
+[ext_resource type="Texture2D" uid="uid://c7k3kw1xymtut" path="res://Sprites/firework_logo_transparent.png" id="40_8cuat"]
 [ext_resource type="Script" uid="uid://cflmouhd8qya4" path="res://Scripts/credits.gd" id="40_aqgau"]
+[ext_resource type="Script" uid="uid://4m51oavxy43" path="res://Scripts/main_menu.gd" id="40_kwxat"]
+[ext_resource type="Texture2D" uid="uid://vfum33osih8" path="res://Sprites/Buttons/exit_symbol.png" id="40_o1aky"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d1ilt"]
 line_spacing = 0.0
@@ -98,7 +101,7 @@ outline_color = Color(0.439216, 0.145098, 0.14902, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k12tt"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e08e2"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kwxat"]
 bg_color = Color(0, 0, 0, 0.588235)
 
 [sub_resource type="Animation" id="Animation_r33sp"]
@@ -460,7 +463,151 @@ _data = {
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hibaj"]
 bg_color = Color(0, 0, 0, 0.588235)
 
+[sub_resource type="Animation" id="Animation_kwxat"]
+resource_name = "play_menu"
+length = 60.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Background:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 60),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(960, -2120), Vector2(960, 3189)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:theme_override_styles/panel:bg_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 59, 60),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Ingame GUI:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_aa8k8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Background:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(960, -2120)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:theme_override_styles/panel:bg_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Ingame GUI:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_kqrg6"]
+resource_name = "exit_menu"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Ingame GUI:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kqrg6"]
+_data = {
+&"RESET": SubResource("Animation_aa8k8"),
+&"exit_menu": SubResource("Animation_kqrg6"),
+&"play_menu": SubResource("Animation_kwxat")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e08e2"]
+bg_color = Color(0, 0, 0, 1)
+
 [node name="Main Scene" type="Node2D"]
+
+[node name="FmodBankLoader" type="FmodBankLoader" parent="."]
+bank_paths = ["res://Banks/Master.strings.bank", "res://Banks/Master.bank", "res://Banks/SFX.bank", "res://Banks/Music.bank"]
 
 [node name="Managers" type="Node2D" parent="."]
 
@@ -718,7 +865,7 @@ offset_right = 960.0
 offset_bottom = 540.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_e08e2")
+theme_override_styles/panel = SubResource("StyleBoxFlat_kwxat")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Death Menu"]
 libraries = {
@@ -1402,20 +1549,180 @@ event_guid = "{07c14ecb-398a-43d6-8373-147c1de0399a}"
 event_name = "event:/Button2"
 event_guid = "{ed3ca5d1-4148-4c78-9759-9d07cd46942f}"
 
-[node name="Bird" parent="." instance=ExtResource("13_fdnlq")]
-position = Vector2(1424, -108)
+[node name="Main Menu" type="Control" parent="UI"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("40_kwxat")
 
-[node name="Airplane" parent="." instance=ExtResource("21_pdsj5")]
-position = Vector2(1655, -406)
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Main Menu"]
+libraries = {
+&"": SubResource("AnimationLibrary_kqrg6")
+}
 
-[node name="FmodBankLoader" type="FmodBankLoader" parent="."]
-bank_paths = ["res://Banks/Master.strings.bank", "res://Banks/Master.bank", "res://Banks/SFX.bank", "res://Banks/Music.bank"]
+[node name="Panel" type="Panel" parent="UI/Main Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 1900.0
+offset_bottom = 1060.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_e08e2")
 
-[node name="Firework Enemy" parent="." instance=ExtResource("35_r33sp")]
-position = Vector2(823, -907)
+[node name="Main Menu Panel" type="Panel" parent="UI/Main Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 545.0
+offset_top = 321.0
+offset_right = 1345.0
+offset_bottom = 908.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_k12tt")
 
-[node name="BalloonEnemy" parent="." instance=ExtResource("36_hdf80")]
-position = Vector2(417, -510)
+[node name="Play Button" type="Button" parent="UI/Main Menu/Main Menu Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -295.0
+offset_top = -174.5
+offset_right = 295.0
+offset_bottom = -58.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = ExtResource("18_6vcvc")
+theme_override_styles/disabled_mirrored = ExtResource("19_7k868")
+theme_override_styles/disabled = ExtResource("19_7k868")
+theme_override_styles/hover_pressed_mirrored = ExtResource("20_hpc6h")
+theme_override_styles/hover_pressed = ExtResource("20_hpc6h")
+theme_override_styles/hover_mirrored = ExtResource("21_kltya")
+theme_override_styles/hover = ExtResource("21_kltya")
+theme_override_styles/pressed_mirrored = ExtResource("20_hpc6h")
+theme_override_styles/pressed = ExtResource("20_hpc6h")
+theme_override_styles/normal_mirrored = ExtResource("18_6vcvc")
+theme_override_styles/normal = ExtResource("18_6vcvc")
+
+[node name="Label" type="Label" parent="UI/Main Menu/Main Menu Panel/Play Button"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.133
+anchor_right = 0.5
+anchor_bottom = 0.133
+offset_left = -168.0
+offset_top = 11.572
+offset_right = 125.0
+offset_bottom = 78.572
+text = "Play"
+label_settings = SubResource("LabelSettings_hpc6h")
+
+[node name="Symbol" type="Sprite2D" parent="UI/Main Menu/Main Menu Panel/Play Button"]
+position = Vector2(65, 52)
+texture = ExtResource("26_e08e2")
+
+[node name="Settings Button" type="Button" parent="UI/Main Menu/Main Menu Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -295.0
+offset_top = -41.5
+offset_right = 295.0
+offset_bottom = 74.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = ExtResource("18_6vcvc")
+theme_override_styles/disabled_mirrored = ExtResource("19_7k868")
+theme_override_styles/disabled = ExtResource("19_7k868")
+theme_override_styles/hover_pressed_mirrored = ExtResource("20_hpc6h")
+theme_override_styles/hover_pressed = ExtResource("20_hpc6h")
+theme_override_styles/hover_mirrored = ExtResource("21_kltya")
+theme_override_styles/hover = ExtResource("21_kltya")
+theme_override_styles/pressed_mirrored = ExtResource("20_hpc6h")
+theme_override_styles/pressed = ExtResource("20_hpc6h")
+theme_override_styles/normal_mirrored = ExtResource("18_6vcvc")
+theme_override_styles/normal = ExtResource("18_6vcvc")
+
+[node name="Label" type="Label" parent="UI/Main Menu/Main Menu Panel/Settings Button"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = -1.033
+anchor_right = 0.5
+anchor_bottom = -1.033
+offset_left = -167.0
+offset_top = 146.828
+offset_right = 137.0
+offset_bottom = 213.828
+text = "Settings"
+label_settings = SubResource("LabelSettings_hpc6h")
+
+[node name="Symbol" type="Sprite2D" parent="UI/Main Menu/Main Menu Panel/Settings Button"]
+position = Vector2(65, 52)
+texture = ExtResource("23_hpc6h")
+
+[node name="Exit" type="Button" parent="UI/Main Menu/Main Menu Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -295.0
+offset_top = 91.5
+offset_right = 295.0
+offset_bottom = 207.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = ExtResource("18_6vcvc")
+theme_override_styles/disabled_mirrored = ExtResource("19_7k868")
+theme_override_styles/disabled = ExtResource("19_7k868")
+theme_override_styles/hover_pressed_mirrored = ExtResource("20_hpc6h")
+theme_override_styles/hover_pressed = ExtResource("20_hpc6h")
+theme_override_styles/hover_mirrored = ExtResource("21_kltya")
+theme_override_styles/hover = ExtResource("21_kltya")
+theme_override_styles/pressed_mirrored = ExtResource("20_hpc6h")
+theme_override_styles/pressed = ExtResource("20_hpc6h")
+theme_override_styles/normal_mirrored = ExtResource("18_6vcvc")
+theme_override_styles/normal = ExtResource("18_6vcvc")
+
+[node name="Label" type="Label" parent="UI/Main Menu/Main Menu Panel/Exit"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = -2.146
+anchor_right = 0.5
+anchor_bottom = -2.146
+offset_left = -167.0
+offset_top = 275.936
+offset_right = 137.0
+offset_bottom = 342.936
+text = "Exit"
+label_settings = SubResource("LabelSettings_hpc6h")
+
+[node name="Symbol" type="Sprite2D" parent="UI/Main Menu/Main Menu Panel/Exit"]
+position = Vector2(65, 52)
+texture = ExtResource("40_o1aky")
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/Main Menu"]
+position = Vector2(972, 242)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("40_8cuat")
 
 [node name="Credits" type="Node2D" parent="." node_paths=PackedStringArray("background_mvmnt")]
 script = ExtResource("40_aqgau")
@@ -1485,10 +1792,16 @@ metadata/_custom_type_script = "uid://cxc85ab32ix3i"
 [connection signal="pressed" from="UI/Death Menu/Death Panel/Restart Button" to="UI/Death Menu" method="_on_restart_button_pressed"]
 [connection signal="pressed" from="UI/Death Menu/Death Panel/Upgrades Button" to="UI/Death Menu" method="_on_upgrades_button_pressed"]
 [connection signal="pressed" from="UI/Death Menu/Death Panel/Upgrades Button" to="UI/Upgrade Menu" method="_on_upgrades_button_pressed"]
+[connection signal="pressed" from="UI/Death Menu/Death Panel/Home Button" to="UI/Death Menu" method="_on_home_button_pressed"]
+[connection signal="pressed" from="UI/Death Menu/Death Panel/Home Button" to="UI/Main Menu" method="_on_home_button_pressed"]
 [connection signal="pressed" from="UI/Upgrade Menu/Upgrade Panel/Pause Button" to="UI/Pause Menu" method="_on_pause_button_pressed"]
 [connection signal="pressed" from="UI/Upgrade Menu/Upgrade Panel/Buy Button" to="UI/Upgrade Menu" method="_on_buy_button_pressed"]
 [connection signal="pressed" from="UI/Upgrade Menu/Upgrade Panel/Play Button" to="UI/Upgrade Menu" method="_on_play_button_pressed"]
 [connection signal="pressed" from="UI/Pause Menu/Background Button" to="UI/Pause Menu" method="_on_background_button_pressed"]
+[connection signal="pressed" from="UI/Pause Menu/Pause Panel/Home Button" to="UI/Pause Menu" method="_on_home_button_pressed"]
+[connection signal="pressed" from="UI/Pause Menu/Pause Panel/Home Button" to="UI/Main Menu" method="_on_home_button_pressed"]
 [connection signal="pressed" from="UI/Pause Menu/Pause Panel/Upgrades Button" to="UI/Upgrade Menu" method="_on_upgrades_button_pressed"]
 [connection signal="pressed" from="UI/Pause Menu/Pause Panel/Upgrades Button" to="UI/Pause Menu" method="_on_upgrades_button_pressed"]
 [connection signal="pressed" from="UI/Pause Menu/Pause Panel/Back Button" to="UI/Pause Menu" method="_on_back_button_pressed"]
+[connection signal="pressed" from="UI/Main Menu/Main Menu Panel/Play Button" to="UI/Main Menu" method="_on_play_button_pressed"]
+[connection signal="pressed" from="UI/Main Menu/Main Menu Panel/Exit" to="UI/Main Menu" method="_on_exit_pressed"]
