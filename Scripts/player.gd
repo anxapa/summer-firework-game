@@ -113,7 +113,7 @@ func apply_velocity(velocity: Vector2) -> void:
 	outside_velocity += velocity
 
 func add_thrust(num: float) -> void:
-	current_thrust = move_toward(current_thrust, max_thrust, num)
+	current_thrust = move_toward(current_thrust, max_thrust, num * boost_multiplier)
 
 func thrust_handling(delta: float) -> void:
 	# Thrust handling
