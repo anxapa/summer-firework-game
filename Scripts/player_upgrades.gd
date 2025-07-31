@@ -23,11 +23,11 @@ static var upgrade_costs := [
 	[20, 200, 1000], #THRUST_SPEED,
 	[50, 750, 5000], #MAGNET,
 	[100, 1500, 5000], #TURN_SPEED,
-	[1000, 5000, 10000, 20000], #LAUNCH_VELOCITY,
+	[100, 2000, 5000, 10000], #LAUNCH_VELOCITY,
 	[10000, 100000], #INVINCIBLE_THRUST,
 	[100000, 1000000], #GUN,
 	[100000, 1000000], #BOOST_ACCELERATION,
-	[100000, 1000000], #CASH_DIAMOND,
+	[100, 2000, 5000, 10000], #CASH_DIAMOND,
 	]
 
 static var upgrade_names := [
@@ -53,7 +53,8 @@ static var upgrade_descriptions := [
 	"", # INVINCIBLE_THRUST,
 	"", # GUN,
 	"", # BOOST_ACCELERATION,
-	"", # CASH_DIAMOND,
+	"Has a chance of turning your cash to diamonds! \n\n" +
+			"Each upgrade gives 25% chance for the effect to occur.", # CASH_DIAMOND,
 ]
 
 static func initialize() -> void:
