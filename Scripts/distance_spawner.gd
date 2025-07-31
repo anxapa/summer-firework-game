@@ -7,6 +7,7 @@ var spawn_manager : SpawnManager
 @export var scene : Array[PackedScene]
 ## Parent to attach spawned scenes
 @export var parent : Node2D
+@export var margin := 200.0
 
 # Distance stuff
 ## Minimum distance (in km) from previous spawn to spawn the scene
@@ -29,8 +30,7 @@ func spawn() -> void:
 	if total_distance > distance_since_spawn:
 		var child = scene.pick_random().instantiate()
 		parent.add_child(child)
-		child.global_position = spawn_manager.get_random_position()
-		print_debug("Spawned at: x: %d, y:%d" % [child.global_position.x, child.global_position.y])
+		child.global_position = spawn_manager.get_random_position(margin)
 		
 		distance_since_spawn += randf_range(min_distance, max_distance)
 

@@ -30,7 +30,7 @@ func convert_to_diamond() -> void:
 	# If random number is lower than chance, then change the type to diamond
 	if randf() < diamond_chance:
 		sprite.texture = diamond_texture
-		cash_value *= 10
+		cash_value *= 5
 		is_diamond = true
 
 func _on_area_entered(area: Area2D) -> void:

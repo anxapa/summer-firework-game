@@ -5,10 +5,7 @@
 
 class_name Patterns
 extends Node2D
-@export var cash_value := 1
 var spawn_position
-# false indicates fixed spawn
-var spawned = false
 @onready var animation_player := $AnimationPlayer
 var pattern_ : String
 
@@ -16,15 +13,10 @@ var pattern_ : String
 static var scene := load("res://Cash Patterns/patterns.tscn")
 static var patterns := ["diamond", "smile", "line", "plus"]
 
-
 func _ready() -> void:
+	pattern_ = patterns.pick_random()
 	animation_player.current_animation = pattern_
-	global_position = spawn_position
-	
-func _on_body_entered(body: Node2D) -> void:
-	if body is Player:
-		GameManager.cash_collected += cash_value
-		queue_free()
+	# global_position = spawn_position
 
 static func spawn(spawn_position: Vector2, pattern: String) -> Node2D:
 	var spawn : Node2D = scene.instantiate()

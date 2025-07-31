@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://dqghyyo32sn2y"]
+[gd_scene load_steps=81 format=3 uid="uid://dqghyyo32sn2y"]
 
 [ext_resource type="Texture2D" uid="uid://m7j13uu5n81k" path="res://Sprites/Firework/firework_bg.png" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://dsn6mefgy5ijk" path="res://Scripts/game_manager.gd" id="2_8gbba"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://phfw4l5fnhut" path="res://Scripts/audio_manager.gd" id="8_536cc"]
 [ext_resource type="Script" uid="uid://dfi8p01y35ir5" path="res://Scripts/reset_component.gd" id="9_kltya"]
 [ext_resource type="Texture2D" uid="uid://b6d0epgmhmh6s" path="res://Sprites/cash.png" id="9_ynf5e"]
+[ext_resource type="PackedScene" uid="uid://dk6nkylup6a7x" path="res://Cash Patterns/patterns.tscn" id="10_aa8k8"]
 [ext_resource type="FontFile" uid="uid://c6dnwjcvpku5y" path="res://Fonts/Analog Whispers.ttf" id="10_hptm8"]
 [ext_resource type="Script" uid="uid://dmrdpj8mbjea5" path="res://Scripts/speedometer.gd" id="11_6iyac"]
 [ext_resource type="Script" uid="uid://s1rr3mqw6mx2" path="res://Scripts/cash_counter.gd" id="11_d1ilt"]
@@ -651,6 +652,15 @@ scene = Array[PackedScene]([ExtResource("6_k2e45")])
 parent = NodePath("../../../Clouds2")
 min_distance = 0.4
 max_distance = 1.0
+
+[node name="Cash Spawner" type="Node2D" parent="Managers/Spawn Manager" node_paths=PackedStringArray("parent")]
+script = ExtResource("4_k2e45")
+scene = Array[PackedScene]([ExtResource("10_aa8k8")])
+parent = NodePath("../../../Cashes")
+margin = 300.0
+min_distance = 0.2
+max_distance = 0.6
+metadata/_custom_type_script = "uid://cbwhngqdxrxga"
 
 [node name="SpawnTimer" type="Timer" parent="Managers/Spawn Manager"]
 autostart = true

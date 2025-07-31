@@ -7,7 +7,7 @@ var spawn_manager: SpawnManager
 var audio_manager: AudioManager
 
 # Game stats
-var cash_collected := 100000
+var cash_collected := 0
 
 # Game states
 enum GameStates {

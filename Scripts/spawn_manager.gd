@@ -26,12 +26,13 @@ var p_y_max := 3
 @onready var cloud_spawner := $"Cloud Spawner"
 @onready var cloud2_spawner := $"Cloud2 Spawner"
 @onready var enemy_spawner := $"Enemy Spawner"
+@onready var cash_spawner := $"Cash Spawner"
 
 func _ready() -> void:
 	GameManager.spawn_manager = self
 	var x = randf_range(p_interval_min, p_interval_max)
 	timer.wait_time = x
-	timer.timeout.connect(_spawn_cash)
+	#timer.timeout.connect(_spawn_cash)
 
 # Spawning Guidelines?
 
@@ -46,6 +47,7 @@ func _process(delta: float) -> void:
 	
 	rocket_spawner.spawn()
 	enemy_spawner.spawn()
+	cash_spawner.spawn()
 	
 	# Spawns cloud until the cutoff
 	if -player_manager.player.total_distance < cloud_cutoff_distance:
