@@ -1,9 +1,10 @@
 class_name SpawnManager
 extends Node2D
 @export var cash_parent : Node2D
-@export var cloud_parent : Node2D
 @export var timer : Timer
+@export var cloud_cutoff_distance := 20.0
 @onready var player_manager := GameManager.player_manager
+
 
 # Strange OFF_SCREEN constant to prevent animationPlayer flickering 
 const OFF_SCREEN_Y = 1080/2 + 312
@@ -19,12 +20,16 @@ var p_x_max := 0.0
 var p_y_min := 2
 var p_y_max := 3
 
+# Spawners
+@onready var rocket_spawner := $"Rocket Spawner"
+@onready var cloud_spawner := $"Cloud Spawner"
+@onready var cloud2_spawner := $"Cloud2 Spawner"
 
 func _ready() -> void:
-	GameManager.player_manager.player.initial_velocity
+	GameManager.spawn_manager = self
 	var x = randf_range(p_interval_min, p_interval_max)
 	timer.wait_time = x
-	timer.timeout.connect(_spawn)
+	timer.timeout.connect(_spawn_cash)
 
 # Spawning Guidelines?
 
@@ -33,12 +38,26 @@ func _ready() -> void:
 # Patterns will be spawned every x seconds determined by the interval
 #
 # ... I think all of these need to be scrapped
-func _physics_process(delta: float) -> void:
-	pass
+func _process(delta: float) -> void:
+	rocket_spawner.spawn()
+	
+	# Spawns cloud until the cutoff
+	if -player_manager.player.total_distance < cloud_cutoff_distance:
+		cloud_spawner.spawn()
+		cloud2_spawner.spawn()
 
-func _spawn() -> void:
+func _spawn_cash() -> void:
 	var p_y_distance := randf_range(p_y_min * player_manager.get_scroll_speed(), p_y_max * player_manager.get_scroll_speed())
 	var p_x_distance := 0
 	
 	var test = Patterns.spawn(player_manager.player.global_position + Vector2(p_x_distance, min(p_y_distance, -OFF_SCREEN_Y)), Patterns.get_rand_pattern())
 	cash_parent.add_child(test)
+
+# Get a random position to spawn something above off screen
+func get_random_position(margin := 200.0) -> Vector2:
+	var viewport_size : Vector2i = get_viewport().size
+	var new_position := Vector2(randf_range(margin, viewport_size.x - margin), -margin)
+	
+	return new_position
+	
+	

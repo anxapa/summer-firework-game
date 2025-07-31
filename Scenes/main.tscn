@@ -1,13 +1,14 @@
-[gd_scene load_steps=69 format=3 uid="uid://dqghyyo32sn2y"]
+[gd_scene load_steps=70 format=3 uid="uid://dqghyyo32sn2y"]
 
 [ext_resource type="Texture2D" uid="uid://m7j13uu5n81k" path="res://Sprites/Firework/firework_bg.png" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://dsn6mefgy5ijk" path="res://Scripts/game_manager.gd" id="2_8gbba"]
 [ext_resource type="Script" uid="uid://bbmuup40yufp3" path="res://Scripts/player_manager.gd" id="2_kry3j"]
 [ext_resource type="Script" uid="uid://b87cshw4c77pp" path="res://Scripts/spawn_manager.gd" id="3_fdnlq"]
 [ext_resource type="PackedScene" uid="uid://djxsfkro6ge2v" path="res://Scenes/player.tscn" id="3_jjvhh"]
+[ext_resource type="Script" uid="uid://cbwhngqdxrxga" path="res://Scripts/distance_spawner.gd" id="4_k2e45"]
 [ext_resource type="Script" path="res://Scripts/spawn_timer.gd" id="4_u50mg"]
-[ext_resource type="Texture2D" uid="uid://cqf0b67vpg8g6" path="res://Sprites/cloud.png" id="5_6bp64"]
 [ext_resource type="Script" uid="uid://cxc85ab32ix3i" path="res://Scripts/movement_component.gd" id="6_21xkr"]
+[ext_resource type="PackedScene" uid="uid://f3pmdyvqaw5a" path="res://Scenes/cloud.tscn" id="6_k2e45"]
 [ext_resource type="Script" uid="uid://dfi8p01y35ir5" path="res://Scripts/reset_component.gd" id="9_kltya"]
 [ext_resource type="Texture2D" uid="uid://b6d0epgmhmh6s" path="res://Sprites/cash.png" id="9_ynf5e"]
 [ext_resource type="FontFile" uid="uid://c6dnwjcvpku5y" path="res://Fonts/Analog Whispers.ttf" id="10_hptm8"]
@@ -468,11 +469,31 @@ script = ExtResource("2_8gbba")
 script = ExtResource("2_kry3j")
 player = NodePath("../../Player")
 
-[node name="Spawn Manager" type="Node2D" parent="Managers" node_paths=PackedStringArray("cash_parent", "cloud_parent", "timer")]
+[node name="Spawn Manager" type="Node2D" parent="Managers" node_paths=PackedStringArray("cash_parent", "timer")]
 script = ExtResource("3_fdnlq")
 cash_parent = NodePath("../../Cashes")
-cloud_parent = NodePath("../../Clouds")
 timer = NodePath("SpawnTimer")
+
+[node name="Rocket Spawner" type="Node2D" parent="Managers/Spawn Manager" node_paths=PackedStringArray("parent")]
+script = ExtResource("4_k2e45")
+scene = ExtResource("35_r33sp")
+parent = NodePath("../../..")
+min_distance = 3.0
+max_distance = 6.0
+
+[node name="Cloud Spawner" type="Node2D" parent="Managers/Spawn Manager" node_paths=PackedStringArray("parent")]
+script = ExtResource("4_k2e45")
+scene = ExtResource("6_k2e45")
+parent = NodePath("../../../Clouds")
+min_distance = 0.2
+max_distance = 0.5
+
+[node name="Cloud2 Spawner" type="Node2D" parent="Managers/Spawn Manager" node_paths=PackedStringArray("parent")]
+script = ExtResource("4_k2e45")
+scene = ExtResource("6_k2e45")
+parent = NodePath("../../../Clouds2")
+min_distance = 0.4
+max_distance = 1.0
 
 [node name="SpawnTimer" type="Timer" parent="Managers/Spawn Manager"]
 autostart = true
@@ -491,42 +512,20 @@ position = Vector2(960, 540)
 [node name="Clouds2" type="Node2D" parent="."]
 modulate = Color(0.897915, 0.920017, 0.986546, 1)
 position = Vector2(551, 596)
-scale = Vector2(3, 3)
 
 [node name="MovementComponent" type="Node2D" parent="Clouds2"]
 script = ExtResource("6_21xkr")
 scroll_magnitude = 0.5
 metadata/_custom_type_script = "uid://cxc85ab32ix3i"
 
-[node name="Cloud2" type="Sprite2D" parent="Clouds2"]
-z_index = 1
-position = Vector2(236.75, -46.25)
-rotation = 3.14159
-scale = Vector2(1.5, -1.5)
-texture = ExtResource("5_6bp64")
-
-[node name="Cloud" type="Sprite2D" parent="Clouds2"]
-z_index = 1
-texture = ExtResource("5_6bp64")
-
 [node name="Clouds" type="Node2D" parent="."]
 position = Vector2(381, 398)
-scale = Vector2(4, 4)
+scale = Vector2(1.5, 1.5)
 
 [node name="MovementComponent" type="Node2D" parent="Clouds"]
 script = ExtResource("6_21xkr")
+scroll_magnitude = 0.7
 metadata/_custom_type_script = "uid://cxc85ab32ix3i"
-
-[node name="Cloud2" type="Sprite2D" parent="Clouds"]
-z_index = 1
-position = Vector2(236.75, -46.25)
-rotation = 3.14159
-scale = Vector2(1.5, -1.5)
-texture = ExtResource("5_6bp64")
-
-[node name="Cloud" type="Sprite2D" parent="Clouds"]
-z_index = 1
-texture = ExtResource("5_6bp64")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(960, -2120)

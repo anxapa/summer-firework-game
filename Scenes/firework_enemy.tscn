@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://f3fsxnirll72"]
+[gd_scene load_steps=12 format=3 uid="uid://f3fsxnirll72"]
 
 [ext_resource type="Texture2D" uid="uid://d25ksndy32pjk" path="res://Sprites/Firework/firework_cloud.png" id="1_2n8ga"]
 [ext_resource type="Script" uid="uid://br0eeraddmvvh" path="res://Scripts/firework_enemy.gd" id="1_d657c"]
+[ext_resource type="Script" uid="uid://dfi8p01y35ir5" path="res://Scripts/reset_component.gd" id="2_dra34"]
 [ext_resource type="Texture2D" uid="uid://dsmhx3s8vnm21" path="res://Sprites/Firework/firework_body_gray.png" id="3_c0rrf"]
 [ext_resource type="Script" uid="uid://cxc85ab32ix3i" path="res://Scripts/movement_component.gd" id="3_d657c"]
 [ext_resource type="Texture2D" uid="uid://c5cd7uppif05s" path="res://Sprites/Firework/firework_strips.png" id="4_d657c"]
@@ -28,7 +29,11 @@ size = Vector2(64, 124)
 [node name="Firework Enemy" type="Area2D"]
 z_index = 5
 script = ExtResource("1_d657c")
-hit_velocity = -200.0
+hit_velocity = -50.0
+
+[node name="ResetComponent" type="Node2D" parent="."]
+script = ExtResource("2_dra34")
+metadata/_custom_type_script = "uid://dfi8p01y35ir5"
 
 [node name="MovementComponent" type="Node2D" parent="."]
 script = ExtResource("3_d657c")
@@ -76,7 +81,6 @@ position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_w6hyo")
 
 [node name="Firework Body Sprite" type="Sprite2D" parent="."]
-self_modulate = Color(0, 0.658157, 0.769513, 1)
 position = Vector2(-2.26498e-06, 0.125)
 scale = Vector2(4, 4)
 texture = ExtResource("3_c0rrf")

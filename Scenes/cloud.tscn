@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://f3pmdyvqaw5a"]
+
+[ext_resource type="Texture2D" uid="uid://cqf0b67vpg8g6" path="res://Sprites/cloud.png" id="1_8hs1w"]
+[ext_resource type="Script" uid="uid://4bghgimujf2t" path="res://Scripts/cloud.gd" id="2_u17if"]
+[ext_resource type="Script" uid="uid://dfi8p01y35ir5" path="res://Scripts/reset_component.gd" id="3_u17if"]
+[ext_resource type="Texture2D" uid="uid://b3u6e73gm0khe" path="res://Sprites/cloud2.png" id="3_uourm"]
+
+[node name="Cloud" type="Sprite2D"]
+z_index = 1
+scale = Vector2(4, 4)
+texture = ExtResource("1_8hs1w")
+script = ExtResource("2_u17if")
+alternate_texture = ExtResource("3_uourm")
+
+[node name="ResetComponent" type="Node2D" parent="."]
+script = ExtResource("3_u17if")
+metadata/_custom_type_script = "uid://dfi8p01y35ir5"
