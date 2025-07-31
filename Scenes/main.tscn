@@ -1,6 +1,6 @@
 [gd_scene load_steps=67 format=3 uid="uid://dqghyyo32sn2y"]
 
-[ext_resource type="Texture2D" uid="uid://cwm7n0ajguj2x" path="res://Sprites/Firework/firework_bg.png" id="1_jjgbg"]
+[ext_resource type="Texture2D" uid="uid://m7j13uu5n81k" path="res://Sprites/Firework/firework_bg.png" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://dsn6mefgy5ijk" path="res://Scripts/game_manager.gd" id="2_8gbba"]
 [ext_resource type="Script" uid="uid://bbmuup40yufp3" path="res://Scripts/player_manager.gd" id="2_kry3j"]
 [ext_resource type="Script" uid="uid://b87cshw4c77pp" path="res://Scripts/spawn_manager.gd" id="3_fdnlq"]
@@ -527,7 +527,7 @@ z_index = 1
 texture = ExtResource("5_6bp64")
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(960, -360)
+position = Vector2(960, -1480)
 scale = Vector2(4, 4)
 texture = ExtResource("1_jjgbg")
 
