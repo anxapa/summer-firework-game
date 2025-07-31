@@ -36,6 +36,7 @@ func pause() -> void:
 	# Disable some buttons depending on the game state
 	if GameManager.current_game_state == GameManager.GameStates.SHOP:
 		disable_button(upgrades_button)
+		GameManager.audio_manager.shop_music.paused = true
 	else:
 		enable_button(upgrades_button)
 
@@ -48,11 +49,13 @@ func unpause() -> void:
 			GameManager.current_game_state = GameManager.GameStates.GAME
 			get_tree().paused = false
 		GameManager.GameStates.SHOP:
+			GameManager.audio_manager.shop_music.paused = false
 			get_tree().paused = true
 
 func go_to_upgrades() -> void:
 	GameManager.current_game_state = GameManager.GameStates.SHOP
 	animation_player.play("unpause")
+	print_debug("help")
 	get_tree().paused = true
 
 func enable_button(button: BaseButton) -> void:

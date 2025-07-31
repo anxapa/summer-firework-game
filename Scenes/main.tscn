@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://dqghyyo32sn2y"]
+[gd_scene load_steps=71 format=3 uid="uid://dqghyyo32sn2y"]
 
 [ext_resource type="Texture2D" uid="uid://m7j13uu5n81k" path="res://Sprites/Firework/firework_bg.png" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://dsn6mefgy5ijk" path="res://Scripts/game_manager.gd" id="2_8gbba"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://dbc1bmrhtrcnx" path="res://Scripts/spawn_timer.gd" id="4_u50mg"]
 [ext_resource type="Script" uid="uid://cxc85ab32ix3i" path="res://Scripts/movement_component.gd" id="6_21xkr"]
 [ext_resource type="PackedScene" uid="uid://f3pmdyvqaw5a" path="res://Scenes/cloud.tscn" id="6_k2e45"]
+[ext_resource type="Script" uid="uid://phfw4l5fnhut" path="res://Scripts/audio_manager.gd" id="8_536cc"]
 [ext_resource type="Script" uid="uid://dfi8p01y35ir5" path="res://Scripts/reset_component.gd" id="9_kltya"]
 [ext_resource type="Texture2D" uid="uid://b6d0epgmhmh6s" path="res://Sprites/cash.png" id="9_ynf5e"]
 [ext_resource type="FontFile" uid="uid://c6dnwjcvpku5y" path="res://Fonts/Analog Whispers.ttf" id="10_hptm8"]
@@ -500,6 +501,24 @@ autostart = true
 script = ExtResource("4_u50mg")
 
 [node name="Audio Manager" type="Node2D" parent="Managers"]
+process_mode = 3
+script = ExtResource("8_536cc")
+
+[node name="Overworld Music" type="FmodEventEmitter2D" parent="Managers/Audio Manager"]
+event_name = "event:/OverworldMusic"
+event_guid = "{fc1db03d-98ba-4ad5-82af-1f64faf83790}"
+fmod_parameters/Ending/id = 8893632812959826794
+fmod_parameters/Ending = 0.0
+fmod_parameters/Ending/variant_type = 3
+fmod_parameters/Checkpoint/id = -3177232437866544158
+fmod_parameters/Checkpoint = 3.5
+fmod_parameters/Checkpoint/variant_type = 3
+process_mode = 1
+
+[node name="Shop Music" type="FmodEventEmitter2D" parent="Managers/Audio Manager"]
+event_name = "event:/ShopMusic"
+event_guid = "{8f5e5134-fe03-4d6c-bac5-e6a8526a53d7}"
+process_mode = 3
 
 [node name="Camera2D" type="Camera2D" parent="."]
 z_index = 100
@@ -1381,7 +1400,7 @@ position = Vector2(1424, -108)
 position = Vector2(1655, -406)
 
 [node name="FmodBankLoader" type="FmodBankLoader" parent="."]
-bank_paths = ["res://Banks/Master.strings.bank", "res://Banks/Master.bank", "res://Banks/SFX.bank"]
+bank_paths = ["res://Banks/Master.strings.bank", "res://Banks/Master.bank", "res://Banks/SFX.bank", "res://Banks/Music.bank"]
 
 [node name="Firework Enemy" parent="." instance=ExtResource("35_r33sp")]
 position = Vector2(823, -907)
